@@ -9,29 +9,42 @@
 </head>
 <body>
     <header id="header">
-        <span id="logo">LogoMarca</span>
+        <span id="logo">Bom Sabor</span>
 
-        <ul id="navLinks">
+        <ul class="menu">
             <li>
-                <a href="#">Menu 1</a>
+                <a href="#">Produtos</a>
+
+                <ul class="subMenu">
+                    <li>
+                        <a href="#">Cadastrar Produto</a>
+                    </li>
+                    <li>
+                        <a href="#">Listar Produtos</a>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="#">Menu 2</a>
+                <a href="#">Clientes</a>
+
+                <ul class="subMenu">
+                    <li>
+                        <a href="#">Cadastrar Cliente</a>
+                    </li>
+                    <li>
+                        <a href="#">Listar Clientes</a>
+                    </li>
+                </ul>
             </li>
             <li>
-                <a href="#">Menu 3</a>
+                <a href="#">Pedidos</a>
+            </li>
+            <li>
+                <a href="#" id="logOutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </a>
             </li>
         </ul>
-
-        <select name="" id="userSelector">
-            <option value="user">
-                👤 &nbsp Cliente
-            </option>
-
-            <option value="admin">
-                💼 &nbsp Administrador
-            </option>
-        </select>
     </header>
 
     <footer id="footer">
