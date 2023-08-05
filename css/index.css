@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: rgb(193, 193, 193);
+  height: 100vh;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3737d6;
+  color: white;
+  padding: 0 0.7em;
+}
+#header #logo {
+  cursor: default;
+  font-weight: bold;
+  font-size: 1.8em;
+  letter-spacing: 0.05em;
+}
+#header #navLinks {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+#header #navLinks li {
+  display: block;
+}
+#header #navLinks li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 1.5em 0.7em;
+}
+#header #navLinks li a:hover {
+  background-color: rgb(0, 0, 180);
+}/*# sourceMappingURL=index.css.map */
