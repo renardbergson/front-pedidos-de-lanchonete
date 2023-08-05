@@ -8,13 +8,14 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: rgb(193 193 193);
     height: 100vh;
+    opacity: 0.8;
 }
 
 #header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #3737d6;
+    background-color: #2a2aa9;
     color: white;
     padding: 0 0.7em;
 
@@ -40,8 +41,62 @@ body {
                 padding: 1.5em 0.7em;
                 
                 &:hover {
-                    background-color: rgb(0, 0, 180);
+                    background-color: rgb(0, 0, 159);
                 }
+            }
+        }
+    }
+
+    #userSelector {
+        font-family: 'Poppins', sans-serif;
+        padding: 0.2em;
+        border-radius: 6px;
+        text-align: center;
+        outline: none;
+    }
+}
+
+#footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    letter-spacing: 0.03em;
+    font-size: 0.7em;
+    position: absolute;
+    padding: 0.7em 0;
+    bottom: 0;
+    width: 100%;
+    cursor: default;
+
+    p {
+        margin-bottom: 0.4em;
+    }
+
+    #socialMedia {
+        display: flex;
+        justify-content: space-between;
+        //border: 1px solid red;
+        margin: 0 auto;
+        margin-bottom: 0.4em;
+        width: 10.5em;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-shadow: 0px 0px 1px white;
+            }
+        }
+    }
+
+    #email {
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-shadow: 0px 0px 1px white;
             }
         }
     }
