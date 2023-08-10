@@ -12,8 +12,22 @@ body {
 }
 
 :root {
-  --primary-background-color: #3232c8;
-  --secondary-background-color: rgba(0, 0, 125, 0.89);
+  --primary-background-color: rgb(167, 0, 0);
+  --secondary-background-color: rgba(0, 0, 0, 0.866);
+  --border-and-shadow: #898989;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #c1c1c1;
+  height: 100vh;
+  opacity: 0.8;
 }
 
 #header {
@@ -23,11 +37,12 @@ body {
   background-color: var(--primary-background-color);
   color: white;
   padding: 0 0.7em;
+  box-shadow: 5px 5px 5px var(--border-and-shadow);
 }
 #header #logo {
   cursor: default;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 2.3em;
   letter-spacing: -0.03em;
 }
 #header #logo::after {
@@ -44,6 +59,7 @@ body {
   list-style: none;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
 }
 #header .menu li {
@@ -62,7 +78,9 @@ body {
   display: block;
 }
 #header .menu #logOutBtn {
-  color: #00e2ff;
+  color: rgb(0, 255, 252);
+  font-size: 0.9em;
+  font-weight: bold;
 }
 #header .menu .subMenu {
   background-color: var(--primary-background-color);
@@ -72,7 +90,6 @@ body {
 }
 
 #products {
-  border: 1px solid red;
   color: #1a1a1a;
   display: grid;
   grid-template-columns: auto auto auto;
@@ -86,9 +103,9 @@ body {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
-  border: 1px solid #898989;
+  border: 1px solid var(--border-and-shadow);
   border-radius: 10px;
-  box-shadow: 5px 5px 5px #898989;
+  box-shadow: 5px 5px 5px var(--border-and-shadow);
   width: 16em;
   padding: 2em 1em;
 }
