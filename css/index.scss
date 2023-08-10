@@ -1,28 +1,18 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: rgb(193 193 193);
-    height: 100vh;
-    opacity: 0.8;
-}
+@import 'base.scss';
+@import 'variables.scss';
 
 #header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #2a2aa9;
+    background-color: var(--primary-background-color);
     color: white;
     padding: 0 0.7em;
 
     #logo {
         cursor: default;
         font-weight: bold;
-        font-size: 1.8em;
+        font-size: 2em;
         letter-spacing: -0.03em;
 
         &::after {
@@ -53,7 +43,7 @@ body {
                 padding: 1.5em 0.7em;
                 
                 &:hover {
-                    background-color: rgb(0, 0, 159);
+                    background-color: var(--secondary-background-color);
                 }
             }
 
@@ -69,10 +59,74 @@ body {
         }
 
         .subMenu {
-            background-color: #2a2aa9;
+            background-color: var(--primary-background-color);
             display: none;
             position: absolute;
             top: 4.15em;
+        }
+    }
+}
+
+#products {
+    border: 1px solid red;
+    color: #1a1a1a;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    column-gap: 7em;
+    row-gap: 4em;
+    padding: 3em;
+
+    .product {
+        background-color: var(--primary-background-color);
+        color: white;
+        text-align: center;
+        border: 1px solid #898989;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px #898989;
+        width: 16em;
+        padding: 2em 1em; 
+
+        &:hover {
+            box-shadow: 2px 2px 10px white;
+        }
+
+        h4, p {
+            margin-bottom: 0.5em;
+            font-size: 0.8em;
+            cursor: default;
+        }
+
+        .productPreview {
+            width: 200px;
+            border-radius: 6px;
+            box-shadow: 1px 1px 5px #353535;
+        }
+
+        .productDetails {    
+            margin: 1.5em 0;
+
+            .productTitle {
+                font-size: 1.2em;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        .getItemBtn {
+            width: 100%;
+            padding: 0.8em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: var(--secondary-background-color);
+            color: white;
+            font-size: 1em;
+            font-weight: bold;
+            
+            &:hover {
+                letter-spacing: 2px;
+                transition: 400ms ease-in-out;
+            }
         }
     }
 }
@@ -85,7 +139,7 @@ body {
     font-size: 0.7em;
     position: absolute;
     padding: 1em 0;
-    bottom: 0;
+    bottom: auto;
     width: 100%;
     cursor: default;
 
@@ -96,7 +150,6 @@ body {
     #socialMedia {
         display: flex;
         justify-content: space-between;
-        //border: 1px solid red;
         margin: 0 auto;
         margin-bottom: 0.4em;
         width: 10.5em;
