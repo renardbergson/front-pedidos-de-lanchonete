@@ -1,4 +1,5 @@
 :root {
-  --primary-background-color: hsl(0, 100%, 47%);
-  --secondary-background-color: rgba(0, 0, 125, 0.89);
+  --primary-background-color: rgb(167, 0, 0);
+  --secondary-background-color: rgba(0, 0, 0, 0.866);
+  --main-box-shadow: 5px 5px 5px #898989;
 }/*# sourceMappingURL=variables.css.map */

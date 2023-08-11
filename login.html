@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Projeto Pedidos de Lanchonete</title>
+</head>
+<body>
+    <header id="header">
+        <span id="logo">Bom Sabor</span>
+
+        <ul class="menu">
+            <li>
+                <a href="index.html" id="homeBtn">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+            </li>
+        </ul>
+    </header>
+    
+    <main>
+        <form id="loginForm">
+            <img src="./img/logo-icon.webp" alt="a snack image" id="logoImage">
+            <h3>Lanchonete Bom Sabor</h3>
+            <br>
+            <div id="adminField" name="adminField" class="hidden">
+                <label for="userID">Login</label>
+                <input id="userID" name="userID" type="text" placeholder="Insira o seu ID" autocomplete="off" class="loginInputField">
+            </div>
+
+            <div id="userField">
+                <label for="userID">Login</label>
+                <input id="userMail" name="userMail" type="email" placeholder="Insira o seu e-mail" autocomplete="off" class="loginInputField">
+            </div>
+
+            <div id="passField">
+                <label for="userPass">Senha</label>
+                <input id="userPass" name="userPass" type="password" placeholder="Insira a sua senha" class="loginInputField">
+            </div>
+
+            <div id="userSelectorField">
+                <label>
+                    Entrar como
+                    <select name="userSelector" id="userSelector">
+                        <option selected value="user">👤 &nbsp Cliente</option>
+                        <option value="admin">💼 &nbsp Administrador</option>
+                    </select>
+                </label>
+            </div>
+
+            <button type="submit" id="loginBtn">Entrar</button>
+
+            <a href="#" id="signUpBtn">Não tem um cadastro? Cadastre-se!</a>
+
+
+        </form>
+    </main>
+
+    <footer id="footer">
+        <p>
+            Construido e publicado por Renard Bergson
+        </p>
+
+        <p>
+            Confira este e outros projetos no meu perfil do GitHub!
+        </p>
+
+        <div id="socialMedia">
+            <a href="https://github.com/renardbergson" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/renardbergson" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="https://www.instagram.com/renardbergson" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://wa.me/5583981413123" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <p id="email">
+            <a href="mailto:contato@renardb.com">contato@renardb.com</a>
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a76ec380a8.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>

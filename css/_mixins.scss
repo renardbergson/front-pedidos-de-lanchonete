@@ -1,0 +1,17 @@
+@mixin main-btn-style {
+    width: 100%;
+    padding: 0.8em;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--secondary-background-color);
+    font-weight: bold;
+    font-size: 0.9em;
+    color: white;
+    cursor: pointer;
+}
+
+@mixin portal-btn-style {
+    color: rgb(0, 255, 252);
+    font-size: 1em;
+    font-weight: bold;
+}

@@ -1,0 +1,88 @@
+#loginContainer {
+  height: 80%;
+}
+#loginContainer #loginForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+}
+#loginContainer #loginForm #logoImage {
+  width: 8em;
+  margin: 0 auto;
+}
+#loginContainer #loginForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#loginContainer #loginForm #adminField {
+  display: none;
+}
+#loginContainer #loginForm #adminField, #loginContainer #loginForm #userField {
+  margin-bottom: 1em;
+}
+#loginContainer #loginForm #adminField, #loginContainer #loginForm #userField, #loginContainer #loginForm #passField {
+  text-align: start;
+  font-size: 0.9em;
+}
+#loginContainer #loginForm #adminField #userID, #loginContainer #loginForm #adminField #userPass, #loginContainer #loginForm #adminField #userMail, #loginContainer #loginForm #userField #userID, #loginContainer #loginForm #userField #userPass, #loginContainer #loginForm #userField #userMail, #loginContainer #loginForm #passField #userID, #loginContainer #loginForm #passField #userPass, #loginContainer #loginForm #passField #userMail {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#loginContainer #loginForm #userSelectorField {
+  text-align: center;
+  margin: 1.5em 0;
+}
+#loginContainer #loginForm #userSelectorField label {
+  font-size: 0.8em;
+}
+#loginContainer #loginForm #userSelectorField label #userSelector {
+  font-size: 0.9em;
+  outline: none;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  margin-left: 0.5em;
+  border-radius: 10px;
+}
+#loginContainer #loginForm #userSelectorField label #userSelector:hover {
+  cursor: pointer;
+}
+#loginContainer #loginForm #loginBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  cursor: pointer;
+  margin: 0 0 1.5em 0;
+}
+#loginContainer #loginForm #signUpBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+}/*# sourceMappingURL=admin.css.map */

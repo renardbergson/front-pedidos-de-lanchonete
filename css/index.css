@@ -10,24 +10,158 @@ body {
   height: 100vh;
   opacity: 0.8;
 }
+body main {
+  min-height: 79vh;
+}
+
+#loginForm {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+}
+#loginForm #logoImage {
+  width: 8em;
+  margin: 0 auto;
+}
+#loginForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#loginForm #adminField {
+  display: none;
+}
+#loginForm #adminField, #loginForm #userField {
+  margin-bottom: 1em;
+}
+#loginForm #adminField, #loginForm #userField, #loginForm #passField {
+  text-align: start;
+  font-size: 0.9em;
+}
+#loginForm #adminField #userID, #loginForm #adminField #userPass, #loginForm #adminField #userMail, #loginForm #userField #userID, #loginForm #userField #userPass, #loginForm #userField #userMail, #loginForm #passField #userID, #loginForm #passField #userPass, #loginForm #passField #userMail {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#loginForm #userSelectorField {
+  text-align: center;
+  margin: 1.5em 0;
+}
+#loginForm #userSelectorField label {
+  font-size: 0.8em;
+}
+#loginForm #userSelectorField label #userSelector {
+  font-size: 0.9em;
+  outline: none;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  margin-left: 0.5em;
+  border-radius: 10px;
+}
+#loginForm #userSelectorField label #userSelector:hover {
+  cursor: pointer;
+}
+#loginForm #loginBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  cursor: pointer;
+  margin: 0 0 1.5em 0;
+}
+#loginForm #signUpBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+#products-admin {
+  color: #1a1a1a;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 3em;
+}
+#products-admin .product {
+  background-color: var(--primary-background-color);
+  color: white;
+  text-align: center;
+  border: 1px solid var(--border-and-shadow);
+  border-radius: 10px;
+  box-shadow: var(--main-box-shadow);
+  width: 65em;
+  min-height: 5em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#products-admin .product:hover {
+  box-shadow: 2px 2px 10px white;
+}
+#products-admin .product .productPreview {
+  width: 8%;
+  border-radius: 6px;
+  box-shadow: 1px 1px 5px #353535;
+}
+#products-admin .product .productTablePart {
+  font-size: 0.8em;
+  cursor: default;
+  height: 100%;
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#products-admin .product .productTablePart p, #products-admin .product .productTablePart span {
+  margin-top: 0.5em;
+}
+#products-admin .product .editItemBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  cursor: pointer;
+  width: 12%;
+}
+#products-admin .product .editItemBtn i {
+  margin-right: 0.5em;
+}
 
 :root {
   --primary-background-color: rgb(167, 0, 0);
   --secondary-background-color: rgba(0, 0, 0, 0.866);
-  --border-and-shadow: #898989;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #c1c1c1;
-  height: 100vh;
-  opacity: 0.8;
+  --main-box-shadow: 5px 5px 5px #898989;
 }
 
 #header {
@@ -37,7 +171,7 @@ body {
   background-color: var(--primary-background-color);
   color: white;
   padding: 0 0.7em;
-  box-shadow: 5px 5px 5px var(--border-and-shadow);
+  box-shadow: var(--main-box-shadow);
 }
 #header #logo {
   cursor: default;
@@ -77,9 +211,14 @@ body {
 #header .menu li:hover > .subMenu {
   display: block;
 }
-#header .menu #logOutBtn {
+#header .menu li #homeBtn {
   color: rgb(0, 255, 252);
-  font-size: 0.9em;
+  font-size: 1em;
+  font-weight: bold;
+}
+#header .menu #logRouteBtn {
+  color: rgb(0, 255, 252);
+  font-size: 1em;
   font-weight: bold;
 }
 #header .menu .subMenu {
@@ -105,7 +244,7 @@ body {
   text-align: center;
   border: 1px solid var(--border-and-shadow);
   border-radius: 10px;
-  box-shadow: 5px 5px 5px var(--border-and-shadow);
+  box-shadow: var(--main-box-shadow);
   width: 16em;
   padding: 2em 1em;
 }
@@ -134,11 +273,11 @@ body {
   padding: 0.8em;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   background-color: var(--secondary-background-color);
-  color: white;
-  font-size: 1em;
   font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  cursor: pointer;
 }
 #products .product .getItemBtn:hover {
   letter-spacing: 2px;

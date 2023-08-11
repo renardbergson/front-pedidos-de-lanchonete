@@ -1,23 +1,7 @@
 @import 'base.scss';
-
-:root {
-    --primary-background-color: rgb(167, 0, 0);
-    --secondary-background-color: rgba(0, 0, 0, 0.866);
-    --border-and-shadow: #898989;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #c1c1c1;
-    height: 100vh;
-    opacity: 0.8;
-}
+@import 'admin.scss';
+@import 'variables.scss';
+@import 'mixins.scss';
 
 #header {
     display: flex;
@@ -26,7 +10,7 @@ body {
     background-color: var(--primary-background-color);
     color: white;
     padding: 0 0.7em;
-    box-shadow: 5px 5px 5px var(--border-and-shadow);
+    box-shadow: var(--main-box-shadow);
 
     #logo {
         cursor: default;
@@ -72,12 +56,14 @@ body {
                     display: block;
                 }
             }
+
+            #homeBtn {
+                @include portal-btn-style();
+            }
         }
 
-        #logOutBtn {
-            color: rgb(0, 255, 252);
-            font-size: 0.9em;
-            font-weight: bold;
+        #logRouteBtn {
+            @include portal-btn-style();
         }
 
         .subMenu {
@@ -104,7 +90,7 @@ body {
         text-align: center;
         border: 1px solid var(--border-and-shadow);
         border-radius: 10px;
-        box-shadow: 5px 5px 5px var(--border-and-shadow);
+        box-shadow: var(--main-box-shadow);
         width: 16em;
         padding: 2em 1em; 
 
@@ -134,15 +120,7 @@ body {
         }
 
         .getItemBtn {
-            width: 100%;
-            padding: 0.8em;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            background-color: var(--secondary-background-color);
-            color: white;
-            font-size: 1em;
-            font-weight: bold;
+            @include main-btn-style();
             
             &:hover {
                 letter-spacing: 2px;
