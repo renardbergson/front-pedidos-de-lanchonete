@@ -23,6 +23,6 @@ _loginForm.onsubmit = e => {
     e.preventDefault()
 
     if (_loginForm.userID.value === 'admin' && _loginForm.userPass.value === 'admin') {
-        window.location.href = 'admin-list.html';
+        window.location.href = 'products-list-admin.html';
     }
 }

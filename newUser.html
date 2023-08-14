@@ -21,38 +21,46 @@
     </header>
     
     <main>
-        <form id="loginForm">
+        <form id="signUpForm">
             <img src="./img/logo-icon.webp" alt="a snack image" id="logoImage">
             <h3>Lanchonete Bom Sabor</h3>
             <br>
-            <div id="adminField" name="adminField" class="hidden">
-                <label for="userID">Login</label>
-                <input id="userID" name="userID" type="text" placeholder="Insira o seu ID" autocomplete="off" class="loginInputField">
+
+            <div class="newUserField">
+                <label for="newUserName">Nome</label>
+                <input id="newUserName" name="newUserName" type="text" placeholder="Insira o seu nome" autocomplete="off" class="newUserInputField">
             </div>
 
-            <div id="userField">
-                <label for="userID">Login</label>
-                <input id="userMail" name="userMail" type="email" placeholder="Insira o seu e-mail" autocomplete="off" class="loginInputField">
+            <div class="newUserField">
+                <label for="newUserMail">E-mail</label>
+                <input id="newUserMail" name="newUserMail" type="text" placeholder="Insira o seu e-mail" autocomplete="off" class="newUserInputField">
             </div>
 
-            <div id="passField">
-                <label for="userPass">Senha</label>
-                <input id="userPass" name="userPass" type="password" placeholder="Insira a sua senha" class="loginInputField">
+            <div class="newUserField">
+                <label for="newUserPhone">Telefone</label>
+                <input id="newUserPhone" name="newUserPhone" type="tel" placeholder="Insira seu telefone" class="newUserInputField" autocomplete="off">
             </div>
 
-            <div id="userSelectorField">
-                <label>
-                    Entrar como
-                    <select name="userSelector" id="userSelector">
-                        <option selected value="user">👤 &nbsp Cliente</option>
-                        <option value="admin">💼 &nbsp Administrador</option>
-                    </select>
-                </label>
+            <div class="newUserField" id="newUserStreetAndNumber">
+                <div id="streetAndNumberLabels">
+                    <label for="newUserStreet">Rua</label>
+                    <label for="newUserNumber">Número</label>
+                </div>
+                
+                <div id="streetAndNumberInputs">
+                    <input id="newUserStreet" name="newUserStreet" type="text" placeholder="Insira seu logradouro" class="newUserInputField" autocomplete="off">
+                    <input id="newUserNumber" name="newUserNumber" type="text" placeholder="Ex: 97B" class="newUserInputField" autocomplete="off">
+                </div>
             </div>
 
-            <button type="submit" id="signInBtn">Entrar</button>
+            <div class="newUserField">
+                <label for="newUserNeighborhood">Bairro</label>
+                <input id="newUserNeighborhood" name="newUserNeighborhood" type="text" placeholder="Insira seu Bairro" class="newUserInputField">
+            </div>
 
-            <a href="newUser.html" id="goToSignUpBtn">Não tem um cadastro? Cadastre-se!</a>
+            <button type="submit" id="signUpBtn">Cadastrar</button>
+
+            <a href="login.html" id="goToSignInBtn">Já tem um cadastro? Entre!</a>
         </form>
     </main>
 

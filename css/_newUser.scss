@@ -1,0 +1,58 @@
+@import 'mixins.scss';
+
+#signUpForm {
+    @include form-style;
+    height: 35em;
+    top: 48.7%;
+
+    #logoImage {
+        width: 8em;
+        margin: 0 auto;
+    }
+
+    h3 {
+        margin: 0.8em 0 0 0;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .newUserField {
+        margin-bottom: 0.5em;
+
+        .newUserInputField {
+            @include input-field-style;
+        }
+    }
+
+    #newUserStreetAndNumber {
+        #streetAndNumberLabels {
+            display: flex;
+            width: 92%;
+            justify-content: space-between;
+        }
+
+        #streetAndNumberInputs {
+            display: flex;
+
+            input {
+                &:first-child {
+                    width: 70%;
+                }
+
+                &:last-of-type {
+                    margin-left: 1em;
+                    width: 30%
+                }
+            }
+        }
+    }
+
+    #signUpBtn {
+        @include main-btn-style;
+        margin: 1em 0;
+    }
+
+    #goToSignInBtn {
+        @include go-to-sign-in-sign-up-btn;
+    }
+}

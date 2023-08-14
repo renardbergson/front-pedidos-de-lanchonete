@@ -80,7 +80,7 @@ body main {
 #loginForm #userSelectorField label #userSelector:hover {
   cursor: pointer;
 }
-#loginForm #loginBtn {
+#loginForm #signInBtn {
   width: 100%;
   padding: 0.8em;
   border: none;
@@ -92,7 +92,7 @@ body main {
   cursor: pointer;
   margin: 0 0 1.5em 0;
 }
-#loginForm #signUpBtn {
+#loginForm #goToSignUpBtn {
   text-decoration: none;
   text-align: center;
   color: white;
@@ -100,7 +100,7 @@ body main {
   font-weight: bold;
 }
 
-#products-admin {
+#products-list-admin {
   color: #1a1a1a;
   display: grid;
   grid-template-columns: auto;
@@ -108,7 +108,7 @@ body main {
   row-gap: 2em;
   padding: 3em;
 }
-#products-admin .product {
+#products-list-admin .product {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -122,15 +122,15 @@ body main {
   justify-content: space-between;
   align-items: center;
 }
-#products-admin .product:hover {
+#products-list-admin .product:hover {
   box-shadow: 2px 2px 10px white;
 }
-#products-admin .product .productPreview {
+#products-list-admin .product .productPreview {
   width: 8%;
   border-radius: 6px;
   box-shadow: 1px 1px 5px #353535;
 }
-#products-admin .product .productTablePart {
+#products-list-admin .product .productTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -139,10 +139,10 @@ body main {
   flex-direction: column;
   justify-content: center;
 }
-#products-admin .product .productTablePart p, #products-admin .product .productTablePart span {
+#products-list-admin .product .productTablePart p, #products-list-admin .product .productTablePart span {
   margin-top: 0.5em;
 }
-#products-admin .product .editItemBtn {
+#products-list-admin .product .editItemBtn {
   width: 100%;
   padding: 0.8em;
   border: none;
@@ -154,8 +154,86 @@ body main {
   cursor: pointer;
   width: 12%;
 }
-#products-admin .product .editItemBtn i {
+#products-list-admin .product .editItemBtn i {
   margin-right: 0.5em;
+}
+
+#signUpForm {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+  height: 35em;
+  top: 48.7%;
+}
+#signUpForm #logoImage {
+  width: 8em;
+  margin: 0 auto;
+}
+#signUpForm h3 {
+  margin: 0.8em 0 0 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#signUpForm .newUserField {
+  margin-bottom: 0.5em;
+}
+#signUpForm .newUserField .newUserInputField {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#signUpForm #newUserStreetAndNumber #streetAndNumberLabels {
+  display: flex;
+  width: 92%;
+  justify-content: space-between;
+}
+#signUpForm #newUserStreetAndNumber #streetAndNumberInputs {
+  display: flex;
+}
+#signUpForm #newUserStreetAndNumber #streetAndNumberInputs input:first-child {
+  width: 70%;
+}
+#signUpForm #newUserStreetAndNumber #streetAndNumberInputs input:last-of-type {
+  margin-left: 1em;
+  width: 30%;
+}
+#signUpForm #signUpBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  cursor: pointer;
+  margin: 1em 0;
+}
+#signUpForm #goToSignInBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 :root {

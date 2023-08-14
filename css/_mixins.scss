@@ -1,3 +1,42 @@
+@mixin form-style {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: var(--primary-background-color);
+    color: white;
+    padding: 1em;
+    height: 30em;
+    width: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: var(--main-box-shadow);
+}
+
+@mixin input-field-style {
+    display: block;
+    margin-top: 0.5em;
+    outline: none;
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: var(--primary-background-color);
+    letter-spacing: 0.5px;
+}
+
+@mixin go-to-sign-in-sign-up-btn {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
 @mixin main-btn-style {
     width: 100%;
     padding: 0.8em;
