@@ -4,14 +4,11 @@
     @include form-style;
 
     #logoImage {
-        width: 8em;
-        margin: 0 auto;
+        @include logo-style;
     }
 
     h3 {
-        margin: 0.8em 0 0.5em 0;
-        text-align: center;
-        letter-spacing: 1px;
+        @include title-style;
     }
 
     #adminField {
@@ -28,6 +25,10 @@
 
         #userID, #userPass, #userMail {
             @include input-field-style;
+
+            &::placeholder {
+                @include placeholder-style;
+            }
         }
     }
 

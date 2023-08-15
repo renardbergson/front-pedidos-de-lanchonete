@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Projeto Pedidos de Lanchonete</title>
+</head>
+<body>
+    <header id="header">
+        <span id="logo">Bom Sabor</span>
+
+        <ul class="menu">
+            <li>
+                <a href="#" onclick="return false">Produtos</a>
+
+                <ul class="subMenu">
+                    <li>
+                        <a href="newProduct.html">Cadastrar Produto</a>
+                    </li>
+                    <li>
+                        <a href="products-list-admin.html">Listar Produtos</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Clientes</a>
+            </li>
+            <li>
+                <a href="#">Pedidos</a>
+            </li>
+            <li>
+                <a href="login.html" id="logRouteBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
+                </a>
+            </li>
+        </ul>
+    </header>
+    
+    <main>
+        <form id="newProductForm">
+            <img src="./img/logo-icon.webp" alt="a snack image" id="logoImage">
+            <h3>Lanchonete Bom Sabor</h3>
+            <br>
+
+            <div class="newProductField">
+                <label for="newProductImage">
+                    Foto do Produto
+                </label>
+                <input id="newProductImage" name="newProductImage" type="file" class="newProductInputField">
+            </div>
+
+            <div class="newProductField">
+                <label for="newProductName">Nome do Produto</label>
+                <input id="newProductName" name="newProductName" type="text" placeholder="Insira o nome do produto" autocomplete="off" class="newProductInputField">
+            </div>
+
+            <div class="newProductField">
+                <label for="newProductPrice">Preço do Produto</label>
+                <input id="newProductPrice" name="newProductPrice" type="number" placeholder="Insira o preço do produto. Max: R$ 80,00" class="newProductInputField" autocomplete="off">
+                <span id="pricePreview"></span>
+            </div>
+
+            <div class="newProductField">
+                <label for="newProductDescription">Descrição do Produto</label>
+                <textarea name="newProductDescription" id="newProductDescription" cols="30" rows="10" class="newProductInputField" placeholder="Insira uma breve descrição do produto" maxlength="40"></textarea>
+            </div>
+
+            <button type="submit" id="insertProductBtn">Cadastrar Produto</button>
+        </form>
+    </main>
+
+    <footer id="footer">
+        <p>
+            Construido e publicado por Renard Bergson
+        </p>
+
+        <p>
+            Confira este e outros projetos no meu perfil do GitHub!
+        </p>
+
+        <div id="socialMedia">
+            <a href="https://github.com/renardbergson" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/renardbergson" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+
+            <a href="https://www.instagram.com/renardbergson" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://wa.me/5583981413123" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <p id="email">
+            <a href="mailto:contato@renardb.com">contato@renardb.com</a>
+        </p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a76ec380a8.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
