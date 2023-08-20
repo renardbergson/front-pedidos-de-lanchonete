@@ -48,14 +48,14 @@
                 </div>
                 
                 <div id="streetAndNumberInputs">
-                    <input id="newUserStreet" name="newUserStreet" type="text" placeholder="Insira seu logradouro" class="newUserInputField" autocomplete="off">
-                    <input id="newUserNumber" name="newUserNumber" type="text" placeholder="Ex: 97B" class="newUserInputField" autocomplete="off">
+                    <input id="newUserStreet" name="newUserStreet" type="text" placeholder="Insira seu logradouro" class="newUserInputField" autocomplete="off" maxlength="36">
+                    <input id="newUserNumber" name="newUserNumber" type="text" placeholder="Ex: 97B" class="newUserInputField" autocomplete="off" maxlength="10">
                 </div>
             </div>
 
             <div class="newUserField">
                 <label for="newUserNeighborhood">Bairro</label>
-                <input id="newUserNeighborhood" name="newUserNeighborhood" type="text" placeholder="Insira seu Bairro" class="newUserInputField">
+                <input id="newUserNeighborhood" name="newUserNeighborhood" type="text" placeholder="Insira seu Bairro" class="newUserInputField" maxlength="36">
             </div>
 
             <button type="submit" id="signUpBtn">Cadastrar</button>
