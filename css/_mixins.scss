@@ -22,6 +22,7 @@
 
 @mixin header-message-style {
     font-style: italic;
+    cursor: default;
 
     span {
         font-weight: bold;

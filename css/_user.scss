@@ -1,0 +1,23 @@
+#my-orders-list {
+    @include list-style;
+
+    .order {
+        @include list-item-style;
+
+        .orderTablePart {
+            @include table-part-style;
+            max-width: 20%;
+
+            .orderStatus {
+                outline: none;
+                border-radius: 10px;
+                margin-top: 2em;
+                padding: 0.3em;
+                text-align: center;
+                font-size: 0.8em;
+                font-family: 'Poppins', sans-serif;
+                font-weight: bold;
+            }
+        }
+    }
+}
