@@ -23,7 +23,7 @@
         text-align: start;  
         font-size: 0.9em;
 
-        #userID, #userPass, #userMail {
+        #adminID, #userID, #userPass {
             @include input-field-style;
 
             &::placeholder {

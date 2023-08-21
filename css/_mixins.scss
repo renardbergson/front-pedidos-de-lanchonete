@@ -20,6 +20,18 @@
     margin: 0 auto;
 }
 
+@mixin header-message-style {
+    font-style: italic;
+
+    span {
+        font-weight: bold;
+    }
+
+    i {
+        margin-left: 0.5em;
+    }
+}
+
 @mixin title-style {
     margin: 0.8em 0 0.5em 0;
     text-align: center;

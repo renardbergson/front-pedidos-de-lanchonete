@@ -49,7 +49,7 @@ body main {
   text-align: start;
   font-size: 0.9em;
 }
-#loginForm #adminField #userID, #loginForm #adminField #userPass, #loginForm #adminField #userMail, #loginForm #userField #userID, #loginForm #userField #userPass, #loginForm #userField #userMail, #loginForm #passField #userID, #loginForm #passField #userPass, #loginForm #passField #userMail {
+#loginForm #adminField #adminID, #loginForm #adminField #userID, #loginForm #adminField #userPass, #loginForm #userField #adminID, #loginForm #userField #userID, #loginForm #userField #userPass, #loginForm #passField #adminID, #loginForm #passField #userID, #loginForm #passField #userPass {
   display: block;
   margin-top: 0.5em;
   outline: none;
@@ -62,10 +62,10 @@ body main {
   color: var(--primary-background-color);
   letter-spacing: 0.5px;
 }
-#loginForm #adminField #userID::-moz-placeholder, #loginForm #adminField #userPass::-moz-placeholder, #loginForm #adminField #userMail::-moz-placeholder, #loginForm #userField #userID::-moz-placeholder, #loginForm #userField #userPass::-moz-placeholder, #loginForm #userField #userMail::-moz-placeholder, #loginForm #passField #userID::-moz-placeholder, #loginForm #passField #userPass::-moz-placeholder, #loginForm #passField #userMail::-moz-placeholder {
+#loginForm #adminField #adminID::-moz-placeholder, #loginForm #adminField #userID::-moz-placeholder, #loginForm #adminField #userPass::-moz-placeholder, #loginForm #userField #adminID::-moz-placeholder, #loginForm #userField #userID::-moz-placeholder, #loginForm #userField #userPass::-moz-placeholder, #loginForm #passField #adminID::-moz-placeholder, #loginForm #passField #userID::-moz-placeholder, #loginForm #passField #userPass::-moz-placeholder {
   font-size: 0.92em;
 }
-#loginForm #adminField #userID::placeholder, #loginForm #adminField #userPass::placeholder, #loginForm #adminField #userMail::placeholder, #loginForm #userField #userID::placeholder, #loginForm #userField #userPass::placeholder, #loginForm #userField #userMail::placeholder, #loginForm #passField #userID::placeholder, #loginForm #passField #userPass::placeholder, #loginForm #passField #userMail::placeholder {
+#loginForm #adminField #adminID::placeholder, #loginForm #adminField #userID::placeholder, #loginForm #adminField #userPass::placeholder, #loginForm #userField #adminID::placeholder, #loginForm #userField #userID::placeholder, #loginForm #userField #userPass::placeholder, #loginForm #passField #adminID::placeholder, #loginForm #passField #userID::placeholder, #loginForm #passField #userPass::placeholder {
   font-size: 0.92em;
 }
 #loginForm #userSelectorField {
@@ -465,6 +465,15 @@ body main {
   background-size: cover;
   background-repeat: no-repeat;
   margin-left: 0.2em;
+}
+#header #headerMessage {
+  font-style: italic;
+}
+#header #headerMessage span {
+  font-weight: bold;
+}
+#header #headerMessage i {
+  margin-left: 0.5em;
 }
 #header .menu {
   list-style: none;
