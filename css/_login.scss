@@ -32,31 +32,9 @@
         }
     }
 
-    #userSelectorField {
-        text-align: center;
-        margin: 1.5em 0;
-
-        label {
-            font-size: 0.8em;
-            
-            #userSelector {
-                font-size: 0.9em;
-                outline: none;
-                text-align: center;
-                font-family: 'Poppins', sans-serif;
-                margin-left: 0.5em;
-                border-radius: 10px;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
     #signInBtn {
         @include main-btn-style();
-        margin: 0 0 1.5em 0;
+        margin: 2.5em 0 1.5em 0;
     }
 
     #goToSignUpBtn {
