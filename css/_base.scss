@@ -10,7 +10,16 @@ body {
     height: 100vh;
     opacity: 0.8;
 
+    #header {
+        position: sticky;
+        top: 0;        
+    }
+    
     main {
         min-height: 79vh;
+
+        &.almostHidden{
+            opacity: 0.050;
+        }
     }
 }

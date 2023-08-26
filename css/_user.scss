@@ -6,6 +6,37 @@
     }
 }
 
+#posOrderSplash {
+    width: 25em;
+    height: 15em;
+    padding: 0 2em;
+    background-color: rgb(167, 0, 0);
+    border-radius: 10px;
+    position: fixed; // it makes an element fixed to the viewport
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: var(--main-box-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    color: white;
+    z-index: 1;
+    cursor: default;
+
+    &.hidden {
+        display: none;
+    }
+
+    #gotItBtn {
+        @include main-btn-style;
+        width: 30%;
+        border-radius: 10px;
+    }
+}
+
 #my-orders-list {
     @include list-style;
 

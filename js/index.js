@@ -1,5 +1,6 @@
 const _loginForm = document.querySelector('#loginForm')
 const _newProductPrice = document.querySelector('#newProductPrice')
+const _getItemBtns = document.querySelectorAll('.getItemBtn')
 const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
 if (_loginForm != null) {
@@ -33,6 +34,22 @@ if (_newProductPrice != null) {
         }
     }
 }
+
+_getItemBtns.forEach(button => {
+    button.onclick = () => {
+        const _main = document.querySelector('#main')
+        const _posOrderSplash = document.querySelector('#posOrderSplash')
+        const _gotItBtn = document.querySelector('#gotItBtn')
+
+        _main.classList.add('almostHidden')
+        _posOrderSplash.classList.remove('hidden')
+
+        _gotItBtn.onclick = () => {
+            _posOrderSplash.classList.add('hidden')
+            _main.classList.remove('almostHidden')
+        }
+    }
+})
 
 if (_cancelOrderBtns != null) {
     _cancelOrderBtns.forEach(button => {

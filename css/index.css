@@ -10,8 +10,15 @@ body {
   height: 100vh;
   opacity: 0.8;
 }
+body #header {
+  position: sticky;
+  top: 0;
+}
 body main {
   min-height: 79vh;
+}
+body main.almostHidden {
+  opacity: 0.05;
 }
 
 #loginForm {
@@ -255,6 +262,44 @@ body main {
     opacity: 0;
   }
 }
+#posOrderSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+}
+#posOrderSplash.hidden {
+  display: none;
+}
+#posOrderSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 30%;
+  border-radius: 10px;
+}
+
 #my-orders-list {
   display: grid;
   grid-template-columns: auto;
