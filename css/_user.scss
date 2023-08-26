@@ -30,7 +30,7 @@
             }
         }
 
-        #cancelOrderBtn {
+        .cancelOrderBtn {
             @include main-btn-style;
             width: 13%;
             font-size: 0.75em;

@@ -1,6 +1,6 @@
 const _loginForm = document.querySelector('#loginForm')
 const _newProductPrice = document.querySelector('#newProductPrice')
-const _cancelOrderBtn = document.querySelector('#cancelOrderBtn')
+const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
 if (_loginForm != null) {
     _loginForm.onsubmit = e => {
@@ -34,12 +34,14 @@ if (_newProductPrice != null) {
     }
 }
 
-if (_cancelOrderBtn != null) {
-    _cancelOrderBtn.onclick = () => {
-        const question = confirm('Tem certeza que deseja excluir este pedido?')
-    
-        if (question) {
-            //...
+if (_cancelOrderBtns != null) {
+    _cancelOrderBtns.forEach(button => {
+        button.onclick = () => {
+            const question = confirm('Tem certeza que deseja excluir este pedido?')
+        
+            if (question) {
+                console.log('pedido excluido')
+            }
         }
-    }
+    })
 }
