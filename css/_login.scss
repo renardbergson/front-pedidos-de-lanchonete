@@ -9,6 +9,7 @@
 
     h3 {
         @include title-style;
+        margin-top: 1em;
     }
 
     #adminField {

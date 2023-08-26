@@ -1,5 +1,6 @@
 const _loginForm = document.querySelector('#loginForm')
 const _newProductPrice = document.querySelector('#newProductPrice')
+const _cancelOrderBtn = document.querySelector('#cancelOrderBtn')
 
 if (_loginForm != null) {
     _loginForm.onsubmit = e => {
@@ -29,6 +30,16 @@ if (_newProductPrice != null) {
 
         if (e.target.value === '') {
             _pricePreview.innerHTML = ''
+        }
+    }
+}
+
+if (_cancelOrderBtn != null) {
+    _cancelOrderBtn.onclick = () => {
+        const question = confirm('Tem certeza que deseja excluir este pedido?')
+    
+        if (question) {
+            //...
         }
     }
 }

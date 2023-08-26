@@ -1,3 +1,11 @@
+@import 'mixins.scss';
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
 #my-orders-list {
     @include list-style;
 
@@ -17,6 +25,22 @@
                 font-size: 0.8em;
                 font-family: 'Poppins', sans-serif;
                 font-weight: bold;
+
+                animation: blink 1000ms infinite;
+            }
+        }
+
+        #cancelOrderBtn {
+            @include main-btn-style;
+            width: 13%;
+            font-size: 0.75em;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            i {
+                margin-right: 0.5em;
             }
         }
     }
