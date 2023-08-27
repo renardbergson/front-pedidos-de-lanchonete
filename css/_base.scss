@@ -17,6 +17,7 @@ body {
     
     main {
         min-height: 79vh;
+        transition: 500ms ease-in-out;
 
         &.almostHidden{
             opacity: 0.050;

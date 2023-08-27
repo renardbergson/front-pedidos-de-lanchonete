@@ -16,6 +16,7 @@ body #header {
 }
 body main {
   min-height: 79vh;
+  transition: 500ms ease-in-out;
 }
 body main.almostHidden {
   opacity: 0.05;
@@ -281,9 +282,14 @@ body main.almostHidden {
   color: white;
   z-index: 1;
   cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
 }
-#posOrderSplash.hidden {
-  display: none;
+#posOrderSplash.visible {
+  opacity: 1;
+  z-index: 1;
 }
 #posOrderSplash #gotItBtn {
   width: 100%;

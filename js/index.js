@@ -42,10 +42,10 @@ _getItemBtns.forEach(button => {
         const _gotItBtn = document.querySelector('#gotItBtn')
 
         _main.classList.add('almostHidden')
-        _posOrderSplash.classList.remove('hidden')
+        _posOrderSplash.classList.add('visible')
 
         _gotItBtn.onclick = () => {
-            _posOrderSplash.classList.add('hidden')
+            _posOrderSplash.classList.remove('visible')
             _main.classList.remove('almostHidden')
         }
     }
