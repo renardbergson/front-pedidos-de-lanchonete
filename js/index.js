@@ -4,6 +4,25 @@ const _getItemBtns = document.querySelectorAll('.getItemBtn')
 const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
 if (_loginForm != null) {
+    const _togglePassBtn = document.querySelector('#togglePassBtn')
+    let state = false
+    
+    _togglePassBtn.onclick = () => {
+        const password = _loginForm.userPass
+
+        if (state === false) {
+            state = true
+            password.type = 'text'
+            _togglePassBtn.firstElementChild.style.display = 'none'
+            _togglePassBtn.lastElementChild.style.display = 'block'
+        } else {
+            password.type = 'password'
+            state = false
+            _togglePassBtn.firstElementChild.style.display = 'block'
+            _togglePassBtn.lastElementChild.style.display = 'none'
+        }
+    }
+
     _loginForm.onsubmit = e => {
         e.preventDefault()
     

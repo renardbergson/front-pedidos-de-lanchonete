@@ -23,12 +23,30 @@
     #adminField, #userField, #passField {
         text-align: start;  
         font-size: 0.9em;
+        position: relative;
 
         #adminID, #userID, #userPass {
             @include input-field-style;
 
             &::placeholder {
                 @include placeholder-style;
+            }
+        }
+
+        i {
+            color: #c1c1c1;
+            display: block;
+            position: absolute;
+            top: 2.17em;
+            right: 0.5em;
+            text-decoration: none;
+            cursor: pointer;
+            
+            &:last-of-type {
+                display: none;
+                margin-right: -1px;
+                color: var(--primary-background-color);
+                opacity: 0.8;
             }
         }
     }
