@@ -20,7 +20,7 @@ document.body.onload = () => {
     
                         <p class="productDescription">${product.description}</p>
     
-                        <p>Valor <span class="productPrice">R$ ${product.price}</span> </p>
+                        <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
                     </div>
     
                     <button class="getItemBtn">Peça Já!</button>
