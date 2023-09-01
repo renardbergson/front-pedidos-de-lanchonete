@@ -2,7 +2,7 @@ const _loginForm = document.querySelector('#loginForm')
 const _newProductPrice = document.querySelector('#newProductPrice')
 const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
-// INDEX
+// INDEX - List Items
 document.body.onload = () => {    
     const _products = document.querySelector('#products')
     let productsHTML = ''
@@ -13,7 +13,7 @@ document.body.onload = () => {
         .then(data => data.forEach(product => {
             productsHTML += `
                 <div class="product">
-                    <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/10/4x4-burger.jpg?quality=82&strip=1&w=1250" alt="foto de lanche" class="productPreview">
+                    <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
     
                     <div class="productDetails">
                         <h4 class="productTitle">${product.name}</h4>
