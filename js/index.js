@@ -1,8 +1,62 @@
 const _loginForm = document.querySelector('#loginForm')
 const _newProductPrice = document.querySelector('#newProductPrice')
-const _getItemBtns = document.querySelectorAll('.getItemBtn')
 const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
+// INDEX
+document.body.onload = () => {    
+    const _products = document.querySelector('#products')
+    let productsHTML = ''
+
+    if (_products != null) {
+        fetch('http://localhost:8080/products')
+        .then(response => response.json())
+        .then(data => data.forEach(product => {
+            productsHTML += `
+                <div class="product">
+                    <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2019/10/4x4-burger.jpg?quality=82&strip=1&w=1250" alt="foto de lanche" class="productPreview">
+    
+                    <div class="productDetails">
+                        <h4 class="productTitle">${product.name}</h4>
+    
+                        <p class="productDescription">${product.description}</p>
+    
+                        <p>Valor <span class="productPrice">R$ ${product.price}</span> </p>
+                    </div>
+    
+                    <button class="getItemBtn">Peça Já!</button>
+                </div>
+            `
+            _products.innerHTML = productsHTML
+
+            getItem()
+        }))
+    }
+}
+
+// Get Item 
+function getItem () {
+    const _getItemBtns = document.querySelectorAll('.getItemBtn')
+
+    _getItemBtns.forEach(button => {
+        button.onclick = () => {
+            const _main = document.querySelector('#main')
+            const _posOrderSplash = document.querySelector('#posOrderSplash')
+            const _gotItBtn = document.querySelector('#gotItBtn')
+
+            if (_main) {
+                _main.classList.add('almostHidden')
+                _posOrderSplash.classList.add('visible')
+        
+                _gotItBtn.onclick = () => {
+                    _posOrderSplash.classList.remove('visible')
+                    _main.classList.remove('almostHidden')
+                }
+            }
+        }  
+    })
+}
+
+// Login
 if (_loginForm != null) {
     const _togglePassBtn = document.querySelector('#togglePassBtn')
     let state = false
@@ -36,6 +90,7 @@ if (_loginForm != null) {
     }
 }
 
+// Post new product
 if (_newProductPrice != null) {
     const _pricePreview = document.querySelector('#pricePreview')
 
@@ -54,22 +109,7 @@ if (_newProductPrice != null) {
     }
 }
 
-_getItemBtns.forEach(button => {
-    button.onclick = () => {
-        const _main = document.querySelector('#main')
-        const _posOrderSplash = document.querySelector('#posOrderSplash')
-        const _gotItBtn = document.querySelector('#gotItBtn')
-
-        _main.classList.add('almostHidden')
-        _posOrderSplash.classList.add('visible')
-
-        _gotItBtn.onclick = () => {
-            _posOrderSplash.classList.remove('visible')
-            _main.classList.remove('almostHidden')
-        }
-    }
-})
-
+// cancel order
 if (_cancelOrderBtns != null) {
     _cancelOrderBtns.forEach(button => {
         button.onclick = () => {
