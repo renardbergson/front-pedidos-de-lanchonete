@@ -1,6 +1,5 @@
-const _loginForm = document.querySelector('#loginForm')
-const _newProductPrice = document.querySelector('#newProductPrice')
-const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
+// URL's
+const listProductsURL = 'http://localhost:8080/products'
 
 // INDEX - List Items
 document.body.onload = () => {    
@@ -8,7 +7,7 @@ document.body.onload = () => {
     let productsHTML = ''
 
     if (_products != null) {
-        fetch('http://localhost:8080/products')
+        fetch(listProductsURL)
         .then(response => response.json())
         .then(data => data.forEach(product => {
             productsHTML += `
@@ -33,30 +32,8 @@ document.body.onload = () => {
     }
 }
 
-// Get Item 
-function getItem () {
-    const _getItemBtns = document.querySelectorAll('.getItemBtn')
-
-    _getItemBtns.forEach(button => {
-        button.onclick = () => {
-            const _main = document.querySelector('#main')
-            const _posOrderSplash = document.querySelector('#posOrderSplash')
-            const _gotItBtn = document.querySelector('#gotItBtn')
-
-            if (_main) {
-                _main.classList.add('almostHidden')
-                _posOrderSplash.classList.add('visible')
-        
-                _gotItBtn.onclick = () => {
-                    _posOrderSplash.classList.remove('visible')
-                    _main.classList.remove('almostHidden')
-                }
-            }
-        }  
-    })
-}
-
 // Login
+const _loginForm = document.querySelector('#loginForm')
 if (_loginForm != null) {
     const _togglePassBtn = document.querySelector('#togglePassBtn')
     let state = false
@@ -90,7 +67,89 @@ if (_loginForm != null) {
     }
 }
 
+// cancel order
+const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
+if (_cancelOrderBtns != null) {
+    _cancelOrderBtns.forEach(button => {
+        button.onclick = () => {
+            const question = confirm('Tem certeza que deseja excluir este pedido?')
+        
+            if (question) {
+                console.log('pedido excluido')
+            }
+        }
+    })
+}
+
+// Get Item 
+function getItem () {
+    const _getItemBtns = document.querySelectorAll('.getItemBtn')
+
+    _getItemBtns.forEach(button => {
+        button.onclick = () => {
+            const _main = document.querySelector('#main')
+            const _posOrderSplash = document.querySelector('#posOrderSplash')
+            const _gotItBtn = document.querySelector('#gotItBtn')
+
+            if (_main) {
+                _main.classList.add('almostHidden')
+                _posOrderSplash.classList.add('visible')
+        
+                _gotItBtn.onclick = () => {
+                    _posOrderSplash.classList.remove('visible')
+                    _main.classList.remove('almostHidden')
+                }
+            }
+        }  
+    })
+}
+
+// List Products - ADMIN
+const _listProductsAdmin = document.querySelector('#listProductsAdmin')
+if (_listProductsAdmin) {
+    const _productsListAdmin = document.querySelector('#products-list-admin')
+    let HTML = ''
+
+    fetch(listProductsURL)
+    .then(response => response.json())
+    .then(data => data.forEach(product => {
+        HTML += `
+            <div class="product">
+                <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+
+                <div class="productTablePart">
+                    <h4>Nome</h4>
+                    <p class="productName">${product.name}</p>
+                </div>
+
+                <div class="productTablePart">
+                    <h4>Descrição</h4>
+                    <p class="productDescription">${product.description}</p>
+                </div>
+
+                <div class="productTablePart">
+                    <h4>Preço</h4>
+                    <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span>
+                </div>
+
+                <div class="productTablePart">
+                    <h4>Código</h4>
+                    <span class="productCode">${product._id}</span>
+                </div>
+
+                <button class="deleteItemBtn">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Excluir
+                </button>
+            </div>
+        `
+
+        _productsListAdmin.innerHTML = HTML
+    }))
+}
+
 // Post new product
+const _newProductPrice = document.querySelector('#newProductPrice')
 if (_newProductPrice != null) {
     const _pricePreview = document.querySelector('#pricePreview')
 
@@ -107,17 +166,4 @@ if (_newProductPrice != null) {
             _pricePreview.innerHTML = ''
         }
     }
-}
-
-// cancel order
-if (_cancelOrderBtns != null) {
-    _cancelOrderBtns.forEach(button => {
-        button.onclick = () => {
-            const question = confirm('Tem certeza que deseja excluir este pedido?')
-        
-            if (question) {
-                console.log('pedido excluido')
-            }
-        }
-    })
 }

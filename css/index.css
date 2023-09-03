@@ -147,11 +147,11 @@ body main.almostHidden {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
-  max-width: 12%;
+  min-width: 20%;
+  max-width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 20%;
 }
 #products-list-admin .product .productTablePart p, #products-list-admin .product .productTablePart span, #products-list-admin .product .productTablePart select {
   margin-top: 0.5em;
@@ -201,10 +201,12 @@ body main.almostHidden {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
-  max-width: 12%;
+  min-width: 20%;
+  max-width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 0;
 }
 #clients-list-admin .client .clientTablePart p, #clients-list-admin .client .clientTablePart span, #clients-list-admin .client .clientTablePart select {
   margin-top: 0.5em;
@@ -254,7 +256,8 @@ body main.almostHidden {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
-  max-width: 12%;
+  min-width: 20%;
+  max-width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -350,7 +353,8 @@ body main.almostHidden {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
-  max-width: 12%;
+  min-width: 20%;
+  max-width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -14,7 +14,6 @@
 
         .productTablePart {
             @include table-part-style;
-            max-width: 20%;
         }
 
         .deleteItemBtn {
@@ -31,6 +30,7 @@
 
         .clientTablePart {
             @include table-part-style;
+            min-width: 0;
         }
 
         .deleteItemBtn {
