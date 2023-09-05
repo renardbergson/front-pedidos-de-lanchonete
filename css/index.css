@@ -46,6 +46,7 @@ body main.almostHidden {
   margin: 0.8em 0 0.5em 0;
   text-align: center;
   letter-spacing: 1px;
+  cursor: default;
   margin-top: 1em;
 }
 #loginForm #adminField {
@@ -279,6 +280,87 @@ body main.almostHidden {
   font-weight: bold;
 }
 
+#newProductForm {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+  justify-content: space-evenly;
+  height: 34em;
+  top: 48.7%;
+}
+#newProductForm #logoImage {
+  width: 7em;
+  margin: 0 auto;
+}
+#newProductForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: default;
+  margin: 0;
+}
+#newProductForm .newProductField {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+#newProductForm .newProductField:first-of-type {
+  margin-top: -1em;
+}
+#newProductForm .newProductField .newProductInputField {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#newProductForm .newProductField .newProductInputField::-moz-placeholder {
+  font-size: 0.92em;
+}
+#newProductForm .newProductField .newProductInputField::placeholder {
+  font-size: 0.92em;
+}
+#newProductForm .newProductField #pricePreview {
+  font-size: 0.9em;
+  position: absolute;
+  top: 25em;
+  right: 1.2em;
+  color: lime;
+}
+#newProductForm .newProductField #newProductDescription {
+  height: 5em;
+  resize: none;
+}
+#newProductForm #insertProductBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -424,6 +506,7 @@ body main.almostHidden {
   margin: 0.8em 0 0.5em 0;
   text-align: center;
   letter-spacing: 1px;
+  cursor: default;
 }
 #signUpForm .newUserField {
   margin-bottom: 0.5em;
@@ -481,91 +564,6 @@ body main.almostHidden {
   color: white;
   font-size: 0.8em;
   font-weight: bold;
-}
-
-#newProductForm {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background-color: var(--primary-background-color);
-  color: white;
-  padding: 1em;
-  height: 30em;
-  width: 20em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: var(--main-box-shadow);
-  height: 34em;
-  top: 48.7%;
-}
-#newProductForm #logoImage {
-  width: 7em;
-  margin: 0 auto;
-}
-#newProductForm h3 {
-  margin: 0.8em 0 0.5em 0;
-  text-align: center;
-  letter-spacing: 1px;
-}
-#newProductForm .newProductField {
-  margin-bottom: 1em;
-  font-size: 0.9em;
-}
-#newProductForm .newProductField:first-of-type {
-  margin-bottom: 0.5em;
-}
-#newProductForm .newProductField #newProductImage {
-  margin-top: 0;
-  margin-left: -0.5em;
-  color: white;
-  width: 100%;
-  text-align: center;
-}
-#newProductForm .newProductField .newProductInputField {
-  display: block;
-  margin-top: 0.5em;
-  outline: none;
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  border-radius: 6px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  color: var(--primary-background-color);
-  letter-spacing: 0.5px;
-}
-#newProductForm .newProductField .newProductInputField::-moz-placeholder {
-  font-size: 0.92em;
-}
-#newProductForm .newProductField .newProductInputField::placeholder {
-  font-size: 0.92em;
-}
-#newProductForm .newProductField #pricePreview {
-  font-size: 0.9em;
-  position: absolute;
-  top: 23.2em;
-  right: 1.2em;
-  color: lime;
-}
-#newProductForm .newProductField #newProductDescription {
-  height: 5em;
-  resize: none;
-}
-#newProductForm #insertProductBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 0.5em;
 }
 
 :root {

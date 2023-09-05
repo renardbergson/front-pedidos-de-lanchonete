@@ -64,3 +64,54 @@
         }
     }
 }
+
+#newProductForm {
+    @include form-style;
+    justify-content: space-evenly;
+    height: 34em;
+    top: 48.7%;
+
+    #logoImage {
+        @include logo-style;
+    }
+
+    h3 {
+        @include title-style;
+        margin: 0;
+    }
+
+    .newProductField {
+        margin-bottom: 0.5em;
+        font-size: 0.9em;
+
+        &:first-of-type {
+            margin-top: -1em;
+        }
+
+        .newProductInputField {
+            @include input-field-style;
+
+            &::placeholder {
+                @include placeholder-style;
+            }
+        }
+
+        #pricePreview {
+            font-size: 0.9em;
+            position: absolute;
+            top: 25em;
+            right: 1.2em;
+            color: lime;
+        }
+
+        #newProductDescription {
+            height: 5em;
+            resize: none;
+        }
+    }
+
+    #insertProductBtn {
+        @include main-btn-style;
+        margin-top: 0.5em;
+    }
+}
