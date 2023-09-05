@@ -193,6 +193,7 @@ body main.almostHidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 70em;
 }
 #clients-list-admin .client:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
@@ -206,7 +207,8 @@ body main.almostHidden {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 0;
+  min-width: 15%;
+  max-width: 15%;
 }
 #clients-list-admin .client .clientTablePart p, #clients-list-admin .client .clientTablePart span, #clients-list-admin .client .clientTablePart select {
   margin-top: 0.5em;

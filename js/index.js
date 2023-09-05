@@ -1,5 +1,6 @@
 // URL's
 const listProductsURL = 'http://localhost:8080/products'
+const listCustomersURL = 'http://localhost:8080/customers'
 
 // INDEX - List Items
 document.body.onload = () => {    
@@ -145,6 +146,57 @@ if (_listProductsAdmin) {
         `
 
         _productsListAdmin.innerHTML = HTML
+    }))
+}
+
+// List Customers - ADMIN
+const _listCustomersAdmin = document.querySelector('#listCustomersAdmin')
+if (_listCustomersAdmin) {
+    const _clientsListAdmin = document.querySelector('#clients-list-admin')
+    let HTML = ''
+
+    fetch(listCustomersURL)
+    .then(response => response.json())
+    .then(data => data.forEach(customer => {
+        HTML += `
+            <div class="client">
+                <div class="clientTablePart">
+                    <h4>Nome</h4>
+                    <p class="clientName">${customer.name}</p>
+                </div>
+
+                <div class="clientTablePart">
+                    <h4>E-mail</h4>
+                    <p class="clientMail">${customer.email}</p>
+                </div>
+
+                <div class="clientTablePart">
+                    <h4>Telefone</h4>
+                    <span class="clientPhone">${customer.phone}</span>
+                </div>
+
+                <div class="clientTablePart">
+                    <h4>Rua</h4>
+                    <span class="clientStreet">${customer.street}</span>
+                </div>
+
+                <div class="clientTablePart">
+                    <h4>Número</h4>
+                    <span class="clientNumber">${customer.number}</span>
+                </div>
+
+                <div class="clientTablePart">
+                    <h4>Bairro</h4>
+                    <span class="clientNeighborhood">${customer.neighborhood}</span>
+                </div>
+
+                <button class="deleteItemBtn">
+                    <i class="fa-solid fa-trash-can"></i>
+                    Excluir
+                </button>
+            </div>
+        `
+        _clientsListAdmin.innerHTML = HTML
     }))
 }
 

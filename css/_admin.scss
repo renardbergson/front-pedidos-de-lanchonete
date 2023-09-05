@@ -27,10 +27,12 @@
 
     .client {
         @include list-item-style;
+        width: 70em;
 
         .clientTablePart {
             @include table-part-style;
-            min-width: 0;
+            min-width: 15%;
+            max-width: 15%;
         }
 
         .deleteItemBtn {
