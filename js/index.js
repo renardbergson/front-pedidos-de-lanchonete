@@ -1,41 +1,17 @@
 // URL's
-const listProductsURL = 'http://localhost:8080/products'
-const listCustomersURL = 'http://localhost:8080/customers'
+const productsURL = 'http://localhost:8080/products'
+const customersURL = 'http://localhost:8080/customers'
 
-// INDEX - List Items
-document.body.onload = () => {    
-    const _products = document.querySelector('#products')
-    let productsHTML = ''
+// BODY
+const _login = document.querySelector('#login')
+const _loggedUser = document.querySelector('#loggedUser')
+const _listProductsAdmin = document.querySelector('#listProductsAdmin')
+const _addNewProductAdmin = document.querySelector('#addNewProductAdmin')
+const _listCustomersAdmin = document.querySelector('#listCustomersAdmin')
 
-    if (_products != null) {
-        fetch(listProductsURL)
-        .then(response => response.json())
-        .then(data => data.forEach(product => {
-            productsHTML += `
-                <div class="product">
-                    <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
-    
-                    <div class="productDetails">
-                        <h4 class="productTitle">${product.name}</h4>
-    
-                        <p class="productDescription">${product.description}</p>
-    
-                        <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
-                    </div>
-    
-                    <button class="getItemBtn">Peça Já!</button>
-                </div>
-            `
-            _products.innerHTML = productsHTML
-
-            getItem()
-        }))
-    }
-}
-
-// Login
-const _loginForm = document.querySelector('#loginForm')
-if (_loginForm != null) {
+// =============================== LOGIN ===============================
+if (_login) {
+    const _loginForm = document.querySelector('#loginForm')
     const _togglePassBtn = document.querySelector('#togglePassBtn')
     let state = false
     
@@ -68,50 +44,44 @@ if (_loginForm != null) {
     }
 }
 
-// cancel order
-const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
-if (_cancelOrderBtns != null) {
-    _cancelOrderBtns.forEach(button => {
-        button.onclick = () => {
-            const question = confirm('Tem certeza que deseja excluir este pedido?')
-        
-            if (question) {
-                console.log('pedido excluido')
-            }
-        }
-    })
+// ============================== PRODUCTS ==============================
+// GET - Index
+document.body.onload = () => {    
+    const _products = document.querySelector('#products')
+    let productsHTML = ''
+
+    if (_products != null) {
+        fetch(productsURL)
+        .then(response => response.json())
+        .then(data => data.forEach(product => {
+            productsHTML += `
+                <div class="product">
+                    <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+    
+                    <div class="productDetails">
+                        <h4 class="productTitle">${product.name}</h4>
+    
+                        <p class="productDescription">${product.description}</p>
+    
+                        <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
+                    </div>
+    
+                    <button class="getItemBtn">Peça Já!</button>
+                </div>
+            `
+            _products.innerHTML = productsHTML
+
+            getItem()
+        }))
+    }
 }
 
-// Get Item 
-function getItem () {
-    const _getItemBtns = document.querySelectorAll('.getItemBtn')
-
-    _getItemBtns.forEach(button => {
-        button.onclick = () => {
-            const _main = document.querySelector('#main')
-            const _posOrderSplash = document.querySelector('#posOrderSplash')
-            const _gotItBtn = document.querySelector('#gotItBtn')
-
-            if (_main) {
-                _main.classList.add('almostHidden')
-                _posOrderSplash.classList.add('visible')
-        
-                _gotItBtn.onclick = () => {
-                    _posOrderSplash.classList.remove('visible')
-                    _main.classList.remove('almostHidden')
-                }
-            }
-        }  
-    })
-}
-
-// List Products - ADMIN
-const _listProductsAdmin = document.querySelector('#listProductsAdmin')
+// GET - (admin)
 if (_listProductsAdmin) {
     const _productsListAdmin = document.querySelector('#products-list-admin')
     let HTML = ''
 
-    fetch(listProductsURL)
+    fetch(productsURL)
     .then(response => response.json())
     .then(data => data.forEach(product => {
         HTML += `
@@ -149,13 +119,100 @@ if (_listProductsAdmin) {
     }))
 }
 
-// List Customers - ADMIN
-const _listCustomersAdmin = document.querySelector('#listCustomersAdmin')
+// POST - (admin)
+if (_addNewProductAdmin) {
+    const _newProductForm = document.querySelector('#newProductForm')
+    const _newProductPrice = document.querySelector('#newProductPrice')
+    const _pricePreview = document.querySelector('#pricePreview')
+
+    // price preview
+    _newProductPrice.oninput = e => {
+        const price = +e.target.value
+        
+        _pricePreview.innerHTML = price.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+
+        if (e.target.value > 80) {
+            _pricePreview.innerHTML = 'preço acima do permitido'
+        }
+
+        if (e.target.value === '') {
+            _pricePreview.innerHTML = ''
+        }
+    }
+
+    // submit
+    _newProductForm.onsubmit = e => {
+        e.preventDefault()
+
+        const name = _newProductForm.newProductName.value
+        const price = _newProductForm.newProductPrice.value
+        const description = _newProductForm.newProductDescription.value
+
+        if (!name || !price || !description) {
+            return
+        } else {
+            fetch(productsURL, {
+                method: 'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify({name, price, description})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'product succesfully sent') {
+                    _pricePreview.innerHTML = ''
+                    _newProductForm.reset()
+                    alert('Produto enviado com sucesso!')
+                }
+            })
+        }
+    }
+}
+
+// purchase  
+function getItem () {
+    const _getItemBtns = document.querySelectorAll('.getItemBtn')
+
+    _getItemBtns.forEach(button => {
+        button.onclick = () => {
+            const _main = document.querySelector('#main')
+            const _posOrderSplash = document.querySelector('#posOrderSplash')
+            const _gotItBtn = document.querySelector('#gotItBtn')
+
+            if (_main) {
+                _main.classList.add('almostHidden')
+                _posOrderSplash.classList.add('visible')
+        
+                _gotItBtn.onclick = () => {
+                    _posOrderSplash.classList.remove('visible')
+                    _main.classList.remove('almostHidden')
+                }
+            }
+        }  
+    })
+}
+
+// cancel order
+if (_loggedUser) {
+    const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
+
+    _cancelOrderBtns.forEach(button => {
+        button.onclick = () => {
+            const question = confirm('Tem certeza que deseja excluir este pedido?')
+        
+            if (question) {
+                console.log('pedido excluido')
+            }
+        }
+    })
+}
+
+// ============================== CUSTOMERS ==============================
+// GET - (admin)
 if (_listCustomersAdmin) {
     const _clientsListAdmin = document.querySelector('#clients-list-admin')
     let HTML = ''
 
-    fetch(listCustomersURL)
+    fetch(customersURL)
     .then(response => response.json())
     .then(data => data.forEach(customer => {
         HTML += `
@@ -198,24 +255,4 @@ if (_listCustomersAdmin) {
         `
         _clientsListAdmin.innerHTML = HTML
     }))
-}
-
-// Post new product
-const _newProductPrice = document.querySelector('#newProductPrice')
-if (_newProductPrice != null) {
-    const _pricePreview = document.querySelector('#pricePreview')
-
-    _newProductPrice.oninput = e => {
-        const price = +e.target.value
-        
-        _pricePreview.innerHTML = price.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
-
-        if (e.target.value > 80) {
-            _pricePreview.innerHTML = 'preço acima do permitido'
-        }
-
-        if (e.target.value === '') {
-            _pricePreview.innerHTML = ''
-        }
-    }
 }
