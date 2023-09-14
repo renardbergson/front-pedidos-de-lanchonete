@@ -61,6 +61,7 @@ function signUp () {
         const passConfirm = _signUpForm.newUserPassConfirm.value
 
         if (!name || !email || !phone || !password || !passConfirm) {
+            alert('Existem campos em branco!')
             return
         } else {
             if (password === passConfirm) {
@@ -68,7 +69,7 @@ function signUp () {
 
                 fetchAPI('POST', customersURL, customer, (data) => {
                     _signUpForm.reset()
-                    alert('Bem-vindo! Você foi cadastrado com sucesso')
+                    alert('Bem-vindo! Você foi cadastrado com sucesso.')
                 })
             } else {
                 alert('As senhas não conferem!')

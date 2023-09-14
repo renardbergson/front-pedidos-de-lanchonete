@@ -33,14 +33,16 @@ function listProduts () {
                         <span class="productCode">${product._id}</span>
                     </div>
     
-                    <button class="deleteItemBtn">
+                    <button class="deleteItemBtn" data-id=${product._id}>
                         <i class="fa-solid fa-trash-can"></i>
                         Excluir
                     </button>
                 </div>
             `
-    
             _productsListAdmin.innerHTML = HTML
+            
+            const _deleteItemBtns = document.querySelectorAll('.deleteItemBtn')
+            deleteProduct(_deleteItemBtns)
         })
     })
 }
@@ -77,6 +79,7 @@ function addNewProduct () {
         const product = {name, price, description}
 
         if (!name || !price || !description) {
+            alert('Existem campos em branco!')
             return
         } else {
             fetchAPI('POST', productsURL, product, data => {
@@ -87,6 +90,40 @@ function addNewProduct () {
                 }
             })
         }
+    }
+}
+
+// Delete product
+function deleteProduct (btns) {
+    if (btns) {
+        btns.forEach(btn => {
+            btn.onclick = function () {
+                const previousProducts = [
+                '64ebd44070cf299b6255e2d1', 
+                '64f08925e0f3b5acaf26b3de', 
+                '64f0892de0f3b5acaf26b3df',
+                '64f08930e0f3b5acaf26b3e0',
+                '64f08934e0f3b5acaf26b3e1',
+                '64f08937e0f3b5acaf26b3e2']
+
+                if (previousProducts.includes(this.dataset.id)) {
+                    alert('Não é possível excluir os produtos de exemplo! Insira um produto novo.')
+                } else {
+                    const question = confirm('Deseja mesmo excluir este produto')
+
+                    if (question) {
+                        fetchAPI('DELETE', productsURL, this.dataset.id, data => {
+                            if (data === 'product succesfully removed') {
+                                alert('Produto excluido da base de dados com sucesso!')
+                                location.reload()
+                            }
+                        })
+                    } else {
+                        return
+                    }
+                }
+            }
+        })
     }
 }
 
@@ -114,15 +151,49 @@ function listCustomers () {
                         <span class="clientPhone">${customer.phone}</span>
                     </div>
     
-                    <button class="deleteItemBtn">
+                    <button class="deleteCustomerBtn" data-id=${customer._id}>
                         <i class="fa-solid fa-trash-can"></i>
                         Excluir
                     </button>
                 </div>
             `
             _clientsListAdmin.innerHTML = HTML
+
+            const _deleteCustomerBtns = document.querySelectorAll('.deleteCustomerBtn')
+            deleteCustomer(_deleteCustomerBtns)
         })
     })
 }
 
-export {listProduts, addNewProduct, listCustomers}
+// Delete Customer
+function deleteCustomer (btns) {
+    btns.forEach(btn => {
+        btn.onclick = function () {
+            const previousCustomers = [
+                '64f780b10bcbf9e4c7ba4b0c',
+                '64f78b0b0bcbf9e4c7ba4b0d',
+                '64f78ced0bcbf9e4c7ba4b0e',
+                '64f78e300bcbf9e4c7ba4b10'
+            ]
+
+            if (previousCustomers.includes(this.dataset.id)) {
+                alert('Não é possível excluir os clientes de exemplo! Cadastre um cliente novo.')
+            } else {
+                const question = confirm('Deseja mesmo excluir este cliente?')
+
+                if (question) {
+                    fetchAPI('DELETE', customersURL, this.dataset.id, data => {
+                        if (data === 'customer succesfully removed') {
+                            alert('Cliente excluido da base de dados com sucesso!')
+                            location.reload()
+                        }
+                    })
+                } else {
+                    return
+                }
+            }
+        }
+    })
+}
+
+export {listProduts, addNewProduct, deleteProduct, listCustomers}

@@ -17,6 +17,13 @@ async function fetchAPI (method, url, item, callback) {
 
         callback ? callback(data.message) : null
     }
+
+    if (method === 'DELETE') {
+        const response = await fetch(`${url}/${item}`, {method: 'DELETE'})
+        const data = await response.json()
+
+        callback ? callback(data.message) : null
+    }
 }
 
 export {fetchAPI}

@@ -2,7 +2,7 @@
 import {home} from './home.js'
 import {login} from './login.js'
 import {listProducts, signUp, cancelOrder} from './customer.js'
-import {listProduts, listCustomers, addNewProduct} from './admin.js'
+import {listProduts, deleteProduct, listCustomers, addNewProduct} from './admin.js'
 
 // BODY
 const _index = document.querySelector('#index')
@@ -34,6 +34,9 @@ _myOrders ? cancelOrder() : null
 // ================================ ADMIN ===============================
 // List Products
 _listProductsAdmin ? listProduts() : null
+
+// Delete Products
+_listProductsAdmin ?  deleteProduct() : null
 
 // List Customers
 _listCustomersAdmin ? listCustomers() : null
