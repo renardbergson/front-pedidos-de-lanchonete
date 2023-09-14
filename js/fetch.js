@@ -1,3 +1,4 @@
+// global fetch function
 async function fetchAPI (method, url, item, callback) {
     if (method === 'GET') {
         const response = await fetch(url)

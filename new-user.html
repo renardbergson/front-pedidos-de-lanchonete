@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/index.css">
     <title>Projeto Pedidos de Lanchonete</title>
 </head>
-<body>
+<body id="newUser">
     <header id="header">
         <span id="logo">Bom Sabor</span>
 
@@ -38,24 +38,14 @@
 
             <div class="newUserField">
                 <label for="newUserPhone">Telefone</label>
-                <input id="newUserPhone" name="newUserPhone" type="tel" placeholder="Insira seu telefone" class="newUserInputField" autocomplete="off">
-            </div>
-
-            <div class="newUserField" id="newUserStreetAndNumber">
-                <div id="streetAndNumberLabels">
-                    <label for="newUserStreet">Rua</label>
-                    <label for="newUserNumber">Número</label>
-                </div>
-                
-                <div id="streetAndNumberInputs">
-                    <input id="newUserStreet" name="newUserStreet" type="text" placeholder="Insira seu logradouro" class="newUserInputField" autocomplete="off" maxlength="36">
-                    <input id="newUserNumber" name="newUserNumber" type="text" placeholder="Ex: 97B" class="newUserInputField" autocomplete="off" maxlength="10">
-                </div>
+                <input id="newUserPhone" name="newUserPhone" type="number" placeholder="Insira seu telefone com DDD" class="newUserInputField" autocomplete="off">   
             </div>
 
             <div class="newUserField">
-                <label for="newUserNeighborhood">Bairro</label>
-                <input id="newUserNeighborhood" name="newUserNeighborhood" type="text" placeholder="Insira seu Bairro" class="newUserInputField" maxlength="36">
+                <label>Senha</label>
+                <input id="newUserPass" name="newUserPass" type="password" placeholder="Insira uma senha (max. 8 dígitos)" class="newUserInputField" maxlength="8">
+
+                <input id="newUserPassConfirm" name="newUserPassConfirm" type="password" placeholder="Confirme sua senha" class="newUserInputField" maxlength="8">
             </div>
 
             <button type="submit" id="signUpBtn">Cadastrar</button>

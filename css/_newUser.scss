@@ -3,7 +3,7 @@
 #signUpForm {
     @include form-style;
     height: 35em;
-    top: 48.7%;
+    top: 49.5%;
 
     #logoImage {
         @include logo-style;
@@ -23,26 +23,12 @@
                 @include placeholder-style;
             }
         }
-    }
 
-    #newUserStreetAndNumber {
-        #streetAndNumberLabels {
-            display: flex;
-            width: 92%;
-            justify-content: space-between;
-        }
-
-        #streetAndNumberInputs {
-            display: flex;
-
+        &:last-of-type {
             input {
-                &:first-child {
-                    width: 70%;
-                }
 
                 &:last-of-type {
-                    margin-left: 1em;
-                    width: 30%
+                    margin-top: 1.5em;
                 }
             }
         }

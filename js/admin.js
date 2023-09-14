@@ -114,21 +114,6 @@ function listCustomers () {
                         <span class="clientPhone">${customer.phone}</span>
                     </div>
     
-                    <div class="clientTablePart">
-                        <h4>Rua</h4>
-                        <span class="clientStreet">${customer.street}</span>
-                    </div>
-    
-                    <div class="clientTablePart">
-                        <h4>Número</h4>
-                        <span class="clientNumber">${customer.number}</span>
-                    </div>
-    
-                    <div class="clientTablePart">
-                        <h4>Bairro</h4>
-                        <span class="clientNeighborhood">${customer.neighborhood}</span>
-                    </div>
-    
                     <button class="deleteItemBtn">
                         <i class="fa-solid fa-trash-can"></i>
                         Excluir

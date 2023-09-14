@@ -37,6 +37,7 @@
 
         .deleteItemBtn {
             @include delete-item-btn-style;
+            margin-right: 0.5em;
         }
     }
 }

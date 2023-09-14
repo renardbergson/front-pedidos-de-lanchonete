@@ -1,3 +1,4 @@
+// Login
 function login () {
     const _loginForm = document.querySelector('#loginForm')
     const _togglePassBtn = document.querySelector('#togglePassBtn')

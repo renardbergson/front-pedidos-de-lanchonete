@@ -1,5 +1,5 @@
 // external modules
-import {productsURL} from './url.js'
+import {productsURL, customersURL} from './url.js'
 import {fetchAPI} from './fetch.js'
 
 // list products
@@ -47,6 +47,37 @@ function listProducts () {
     })
 }
 
+// Sign Up
+function signUp () {
+    const _signUpForm = document.querySelector('#signUpForm')
+    
+    _signUpForm.onsubmit = e => {
+        e.preventDefault()
+
+        const name = _signUpForm.newUserName.value
+        const email = _signUpForm.newUserMail.value
+        const phone = _signUpForm.newUserPhone.value
+        const password = _signUpForm.newUserPass.value
+        const passConfirm = _signUpForm.newUserPassConfirm.value
+
+        if (!name || !email || !phone || !password || !passConfirm) {
+            return
+        } else {
+            if (password === passConfirm) {
+                const customer = {name, email, phone, password}
+
+                fetchAPI('POST', customersURL, customer, (data) => {
+                    _signUpForm.reset()
+                    alert('Bem-vindo! Você foi cadastrado com sucesso')
+                })
+            } else {
+                alert('As senhas não conferem!')
+            }
+        }
+    }
+}
+
+// Cancel Order
 function cancelOrder () {
     const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
 
@@ -61,4 +92,4 @@ function cancelOrder () {
     })
 }
 
-export {listProducts, cancelOrder}
+export {listProducts, signUp, cancelOrder}

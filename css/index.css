@@ -226,6 +226,7 @@ body main.almostHidden {
   text-decoration: none;
   cursor: pointer;
   width: 12%;
+  margin-right: 0.5em;
 }
 #clients-list-admin .client .deleteItemBtn i {
   margin-right: 0.5em;
@@ -496,7 +497,7 @@ body main.almostHidden {
   justify-content: center;
   box-shadow: var(--main-box-shadow);
   height: 35em;
-  top: 48.7%;
+  top: 49.5%;
 }
 #signUpForm #logoImage {
   width: 7em;
@@ -530,20 +531,8 @@ body main.almostHidden {
 #signUpForm .newUserField .newUserInputField::placeholder {
   font-size: 0.92em;
 }
-#signUpForm #newUserStreetAndNumber #streetAndNumberLabels {
-  display: flex;
-  width: 92%;
-  justify-content: space-between;
-}
-#signUpForm #newUserStreetAndNumber #streetAndNumberInputs {
-  display: flex;
-}
-#signUpForm #newUserStreetAndNumber #streetAndNumberInputs input:first-child {
-  width: 70%;
-}
-#signUpForm #newUserStreetAndNumber #streetAndNumberInputs input:last-of-type {
-  margin-left: 1em;
-  width: 30%;
+#signUpForm .newUserField:last-of-type input:last-of-type {
+  margin-top: 1.5em;
 }
 #signUpForm #signUpBtn {
   width: 100%;

@@ -2,7 +2,7 @@
 import {productsURL} from './url.js'
 import {fetchAPI} from './fetch.js'
 
-// Main
+// Home
 function home () {
     const _products = document.querySelector('#products')
     let productsHTML = ''
