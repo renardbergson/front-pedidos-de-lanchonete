@@ -596,6 +596,9 @@ body main.almostHidden {
 #header #headerMessage i {
   margin-left: 0.5em;
 }
+#header #headerMessage.hidden {
+  display: none;
+}
 #header .menu {
   list-style: none;
   display: flex;

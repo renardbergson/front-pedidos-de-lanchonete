@@ -35,6 +35,10 @@
 
     #headerMessage {
         @include header-message-style;
+
+        &.hidden {
+            display: none;
+        }
     }
 
     .menu {

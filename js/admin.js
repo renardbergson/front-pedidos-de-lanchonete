@@ -68,7 +68,7 @@ function addNewProduct () {
         }
     }
 
-    // submit
+    // on submit
     _newProductForm.onsubmit = e => {
         e.preventDefault()
 
@@ -83,7 +83,7 @@ function addNewProduct () {
             return
         } else {
             fetchAPI('POST', productsURL, product, data => {
-                if (data === 'product succesfully sent') {
+                if (data.message === 'product succesfully sent') {
                     _newProductForm.reset()
                     _pricePreview.innerHTML = ''
                     alert('Produto cadastrado com sucesso!')
@@ -113,7 +113,7 @@ function deleteProduct (btns) {
 
                     if (question) {
                         fetchAPI('DELETE', productsURL, this.dataset.id, data => {
-                            if (data === 'product succesfully removed') {
+                            if (data.message === 'product succesfully removed') {
                                 alert('Produto excluido da base de dados com sucesso!')
                                 location.reload()
                             }
@@ -183,7 +183,7 @@ function deleteCustomer (btns) {
 
                 if (question) {
                     fetchAPI('DELETE', customersURL, this.dataset.id, data => {
-                        if (data === 'customer succesfully removed') {
+                        if (data.message === 'customer succesfully removed') {
                             alert('Cliente excluido da base de dados com sucesso!')
                             location.reload()
                         }

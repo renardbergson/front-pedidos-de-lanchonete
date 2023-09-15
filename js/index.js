@@ -1,7 +1,7 @@
 // External modules
 import {home} from './home.js'
 import {login} from './login.js'
-import {listProducts, signUp, cancelOrder} from './customer.js'
+import {getUsername, signUp, cancelOrder} from './customer.js'
 import {listProduts, deleteProduct, listCustomers, addNewProduct} from './admin.js'
 
 // BODY
@@ -22,14 +22,14 @@ _index ? home() : null
 _login ? login() : null
 
 // ============================== CUSTOMER ==============================
-// List Products 
-_loggedUser ? listProducts() : null
+// Get username
+_loggedUser ? getUsername() : null
 
 // Sign Up
 _newUser ? signUp() : null
 
 // Cancel Order
-_myOrders ? cancelOrder() : null
+_myOrders ? getUsername() : null
 
 // ================================ ADMIN ===============================
 // List Products

@@ -2,49 +2,73 @@
 import {productsURL, customersURL} from './url.js'
 import {fetchAPI} from './fetch.js'
 
-// list products
+// Get Username
+function getUsername () {
+    const user = sessionStorage.getItem('user')
+
+    if (!user) {
+        window.location.href = 'login.html'
+        return
+    }
+
+    // Welcoming user
+    const {userFirstName} = JSON.parse(user)
+    const _headerMessage = document.querySelector('#headerMessage')
+    const _headerUserName = document.querySelector('#headerUserName')
+
+    _headerUserName.innerHTML = userFirstName
+    _headerMessage.classList.remove('hidden')
+    listProducts()
+    cancelOrder()
+    logOut()
+}
+
+// List Products
 function listProducts () {
     const _products = document.querySelector('#products')
-    let productsHTML = ''
 
-    fetchAPI('GET', productsURL, null, data => {
-        data.forEach(product => {
-            productsHTML += `
-                <div class="product">
-                    <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+    if (_products) {
+        let productsHTML = ''
 
-                    <div class="productDetails">
-                        <h4 class="productTitle">${product.name}</h4>
-
-                        <p class="productDescription">${product.description}</p>
-
-                        <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
+        fetchAPI('GET', productsURL, null, data => {
+            data.forEach(product => {
+                productsHTML += `
+                    <div class="product">
+                        <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+    
+                        <div class="productDetails">
+                            <h4 class="productTitle">${product.name}</h4>
+    
+                            <p class="productDescription">${product.description}</p>
+    
+                            <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
+                        </div>
+    
+                        <button class="getItemBtn" data-id=${product._id}>Peça Já!</button>
                     </div>
-
-                    <button class="getItemBtn" data-id=${product._id}>Peça Já!</button>
-                </div>
-            `
-            _products.innerHTML = productsHTML
-
-            const _getItemBtns = document.querySelectorAll('.getItemBtn')
-
-            _getItemBtns.forEach(button => {
-                button.onclick = function () {
-                    const _main = document.querySelector('#main')
-                    const _posOrderSplash = document.querySelector('#posOrderSplash')
-                    const _gotItBtn = document.querySelector('#gotItBtn')
-        
-                    _main.classList.add('almostHidden')
-                    _posOrderSplash.classList.add('visible')
+                `
+                _products.innerHTML = productsHTML
+    
+                const _getItemBtns = document.querySelectorAll('.getItemBtn')
+    
+                _getItemBtns.forEach(button => {
+                    button.onclick = function () {
+                        const _main = document.querySelector('#main')
+                        const _posOrderSplash = document.querySelector('#posOrderSplash')
+                        const _gotItBtn = document.querySelector('#gotItBtn')
             
-                    _gotItBtn.onclick = () => {
-                        _posOrderSplash.classList.remove('visible')
-                        _main.classList.remove('almostHidden')
-                    }
-                }  
+                        _main.classList.add('almostHidden')
+                        _posOrderSplash.classList.add('visible')
+                
+                        _gotItBtn.onclick = () => {
+                            _posOrderSplash.classList.remove('visible')
+                            _main.classList.remove('almostHidden')
+                        }
+                    }  
+                })
             })
         })
-    })
+    }
 }
 
 // Sign Up
@@ -68,8 +92,12 @@ function signUp () {
                 const customer = {name, email, phone, password}
 
                 fetchAPI('POST', customersURL, customer, (data) => {
-                    _signUpForm.reset()
-                    alert('Bem-vindo! Você foi cadastrado com sucesso.')
+                    if (data.message === 'customer succesfully sent') {
+                        _signUpForm.reset()
+                        alert('Bem-vindo! Você foi cadastrado com sucesso.')
+                    } else {
+                        alert('Ops, ocorreu algum erro ao cadastrar o usuário!')
+                    }
                 })
             } else {
                 alert('As senhas não conferem!')
@@ -93,4 +121,14 @@ function cancelOrder () {
     })
 }
 
-export {listProducts, signUp, cancelOrder}
+// Log Out
+function logOut () {
+    const _logRouteBtn = document.querySelector('#logRouteBtn')
+    
+    _logRouteBtn.onclick = () => {
+        window.location.href = 'login.html'
+        sessionStorage.clear('user')
+    }
+}
+
+export {getUsername, listProducts, signUp, cancelOrder}
