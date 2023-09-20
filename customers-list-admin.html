@@ -11,8 +11,8 @@
     <header id="header">
         <span id="logo">Bom Sabor</span>
 
-        <div id="headerMessage">
-            Bem-vindo, administrador!
+        <div id="headerMessage" class="hidden">
+            Bem-vindo, <span id="headerUserName"></span>!
             <i class="fa-solid fa-user-gear"></i>
         </div>
 
@@ -30,7 +30,7 @@
                 </ul>
             </li>
             <li>
-                <a href="clients-list-admin.html">Clientes</a>
+                <a href="customers-list-admin.html">Clientes</a>
             </li>
             <li>
                 <a href="orders-list-admin.html">Pedidos</a>
@@ -43,11 +43,32 @@
         </ul>
     </header>
     
-    <main>
-        <section id="clients-list-admin">
+    <main id="main">
+        <section id="customers-list-admin">
             <!-- source code from JavaScript -->
         </section>
     </main>
+
+    <div id="delCustomerErrorSplash">
+        <h3>Ops! 🚫</h3>
+        <p>Não é possível excluir os clientes de exemplo! Insira um cliente novo.</p>
+        <button id="gotItBtn">Entendi!</button>
+    </div>
+
+    <div id="delCustomerConfirmSplash">
+        <h3>Atenção! ⚠️</h3>
+        <p>Deseja mesmo excluir este cliente?</p>
+        <div class="mainBtns">
+            <button id="proceedBtn">Sim</button>
+            <button id="cancelBtn">Cancelar</button>
+        </div>
+    </div>
+
+    <div id="delCustomerSuccesSplash">
+        <h3>Pronto! ✅</h3>
+        <p>Cliente excluido da base de dados com sucesso.</p>
+        <button id="goBackBtn">Voltar</button>
+    </div>
 
     <footer id="footer">
         <p>

@@ -20,7 +20,7 @@
         </ul>
     </header>
     
-    <main>
+    <main id="main">
         <form id="loginForm">
             <img src="./img/logo-icon.webp" alt="a snack image" id="logoImage">
             <h3>Lanchonete Bom Sabor</h3>
@@ -42,9 +42,21 @@
 
             <button type="submit" id="signInBtn">Entrar</button>
 
-            <a href="new-user.html" id="goToSignUpBtn">Não tem um cadastro? Cadastre-se!</a>
+            <a href="signUp.html" id="goToSignUpBtn">Não tem um cadastro? Cadastre-se!</a>
         </form>
     </main>
+
+    <div id="emptyFieldSplash">
+        <h3>Ops!</h3>
+        <p>Há campos não preenchidos!</p>
+        <button id="gotItBtn">Entendi!</button>
+    </div>
+
+    <div id="userNotFoundSplash">
+        <h3>Ops!</h3>
+        <p>Usuário não encontrado! 🙁</p>
+        <button id="tryAgainBtn">Tentar de novo</button>
+    </div>
 
     <footer id="footer">
         <p>

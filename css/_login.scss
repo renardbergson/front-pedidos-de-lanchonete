@@ -60,3 +60,23 @@
         @include go-to-sign-in-sign-up-btn;
     }
 }
+
+#emptyFieldSplash {
+    @include splash-style;
+
+    #gotItBtn {
+        @include main-btn-style;
+        width: 30%;
+        border-radius: 10px;
+    }
+}
+
+#userNotFoundSplash {
+    @include splash-style;
+
+    #tryAgainBtn {
+        @include main-btn-style;
+        width: 50%;
+        border-radius: 10px;
+    }    
+}

@@ -161,6 +161,16 @@
     #retryBtn {
         @include main-btn-style;
     }
+} // INSERIR !!!
+
+#unloggedSplash {
+    @include splash-style;
+
+    #gotItBtn {
+        @include main-btn-style;
+        width: 50%;
+        border-radius: 10px;
+    }   
 }
 
 #footer {

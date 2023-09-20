@@ -1,118 +1,204 @@
 @import 'mixins.scss';
 
-#products-list-admin {
-    @include list-style;
-
-    .product {
-        @include list-item-style;
-
-        .productPreview {
-            width: 8%;
-            border-radius: 6px;
-            box-shadow: 1px 1px 5px #353535;
-        }
-
-        .productTablePart {
-            @include table-part-style;
-        }
-
-        .deleteItemBtn {
-            @include delete-item-btn-style;
-        }
-    }
-}
-
-#clients-list-admin {
-    @include list-style;
-
-    .client {
-        @include list-item-style;
-        width: 70em;
-
-        .clientTablePart {
-            @include table-part-style;
-            min-width: 15%;
-            max-width: 15%;
-        }
-
-        .deleteCustomerBtn {
-            @include delete-item-btn-style;
-            margin-right: 0.5em;
-        }
-    }
-}
-
-#orders-list-admin {
-    @include list-style;
-
-    .order {
-        @include list-item-style;
-
-        .orderTablePart {
-            @include table-part-style;
-            max-width: 20%;
-
-            .orderStatus {
-                outline: none;
-                border-radius: 10px;
-                margin-top: 2em;
-                padding: 0.3em;
-                text-align: center;
-                font-size: 0.8em;
-                font-family: 'Poppins', sans-serif;
-                font-weight: bold;
+#listProductsAdmin {
+    #products-list-admin {
+        @include list-style;
+    
+        .product {
+            @include list-item-style;
+    
+            .productPreview {
+                width: 8%;
+                border-radius: 6px;
+                box-shadow: 1px 1px 5px #353535;
+            }
+    
+            .productTablePart {
+                @include table-part-style;
+            }
+    
+            .deleteItemBtn {
+                @include delete-item-btn-style;
             }
         }
     }
-}
 
-#newProductForm {
-    @include form-style;
-    justify-content: space-evenly;
-    height: 34em;
-    top: 48.7%;
-
-    #logoImage {
-        @include logo-style;
-    }
-
-    h3 {
-        @include title-style;
-        margin: 0;
-    }
-
-    .newProductField {
-        margin-bottom: 0.5em;
-        font-size: 0.9em;
-
-        &:first-of-type {
-            margin-top: -1em;
+    #delProductErrorSplash {
+        @include splash-style;
+    
+        #gotItBtn {
+            @include main-btn-style;
         }
+    }
 
-        .newProductInputField {
-            @include input-field-style;
+    #delProductConfirmSplash {
+        @include splash-style;
 
-            &::placeholder {
-                @include placeholder-style;
+        .mainBtns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            #proceedBtn, #cancelBtn {
+                @include main-btn-style;
+                width: 10em;
             }
         }
+    }
 
-        #pricePreview {
+    #delProductSuccesSplash {
+        @include splash-style;
+
+        #goBackBtn {
+            @include main-btn-style;
+        }
+    }
+}
+
+#addNewProductAdmin {
+    #newProductForm {
+        @include form-style;
+        justify-content: space-evenly;
+        height: 34em;
+        top: 49.5%;
+    
+        #logoImage {
+            @include logo-style;
+        }
+    
+        h3 {
+            @include title-style;
+            margin: 0;
+        }
+    
+        .newProductField {
+            margin-bottom: 0.5em;
             font-size: 0.9em;
-            position: absolute;
-            top: 25em;
-            right: 1.2em;
-            color: lime;
+    
+            &:first-of-type {
+                margin-top: -1em;
+            }
+    
+            .newProductInputField {
+                @include input-field-style;
+    
+                &::placeholder {
+                    @include placeholder-style;
+                }
+            }
+    
+            #pricePreview {
+                font-size: 0.9em;
+                position: absolute;
+                top: 25em;
+                right: 1.2em;
+                color: lime;
+            }
+    
+            #newProductDescription {
+                height: 5em;
+                resize: none;
+            }
         }
-
-        #newProductDescription {
-            height: 5em;
-            resize: none;
+    
+        #insertProductBtn {
+            @include main-btn-style;
+            margin-top: 0.5em;
         }
     }
 
-    #insertProductBtn {
-        @include main-btn-style;
-        margin-top: 0.5em;
+    #newProductErrorSplash {
+        @include splash-style;
+
+        #gotItBtn {
+            @include main-btn-style;
+        }
+    }
+
+    #newProductSuccesSplash {
+        @include splash-style;
+
+        #returnBtn {
+            @include main-btn-style;
+        }
+    }
+}
+
+#listCustomersAdmin {
+    #customers-list-admin {
+        @include list-style;
+    
+        .client {
+            @include list-item-style;
+            width: 70em;
+    
+            .clientTablePart {
+                @include table-part-style;
+                min-width: 15%;
+                max-width: 15%;
+            }
+    
+            .deleteCustomerBtn {
+                @include delete-item-btn-style;
+                margin-right: 0.5em;
+            }
+        }
+    } 
+
+    #delCustomerErrorSplash {
+        @include splash-style;
+
+        #gotItBtn {
+            @include main-btn-style;
+        }
+    }
+
+    #delCustomerConfirmSplash {
+        @include splash-style;
+
+        .mainBtns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            #proceedBtn, #cancelBtn {
+                @include main-btn-style;
+                width: 10em;
+            }
+        }
+    }
+
+    #delCustomerSuccesSplash {
+        @include splash-style;
+
+        #goBackBtn {
+            @include main-btn-style;
+        }
+    }
+}
+
+#listOrdersAdm {
+    #orders-list-admin {
+        @include list-style;
+    
+        .order {
+            @include list-item-style;
+    
+            .orderTablePart {
+                @include table-part-style;
+                max-width: 20%;
+    
+                .orderStatus {
+                    outline: none;
+                    border-radius: 10px;
+                    margin-top: 2em;
+                    padding: 0.3em;
+                    text-align: center;
+                    font-size: 0.8em;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }

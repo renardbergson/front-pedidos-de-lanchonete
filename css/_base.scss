@@ -13,6 +13,7 @@ body {
     #header {
         position: sticky;
         top: 0;        
+        z-index: 1;
     }
     
     main {
@@ -20,7 +21,7 @@ body {
         transition: 500ms ease-in-out;
 
         &.almostHidden{
-            opacity: 0.050;
+            opacity: 0.040;
         }
     }
 }

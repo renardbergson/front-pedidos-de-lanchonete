@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/index.css">
     <title>Projeto Pedidos de Lanchonete</title>
 </head>
-<body id="newUser">
+<body id="signUp">
     <header id="header">
         <span id="logo">Bom Sabor</span>
 
@@ -20,7 +20,7 @@
         </ul>
     </header>
     
-    <main>
+    <main id="main">
         <form id="signUpForm">
             <img src="./img/logo-icon.webp" alt="a snack image" id="logoImage">
             <h3>Lanchonete Bom Sabor</h3>
@@ -53,6 +53,24 @@
             <a href="login.html" id="goToSignInBtn">Já tem um cadastro? Entre!</a>
         </form>
     </main>
+
+    <div id="signUpEmptyFieldSplash">
+        <h3>Ops! ⚠️</h3>
+        <p>Há campos obrigatórios em branco!</p>
+        <button id="gotItBtn">Entendi!</button>
+    </div>
+
+    <div id="signUpPasswordErrorSplash">
+        <h3>Ops! ⚠️</h3>
+        <p>As senhas não conferem!</p>
+        <button id="gotItBtn2">Entendi!</button>
+    </div>
+
+    <div id="signUpSuccessfulSplash">
+        <h3>Seja bem-vindo! ✅</h3>
+        <p>Você foi cadastrado com sucesso. <br> Já é possível logar com seu e-mail e senha.</p>
+        <button id="gotToLoginBtn">Logar</button>
+    </div>
 
     <footer id="footer">
         <p>

@@ -13,13 +13,14 @@ body {
 body #header {
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 body main {
   min-height: 80.2vh;
   transition: 500ms ease-in-out;
 }
 body main.almostHidden {
-  opacity: 0.05;
+  opacity: 0.04;
 }
 
 #loginForm {
@@ -115,259 +116,7 @@ body main.almostHidden {
   font-weight: bold;
 }
 
-#products-list-admin {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  row-gap: 2em;
-  padding: 3em;
-}
-#products-list-admin .product {
-  background-color: var(--primary-background-color);
-  color: white;
-  text-align: center;
-  border: 1px solid var(--border-and-shadow);
-  border-radius: 10px;
-  box-shadow: var(--main-box-shadow);
-  width: 65em;
-  min-height: 5em;
-  padding: 0.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#products-list-admin .product:hover {
-  box-shadow: 2px 2px 10px rgb(255, 255, 255);
-}
-#products-list-admin .product .productPreview {
-  width: 8%;
-  border-radius: 6px;
-  box-shadow: 1px 1px 5px #353535;
-}
-#products-list-admin .product .productTablePart {
-  font-size: 0.8em;
-  cursor: default;
-  height: 100%;
-  min-width: 20%;
-  max-width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-#products-list-admin .product .productTablePart p, #products-list-admin .product .productTablePart span, #products-list-admin .product .productTablePart select {
-  margin-top: 0.5em;
-}
-#products-list-admin .product .deleteItemBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  width: 12%;
-}
-#products-list-admin .product .deleteItemBtn i {
-  margin-right: 0.5em;
-}
-
-#clients-list-admin {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  row-gap: 2em;
-  padding: 3em;
-}
-#clients-list-admin .client {
-  background-color: var(--primary-background-color);
-  color: white;
-  text-align: center;
-  border: 1px solid var(--border-and-shadow);
-  border-radius: 10px;
-  box-shadow: var(--main-box-shadow);
-  width: 65em;
-  min-height: 5em;
-  padding: 0.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 70em;
-}
-#clients-list-admin .client:hover {
-  box-shadow: 2px 2px 10px rgb(255, 255, 255);
-}
-#clients-list-admin .client .clientTablePart {
-  font-size: 0.8em;
-  cursor: default;
-  height: 100%;
-  min-width: 20%;
-  max-width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 15%;
-  max-width: 15%;
-}
-#clients-list-admin .client .clientTablePart p, #clients-list-admin .client .clientTablePart span, #clients-list-admin .client .clientTablePart select {
-  margin-top: 0.5em;
-}
-#clients-list-admin .client .deleteCustomerBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  width: 12%;
-  margin-right: 0.5em;
-}
-#clients-list-admin .client .deleteCustomerBtn i {
-  margin-right: 0.5em;
-}
-
-#orders-list-admin {
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
-  row-gap: 2em;
-  padding: 3em;
-}
-#orders-list-admin .order {
-  background-color: var(--primary-background-color);
-  color: white;
-  text-align: center;
-  border: 1px solid var(--border-and-shadow);
-  border-radius: 10px;
-  box-shadow: var(--main-box-shadow);
-  width: 65em;
-  min-height: 5em;
-  padding: 0.5em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#orders-list-admin .order:hover {
-  box-shadow: 2px 2px 10px rgb(255, 255, 255);
-}
-#orders-list-admin .order .orderTablePart {
-  font-size: 0.8em;
-  cursor: default;
-  height: 100%;
-  min-width: 20%;
-  max-width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 20%;
-}
-#orders-list-admin .order .orderTablePart p, #orders-list-admin .order .orderTablePart span, #orders-list-admin .order .orderTablePart select {
-  margin-top: 0.5em;
-}
-#orders-list-admin .order .orderTablePart .orderStatus {
-  outline: none;
-  border-radius: 10px;
-  margin-top: 2em;
-  padding: 0.3em;
-  text-align: center;
-  font-size: 0.8em;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-}
-
-#newProductForm {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background-color: var(--primary-background-color);
-  color: white;
-  padding: 1em;
-  height: 30em;
-  width: 20em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: var(--main-box-shadow);
-  justify-content: space-evenly;
-  height: 34em;
-  top: 48.7%;
-}
-#newProductForm #logoImage {
-  width: 7em;
-  margin: 0 auto;
-}
-#newProductForm h3 {
-  margin: 0.8em 0 0.5em 0;
-  text-align: center;
-  letter-spacing: 1px;
-  cursor: default;
-  margin: 0;
-}
-#newProductForm .newProductField {
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
-}
-#newProductForm .newProductField:first-of-type {
-  margin-top: -1em;
-}
-#newProductForm .newProductField .newProductInputField {
-  display: block;
-  margin-top: 0.5em;
-  outline: none;
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  border-radius: 6px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  color: var(--primary-background-color);
-  letter-spacing: 0.5px;
-}
-#newProductForm .newProductField .newProductInputField::-moz-placeholder {
-  font-size: 0.92em;
-}
-#newProductForm .newProductField .newProductInputField::placeholder {
-  font-size: 0.92em;
-}
-#newProductForm .newProductField #pricePreview {
-  font-size: 0.9em;
-  position: absolute;
-  top: 25em;
-  right: 1.2em;
-  color: lime;
-}
-#newProductForm .newProductField #newProductDescription {
-  height: 5em;
-  resize: none;
-}
-#newProductForm #insertProductBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 0.5em;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-#posOrderSplash {
+#emptyFieldSplash {
   width: 25em;
   height: 15em;
   padding: 0 2em;
@@ -391,11 +140,11 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
-#posOrderSplash.visible {
+#emptyFieldSplash.visible {
   opacity: 1;
   z-index: 1;
 }
-#posOrderSplash #gotItBtn {
+#emptyFieldSplash #gotItBtn {
   width: 100%;
   padding: 0.8em;
   border: none;
@@ -410,14 +159,57 @@ body main.almostHidden {
   border-radius: 10px;
 }
 
-#my-orders-list {
+#userNotFoundSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#userNotFoundSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#userNotFoundSplash #tryAgainBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 10px;
+}
+
+#listProductsAdmin #products-list-admin {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
   padding: 3em;
 }
-#my-orders-list .order {
+#listProductsAdmin #products-list-admin .product {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -431,10 +223,540 @@ body main.almostHidden {
   justify-content: space-between;
   align-items: center;
 }
-#my-orders-list .order:hover {
+#listProductsAdmin #products-list-admin .product:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
-#my-orders-list .order .orderTablePart {
+#listProductsAdmin #products-list-admin .product .productPreview {
+  width: 8%;
+  border-radius: 6px;
+  box-shadow: 1px 1px 5px #353535;
+}
+#listProductsAdmin #products-list-admin .product .productTablePart {
+  font-size: 0.8em;
+  cursor: default;
+  height: 100%;
+  min-width: 20%;
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#listProductsAdmin #products-list-admin .product .productTablePart p, #listProductsAdmin #products-list-admin .product .productTablePart span, #listProductsAdmin #products-list-admin .product .productTablePart select {
+  margin-top: 0.5em;
+}
+#listProductsAdmin #products-list-admin .product .deleteItemBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 12%;
+}
+#listProductsAdmin #products-list-admin .product .deleteItemBtn i {
+  margin-right: 0.5em;
+}
+#listProductsAdmin #delProductErrorSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductErrorSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listProductsAdmin #delProductErrorSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#listProductsAdmin #delProductConfirmSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductConfirmSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listProductsAdmin #delProductConfirmSplash .mainBtns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#listProductsAdmin #delProductConfirmSplash .mainBtns #proceedBtn, #listProductsAdmin #delProductConfirmSplash .mainBtns #cancelBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 10em;
+}
+#listProductsAdmin #delProductSuccesSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductSuccesSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listProductsAdmin #delProductSuccesSplash #goBackBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#addNewProductAdmin #newProductForm {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+  justify-content: space-evenly;
+  height: 34em;
+  top: 49.5%;
+}
+#addNewProductAdmin #newProductForm #logoImage {
+  width: 7em;
+  margin: 0 auto;
+}
+#addNewProductAdmin #newProductForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: default;
+  margin: 0;
+}
+#addNewProductAdmin #newProductForm .newProductField {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+#addNewProductAdmin #newProductForm .newProductField:first-of-type {
+  margin-top: -1em;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField::-moz-placeholder {
+  font-size: 0.92em;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField::placeholder {
+  font-size: 0.92em;
+}
+#addNewProductAdmin #newProductForm .newProductField #pricePreview {
+  font-size: 0.9em;
+  position: absolute;
+  top: 25em;
+  right: 1.2em;
+  color: lime;
+}
+#addNewProductAdmin #newProductForm .newProductField #newProductDescription {
+  height: 5em;
+  resize: none;
+}
+#addNewProductAdmin #newProductForm #insertProductBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+#addNewProductAdmin #newProductErrorSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#addNewProductAdmin #newProductErrorSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#addNewProductAdmin #newProductErrorSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#addNewProductAdmin #newProductSuccesSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#addNewProductAdmin #newProductSuccesSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#addNewProductAdmin #newProductSuccesSplash #returnBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#listCustomersAdmin #customers-list-admin {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 3em;
+}
+#listCustomersAdmin #customers-list-admin .client {
+  background-color: var(--primary-background-color);
+  color: white;
+  text-align: center;
+  border: 1px solid var(--border-and-shadow);
+  border-radius: 10px;
+  box-shadow: var(--main-box-shadow);
+  width: 65em;
+  min-height: 5em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70em;
+}
+#listCustomersAdmin #customers-list-admin .client:hover {
+  box-shadow: 2px 2px 10px rgb(255, 255, 255);
+}
+#listCustomersAdmin #customers-list-admin .client .clientTablePart {
+  font-size: 0.8em;
+  cursor: default;
+  height: 100%;
+  min-width: 20%;
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 15%;
+  max-width: 15%;
+}
+#listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span, #listCustomersAdmin #customers-list-admin .client .clientTablePart select {
+  margin-top: 0.5em;
+}
+#listCustomersAdmin #customers-list-admin .client .deleteCustomerBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 12%;
+  margin-right: 0.5em;
+}
+#listCustomersAdmin #customers-list-admin .client .deleteCustomerBtn i {
+  margin-right: 0.5em;
+}
+#listCustomersAdmin #delCustomerErrorSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listCustomersAdmin #delCustomerErrorSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listCustomersAdmin #delCustomerErrorSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#listCustomersAdmin #delCustomerConfirmSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listCustomersAdmin #delCustomerConfirmSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listCustomersAdmin #delCustomerConfirmSplash .mainBtns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#listCustomersAdmin #delCustomerConfirmSplash .mainBtns #proceedBtn, #listCustomersAdmin #delCustomerConfirmSplash .mainBtns #cancelBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 10em;
+}
+#listCustomersAdmin #delCustomerSuccesSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listCustomersAdmin #delCustomerSuccesSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listCustomersAdmin #delCustomerSuccesSplash #goBackBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#listOrdersAdm #orders-list-admin {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 3em;
+}
+#listOrdersAdm #orders-list-admin .order {
+  background-color: var(--primary-background-color);
+  color: white;
+  text-align: center;
+  border: 1px solid var(--border-and-shadow);
+  border-radius: 10px;
+  box-shadow: var(--main-box-shadow);
+  width: 65em;
+  min-height: 5em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#listOrdersAdm #orders-list-admin .order:hover {
+  box-shadow: 2px 2px 10px rgb(255, 255, 255);
+}
+#listOrdersAdm #orders-list-admin .order .orderTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -445,10 +767,228 @@ body main.almostHidden {
   justify-content: center;
   max-width: 20%;
 }
-#my-orders-list .order .orderTablePart p, #my-orders-list .order .orderTablePart span, #my-orders-list .order .orderTablePart select {
+#listOrdersAdm #orders-list-admin .order .orderTablePart p, #listOrdersAdm #orders-list-admin .order .orderTablePart span, #listOrdersAdm #orders-list-admin .order .orderTablePart select {
   margin-top: 0.5em;
 }
-#my-orders-list .order .orderTablePart .orderStatus {
+#listOrdersAdm #orders-list-admin .order .orderTablePart .orderStatus {
+  outline: none;
+  border-radius: 10px;
+  margin-top: 2em;
+  padding: 0.3em;
+  text-align: center;
+  font-size: 0.8em;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+#signUp #signUpEmptyFieldSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#signUp #signUpEmptyFieldSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#signUp #signUpEmptyFieldSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#signUp #signUpPasswordErrorSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#signUp #signUpPasswordErrorSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#signUp #signUpPasswordErrorSplash #gotItBtn2 {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#signUp #signUpSuccessfulSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#signUp #signUpSuccessfulSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#signUp #signUpSuccessfulSplash #gotToLoginBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#loggedUser #posOrderSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#loggedUser #posOrderSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#loggedUser #posOrderSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 30%;
+  border-radius: 10px;
+}
+
+#myOrders #my-orders-list {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+  row-gap: 2em;
+  padding: 3em;
+}
+#myOrders #my-orders-list .order {
+  background-color: var(--primary-background-color);
+  color: white;
+  text-align: center;
+  border: 1px solid var(--border-and-shadow);
+  border-radius: 10px;
+  box-shadow: var(--main-box-shadow);
+  width: 65em;
+  min-height: 5em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#myOrders #my-orders-list .order:hover {
+  box-shadow: 2px 2px 10px rgb(255, 255, 255);
+}
+#myOrders #my-orders-list .order .orderTablePart {
+  font-size: 0.8em;
+  cursor: default;
+  height: 100%;
+  min-width: 20%;
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 20%;
+}
+#myOrders #my-orders-list .order .orderTablePart p, #myOrders #my-orders-list .order .orderTablePart span, #myOrders #my-orders-list .order .orderTablePart select {
+  margin-top: 0.5em;
+}
+#myOrders #my-orders-list .order .orderTablePart .orderStatus {
   outline: none;
   border-radius: 10px;
   margin-top: 2em;
@@ -459,7 +999,7 @@ body main.almostHidden {
   font-weight: bold;
   animation: blink 1000ms infinite;
 }
-#my-orders-list .order .cancelOrderBtn {
+#myOrders #my-orders-list .order .cancelOrderBtn {
   width: 100%;
   padding: 0.8em;
   border: none;
@@ -477,7 +1017,7 @@ body main.almostHidden {
   justify-content: center;
   align-items: center;
 }
-#my-orders-list .order .cancelOrderBtn i {
+#myOrders #my-orders-list .order .cancelOrderBtn i {
   margin-right: 0.5em;
 }
 
@@ -732,6 +1272,10 @@ body main.almostHidden {
   z-index: -1;
   display: none;
 }
+#loadingSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
 #loadingSplash #retryBtn {
   width: 100%;
   padding: 0.8em;
@@ -743,6 +1287,49 @@ body main.almostHidden {
   color: white;
   text-decoration: none;
   cursor: pointer;
+}
+
+#unloggedSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#unloggedSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#unloggedSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 10px;
 }
 
 #footer {
