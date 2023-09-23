@@ -238,6 +238,18 @@ function searchAndSetUser(customer) {
     })
 }
 
+function welcomeUser (user) {
+    if (!user) {
+        return
+    }
+
+    const $headerMessage = document.querySelector('#headerMessage')
+    const $headerUserName = document.querySelector('#headerUserName')
+
+    $headerUserName.innerHTML = user
+    $headerMessage.classList.remove('hidden')
+}
+
 function buildProductsHTML (status) {
     const $products = document.querySelector('#products')
     let productsHTML = ''
@@ -264,36 +276,40 @@ function buildProductsHTML (status) {
             const $getItemBtns = document.querySelectorAll('.getItemBtn')
             const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
 
-            if (status === 'logged') {
-                $getItemBtns.forEach(button => {
-                    button.onclick = function () {
-                        const $posOrderSplash = document.querySelector('#posOrderSplash')
-                        splashControl($posOrderSplash, $gotItBtn)
-                    }  
-                })
-                return
-            }
-
+            // UNLOGGED !
             $getItemBtns.forEach(btn => {
                 btn.onclick = () => {
                     const $unloggedSplash = document.querySelector('#unloggedSplash')
                     splashControl($unloggedSplash, $gotItBtn)
                 }
+                return
             })
+
+            // Logged User ok ✅
+            if (status === 'logged') {
+                newOrder($getItemBtns)
+            }
         })
     })
 }
 
-function welcomeUser (user) {
-    if (!user) {
-        return
-    }
+function newOrder (btns) {
+    const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
+    
+    btns.forEach(button => {
+        button.onclick = function () {
+            const {userID} = JSON.parse(sessionStorage.getItem('user'))
+            const orderID = this.dataset.id
+            const order = {userID, orderID}
 
-    const $headerMessage = document.querySelector('#headerMessage')
-    const $headerUserName = document.querySelector('#headerUserName')
-
-    $headerUserName.innerHTML = user
-    $headerMessage.classList.remove('hidden')
+            fetchAPI('POST', `${customersURL}/newOrder`, order, data => {
+                if (data.message === 'success') {
+                    const $posOrderSplash = document.querySelector('#posOrderSplash')
+                    splashControl($posOrderSplash, $gotItBtn)
+                }
+            })
+        }  
+    })
 }
 
 function logOut () {
