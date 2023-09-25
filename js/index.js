@@ -33,7 +33,7 @@ if ($loggedUser) {
 // My Orders
 const $myOrders = document.querySelector('#myOrders')
 if ($myOrders) {
-    isLogged(redirect.bind(cancelOrder()))
+    isLogged(redirect.bind($buildMyOrders()))
 } 
 
 // List Products ADM
@@ -180,20 +180,6 @@ function isLogged (callback) {
     callback(true, userFirstName)
 }
 
-function cancelOrder () {
-    const _cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
-
-    _cancelOrderBtns.forEach(button => {
-        button.onclick = () => {
-            const question = confirm('Tem certeza que deseja excluir este pedido?')
-        
-            if (question) {
-                console.log('pedido excluido')
-            }
-        }
-    })
-} // WAITING TO MODIFY !!!!!!!!!
-
 function redirect (response, user) {
     if (response === false) {
         window.location.href = 'login.html'
@@ -311,6 +297,79 @@ function newOrder (btns) {
         }  
     })
 }
+
+function $buildMyOrders () {
+    const {userID} = JSON.parse(sessionStorage.getItem('user'))
+    const $myOrdersList = document.querySelector('#my-orders-list')
+    let myOrdersHTML = ''
+        
+    fetchAPI('GET', `${customersURL}/${userID}`, null, data => {
+        data.map(user => {
+            const orders = user.orders
+
+            if (orders.length === 0) {
+                const $noOrders = document.querySelector('#noOrders')
+                $noOrders.classList.add('visible')
+                return
+            }
+            
+            orders.map(order => {
+                fetchAPI('GET', `${productsURL}/${order.id}`, null, data => {
+                    data.map(product => {
+                        myOrdersHTML += `
+                            <div class="order">            
+                                <div class="orderTablePart">
+                                    <h4>Pedido</h4>
+                                    <p class="productName">${product.name}</p>
+                                </div>
+        
+                                <div class="orderTablePart">
+                                    <h4>Descrição</h4>
+                                    <p class="productDescription">${product.description}</p>
+                                </div>
+                    
+                                <div class="orderTablePart">
+                                    <h4>Data</h4>
+                                    <span class="orderDate">${order.orderDate}</span>
+                                </div>
+        
+                                <div class="orderTablePart">
+                                <h4>Hora</h4>
+                                    <span class="orderTime">${order.orderTime}</span>
+                                </div>
+                    
+                                <div class="orderTablePart">
+                                    <h4>Status</h4>
+                                    <p class="orderStatus">${order.status}</p>
+                                </div>
+
+                                <button class="cancelOrderBtn" data-id=${order.id}>
+                                    <i class="fa-solid fa-ban"></i>
+                                    Cancelar Pedido
+                                </button>
+                            </div>
+                        `
+                        $myOrdersList.innerHTML = myOrdersHTML
+                        cancelOrder()
+                    })  
+                })
+            })
+        })
+    })
+
+}
+
+function cancelOrder () {
+    const $cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
+    const $cancelOrderSplash = document.querySelector('#cancelOrderSplash')
+    
+    $cancelOrderBtns.forEach(button => button.onclick = function () {
+        const $proceedBtn = document.querySelector('#proceedBtn')
+        const $abortBtn = document.querySelector('#abortBtn')
+        
+        splashControl($cancelOrderSplash, $abortBtn)
+    })
+} // INCREMENTAR !!!!!!
 
 function logOut () {
     sessionStorage.clear('user')
