@@ -27,31 +27,31 @@ if ($signUp) {
 // Logged User
 const $loggedUser = document.querySelector('#loggedUser')
 if ($loggedUser) {
-    isLogged(redirect.bind(buildProductsHTML('logged')))
+    isLogged(redirect.bind(buildProductsHTML.bind('logged')))
 }
 
 // My Orders
 const $myOrders = document.querySelector('#myOrders')
 if ($myOrders) {
-    isLogged(redirect.bind($buildMyOrders()))
+    isLogged(redirect.bind(buildMyOrders))
 } 
 
 // List Products ADM
 const $listProductsAdmin = document.querySelector('#listProductsAdmin')
 if ($listProductsAdmin) {
-    isLogged(redirect.bind(buildProductsADM()))
+    isLogged(redirect.bind(buildProductsADM))
 }
 
 // Add New Product ADM
 const $addNewProductAdmin = document.querySelector('#addNewProductAdmin')
 if ($addNewProductAdmin) {
-    isLogged(redirect.bind(addNewProductADM()))
+    isLogged(redirect.bind(addNewProductADM))
 }
 
 // List Customers ADM
 const $listCustomersAdmin = document.querySelector('#listCustomersAdmin')
 if ($listCustomersAdmin) {
-    isLogged(redirect.bind(listCustomersADM()))
+    isLogged(redirect.bind(listCustomersADM))
 }
 
 // ============================== MAIN FUNCTIONS ==============================
@@ -188,13 +188,12 @@ function redirect (response, user) {
 
     if (response === true && user != 'Administrador') {
         welcomeUser(user)
-        this
-
+        this()
     }
 
     if (response === true && user === 'Administrador') {
         welcomeUser(user)
-        this
+        this()
     }
 }
 
@@ -236,7 +235,7 @@ function welcomeUser (user) {
     $headerMessage.classList.remove('hidden')
 }
 
-function buildProductsHTML (status) {
+function buildProductsHTML () {
     const $products = document.querySelector('#products')
     let productsHTML = ''
 
@@ -262,7 +261,7 @@ function buildProductsHTML (status) {
             const $getItemBtns = document.querySelectorAll('.getItemBtn')
             const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
 
-            // UNLOGGED !
+            // UNLOGGED USER 🚫
             $getItemBtns.forEach(btn => {
                 btn.onclick = () => {
                     const $unloggedSplash = document.querySelector('#unloggedSplash')
@@ -271,8 +270,8 @@ function buildProductsHTML (status) {
                 return
             })
 
-            // Logged User ok ✅
-            if (status === 'logged') {
+            // LOGGED USER ✅
+            if (this) {
                 newOrder($getItemBtns)
             }
         })
@@ -298,7 +297,7 @@ function newOrder (btns) {
     })
 }
 
-function $buildMyOrders () {
+function buildMyOrders () {
     const {userID} = JSON.parse(sessionStorage.getItem('user'))
     const $myOrdersList = document.querySelector('#my-orders-list')
     let myOrdersHTML = ''
@@ -306,12 +305,17 @@ function $buildMyOrders () {
     fetchAPI('GET', `${customersURL}/${userID}`, null, data => {
         data.map(user => {
             const orders = user.orders
+
+            if (orders.length === 0) {
+                const $noOrders = document.querySelector('#noOrders')
+                $noOrders.classList.add('visible')
+                return
+            }
             
             orders.map(order => {
                 fetchAPI('GET', `${productsURL}/${order.id}`, null, data => {
                     data.map(product => {
-                        if (order.status != 'Cancelado') {
-                            myOrdersHTML += `
+                        myOrdersHTML += `
                             <div class="order">            
                                 <div class="orderTablePart">
                                     <h4>Pedido</h4>
@@ -338,22 +342,16 @@ function $buildMyOrders () {
                                     <p class="orderStatus">${order.status}</p>
                                 </div>
 
-                                <button class="cancelOrderBtn" data-id=${order.id}>
+                                <button class="cancelOrderBtn ${order.status == 'Cancelado' ? 'inactive' : ''}" data-user=${user._id} data-order=${order.id} data-date=${order.orderDate} data-time=${order.orderTime}>
                                     <i class="fa-solid fa-ban"></i>
                                     Cancelar Pedido
                                 </button>
                             </div>
                         `
-                        
+                    
                         $myOrdersList.innerHTML = myOrdersHTML
                         cancelOrder()
-                        }
                     })
-
-                    if ($myOrdersList.childNodes.length === 0) {
-                        const $noOrders = document.querySelector('#noOrders')
-                        $noOrders.classList.add('visible')
-                    }
                 })
             })
         })
@@ -361,14 +359,26 @@ function $buildMyOrders () {
 }
 
 function cancelOrder () {
-    const $cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
     const $cancelOrderSplash = document.querySelector('#cancelOrderSplash')
+    const $cancelOrderBtns = document.querySelectorAll('.cancelOrderBtn')
     
     $cancelOrderBtns.forEach(button => button.onclick = function () {
         const $proceedBtn = document.querySelector('#proceedBtn')
         const $abortBtn = document.querySelector('#abortBtn')
         
+        const button = this
+        const {user, order, date, time} = this.dataset
+        
+        // Abort
         splashControl($cancelOrderSplash, $abortBtn)
+
+        // Proceed
+        $proceedBtn.onclick = function () {
+            $cancelOrderSplash.classList.remove('visible')
+            document.querySelector('#main').classList.remove('almostHidden')
+            
+            button.classList.add('inactive')
+        }
     })
 } // INCREMENTAR !!!!!!
 

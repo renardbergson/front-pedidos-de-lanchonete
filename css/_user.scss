@@ -76,6 +76,12 @@
                 i {
                     margin-right: 0.5em;
                 }
+
+                &.inactive {
+                    color: gray;
+                    cursor: default;
+                    pointer-events: none;
+                }
             }
         }
     }

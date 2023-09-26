@@ -1020,6 +1020,11 @@ body main.almostHidden {
 #myOrders #my-orders-list .order .cancelOrderBtn i {
   margin-right: 0.5em;
 }
+#myOrders #my-orders-list .order .cancelOrderBtn.inactive {
+  color: gray;
+  cursor: default;
+  pointer-events: none;
+}
 #myOrders #noOrders {
   width: 25em;
   height: 15em;
