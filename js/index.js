@@ -74,6 +74,17 @@ async function fetchAPI (method, url, item, callback) {
         callback ? callback(data) : null
     }
 
+    if (method === 'PUT') {
+        const response  = await fetch(url, {
+            method: 'PUT',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(item)
+        })
+        const data = await response.json()
+
+        callback ? callback(data) : null
+    }
+
     if (method === 'DELETE') {
         const response = await fetch(`${url}/${item}`, {method: 'DELETE'})
         const data = await response.json()
@@ -376,8 +387,16 @@ function cancelOrder () {
         $proceedBtn.onclick = function () {
             $cancelOrderSplash.classList.remove('visible')
             document.querySelector('#main').classList.remove('almostHidden')
+
+            const item = {user, order, date, time, status: 'Cancelado'}
+
+            fetchAPI('PUT', `${customersURL}/updateOrder`, item, data => {
+                if (data.message === 'success') {
+                    setTimeout(() => location.reload(), 1000)
+                }
+            })
             
-            button.classList.add('inactive')
+            //button.classList.add('inactive')
         }
     })
 } // INCREMENTAR !!!!!!
