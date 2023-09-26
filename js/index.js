@@ -306,17 +306,12 @@ function $buildMyOrders () {
     fetchAPI('GET', `${customersURL}/${userID}`, null, data => {
         data.map(user => {
             const orders = user.orders
-
-            if (orders.length === 0) {
-                const $noOrders = document.querySelector('#noOrders')
-                $noOrders.classList.add('visible')
-                return
-            }
             
             orders.map(order => {
                 fetchAPI('GET', `${productsURL}/${order.id}`, null, data => {
                     data.map(product => {
-                        myOrdersHTML += `
+                        if (order.status != 'Cancelado') {
+                            myOrdersHTML += `
                             <div class="order">            
                                 <div class="orderTablePart">
                                     <h4>Pedido</h4>
@@ -349,14 +344,20 @@ function $buildMyOrders () {
                                 </button>
                             </div>
                         `
+                        
                         $myOrdersList.innerHTML = myOrdersHTML
                         cancelOrder()
-                    })  
+                        }
+                    })
+
+                    if ($myOrdersList.childNodes.length === 0) {
+                        const $noOrders = document.querySelector('#noOrders')
+                        $noOrders.classList.add('visible')
+                    }
                 })
             })
         })
     })
-
 }
 
 function cancelOrder () {

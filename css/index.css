@@ -1047,10 +1047,15 @@ body main.almostHidden {
   width: 30em;
   height: 5em;
   border-radius: 10em;
+  letter-spacing: 1px;
+  font-size: 0.8em;
 }
 #myOrders #noOrders.visible {
   opacity: 1;
   z-index: 1;
+}
+#myOrders #noOrders i {
+  font-size: 1.5em;
 }
 #myOrders #cancelOrderSplash {
   width: 25em;
