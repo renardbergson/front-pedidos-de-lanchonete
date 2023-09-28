@@ -395,11 +395,9 @@ function cancelOrder () {
                     setTimeout(() => location.reload(), 1000)
                 }
             })
-            
-            //button.classList.add('inactive')
         }
     })
-} // INCREMENTAR !!!!!!
+}
 
 function logOut () {
     sessionStorage.clear('user')

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/index.css">
     <title>Projeto Pedidos de Lanchonete</title>
 </head>
@@ -45,15 +46,70 @@
     
     <main id="main">
         <section id="orders-list-admin">
-            <div class="order">
+            <div class="customer">
+                <!-- Customer -->
+                <button id="expandCustomerBtn">
+                    <i class="fa-solid fa-circle-plus"></i>
+                </button>
+                
                 <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
+                    <h4>Cliente</h4>
+                    <p class="customerName">Nome do Cliente</p>
+                </div>
+
+                <div class="orderTablePart">
+                    <h4>E-mail</h4>
+                    <p class="customerMail">exemplo@exemplo.com</p>
+                </div>
+
+                <div class="orderTablePart">
+                    <h4>Telefone</h4>
+                    <p class="customerPhone">(00) 0 0000-0000</p>
+                </div>
+
+                <div class="orderTablePart">
+                    <h4>Quantidade</h4>
+                    <span class="totalOrders">X pedidos</span>
+                </div>
+
+                <div class="orderTablePart">
+                    <div class="orderLegend">
+                        <div>
+                            <span class="material-symbols-outlined">pending</span>
+                            <span class="orderCount" id="pendindOrders">0</span>
+                        </div>
+                        
+                        <div>
+                            <span class="material-symbols-outlined">hourglass_top</span>
+                            <span class="orderCount" id="preparingOrders">0</span>
+                        </div>
+
+                        <div>
+                            <span class="material-symbols-outlined">two_wheeler</span>
+                            <span class="orderCount" id="deliveringOrders">0</span>
+                        </div>
+
+                        <div>
+                            <span class="material-symbols-outlined">person_check</span>
+                            <span class="orderCount" id="deliveredingOrders">0</span>
+                        </div>
+                        
+                        <div>
+                            <span class="material-symbols-outlined">cancel</span>
+                            <span class="orderCount" id="canceledOrders">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+<!--             <div class="customer">
+                <div class="orderTablePart">
+                    <h4>Nome</h4>
                     <p class="clientName">Nome do Cliente</p>
                 </div>
 
                 <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
+                    <h4>contato</h4>
                     <p class="orderCode">########</p>
                     <p class="productName">Nome do Produto</p>
                 </div>
@@ -74,162 +130,7 @@
                         <option value="Cancelado">Cancelado</option>
                     </select>
                 </div>
-            </div>
-
-            <div class="order">
-                <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
-                    <p class="clientName">Nome do Cliente</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
-                    <p class="orderCode">########</p>
-                    <p class="productName">Nome do Produto</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Data e Hora do pedido</h4>
-                    <span class="orderDate">xx / xx / xxxx</span>
-                    <span class="orderTime">xx:xx hrs</span>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Status do pedido</h4>
-                    <select name="orderStatus" class="orderStatus">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Preparo">Em Preparo</option>
-                        <option value="Saiu para entrega">Saiu para entrega</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="order">
-                <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
-                    <p class="clientName">Nome do Cliente</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
-                    <p class="orderCode">########</p>
-                    <p class="productName">Nome do Produto</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Data e Hora do pedido</h4>
-                    <span class="orderDate">xx / xx / xxxx</span>
-                    <span class="orderTime">xx:xx hrs</span>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Status do pedido</h4>
-                    <select name="orderStatus" class="orderStatus">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Preparo">Em Preparo</option>
-                        <option value="Saiu para entrega">Saiu para entrega</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="order">
-                <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
-                    <p class="clientName">Nome do Cliente</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
-                    <p class="orderCode">########</p>
-                    <p class="productName">Nome do Produto</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Data e Hora do pedido</h4>
-                    <span class="orderDate">xx / xx / xxxx</span>
-                    <span class="orderTime">xx:xx hrs</span>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Status do pedido</h4>
-                    <select name="orderStatus" class="orderStatus">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Preparo">Em Preparo</option>
-                        <option value="Saiu para entrega">Saiu para entrega</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="order">
-                <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
-                    <p class="clientName">Nome do Cliente</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
-                    <p class="orderCode">########</p>
-                    <p class="productName">Nome do Produto</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Data e Hora do pedido</h4>
-                    <span class="orderDate">xx / xx / xxxx</span>
-                    <span class="orderTime">xx:xx hrs</span>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Status do pedido</h4>
-                    <select name="orderStatus" class="orderStatus">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Preparo">Em Preparo</option>
-                        <option value="Saiu para entrega">Saiu para entrega</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="order">
-                <div class="orderTablePart">
-                    <h4>Código e Nome do cliente</h4>
-                    <p class="clientCode">########</p>
-                    <p class="clientName">Nome do Cliente</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Código e Nome do produto</h4>
-                    <p class="orderCode">########</p>
-                    <p class="productName">Nome do Produto</p>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Data e Hora do pedido</h4>
-                    <span class="orderDate">xx / xx / xxxx</span>
-                    <span class="orderTime">xx:xx hrs</span>
-                </div>
-
-                <div class="orderTablePart">
-                    <h4>Status do pedido</h4>
-                    <select name="orderStatus" class="orderStatus">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Preparo">Em Preparo</option>
-                        <option value="Saiu para entrega">Saiu para entrega</option>
-                        <option value="Entregue">Entregue</option>
-                        <option value="Cancelado">Cancelado</option>
-                    </select>
-                </div>
-            </div>
+            </div> -->
         </section>
     </main>
 

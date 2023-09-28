@@ -181,13 +181,44 @@
     #orders-list-admin {
         @include list-style;
     
-        .order {
+        .customer {
             @include list-item-style;
+
+            #expandCustomerBtn {
+                background: none;
+                border: none;
+                margin-left: 0.5em;
+                cursor: pointer;
+
+                i {
+                    font-size: 1.5em;
+                    color: white;
+                }
+            }
     
             .orderTablePart {
                 @include table-part-style;
                 max-width: 20%;
+                
+                .orderLegend {
+                    display: flex;
+                    justify-content: space-evenly;
+                    
+                    div {
+                        position: relative;
+                        
+                        span {
+                            margin-top: 0;
+                        }
     
+                        .orderCount {
+                            position: absolute;
+                            top: 1.6em;
+                            right: -0.4em;
+                        }
+                    }
+                }
+
                 .orderStatus {
                     outline: none;
                     border-radius: 10px;
@@ -197,7 +228,15 @@
                     font-size: 0.8em;
                     font-family: 'Poppins', sans-serif;
                     font-weight: bold;
-                }
+                } // TROCAR DE LUGAR !!!
+            }
+        }
+
+        .orders {
+            @include list-item-style;
+
+            .orderTablePart {
+                @include table-part-style;
             }
         }
     }
