@@ -241,7 +241,7 @@ body main.almostHidden {
   flex-direction: column;
   justify-content: center;
 }
-#listProductsAdmin #products-list-admin .product .productTablePart p, #listProductsAdmin #products-list-admin .product .productTablePart span, #listProductsAdmin #products-list-admin .product .productTablePart select {
+#listProductsAdmin #products-list-admin .product .productTablePart p, #listProductsAdmin #products-list-admin .product .productTablePart span {
   margin-top: 0.5em;
 }
 #listProductsAdmin #products-list-admin .product .deleteItemBtn {
@@ -585,7 +585,7 @@ body main.almostHidden {
   min-width: 15%;
   max-width: 15%;
 }
-#listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span, #listCustomersAdmin #customers-list-admin .client .clientTablePart select {
+#listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span {
   margin-top: 0.5em;
 }
 #listCustomersAdmin #customers-list-admin .client .deleteCustomerBtn {
@@ -739,7 +739,11 @@ body main.almostHidden {
   row-gap: 2em;
   padding: 3em;
 }
-#listOrdersAdm #orders-list-admin .customer {
+#listOrdersAdm #orders-list-admin .customerAndOrders.visible > .order {
+  height: 5em;
+  padding: 0.5em;
+}
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -753,20 +757,21 @@ body main.almostHidden {
   justify-content: space-between;
   align-items: center;
 }
-#listOrdersAdm #orders-list-admin .customer:hover {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
-#listOrdersAdm #orders-list-admin .customer #expandCustomerBtn {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
   background: none;
   border: none;
   margin-left: 0.5em;
+  width: 1.5em;
   cursor: pointer;
 }
-#listOrdersAdm #orders-list-admin .customer #expandCustomerBtn i {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn i {
   font-size: 1.5em;
   color: white;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -777,35 +782,25 @@ body main.almostHidden {
   justify-content: center;
   max-width: 20%;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart p, #listOrdersAdm #orders-list-admin .customer .orderTablePart span, #listOrdersAdm #orders-list-admin .customer .orderTablePart select {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart span {
   margin-top: 0.5em;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart .orderLegend {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
   display: flex;
   justify-content: space-evenly;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart .orderLegend div {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div {
   position: relative;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart .orderLegend div span {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span {
   margin-top: 0;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart .orderLegend div .orderCount {
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
   position: absolute;
   top: 1.6em;
   right: -0.4em;
 }
-#listOrdersAdm #orders-list-admin .customer .orderTablePart .orderStatus {
-  outline: none;
-  border-radius: 10px;
-  margin-top: 2em;
-  padding: 0.3em;
-  text-align: center;
-  font-size: 0.8em;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-}
-#listOrdersAdm #orders-list-admin .orders {
+#listOrdersAdm #orders-list-admin .customerAndOrders .order {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -818,11 +813,19 @@ body main.almostHidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  left: 0;
+  background: rgba(0, 0, 0, 0.64);
+  overflow: hidden;
+  min-height: 0;
+  padding: 0;
+  height: 0;
+  transition: 500ms;
 }
-#listOrdersAdm #orders-list-admin .orders:hover {
+#listOrdersAdm #orders-list-admin .customerAndOrders .order:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
-#listOrdersAdm #orders-list-admin .orders .orderTablePart {
+#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -832,8 +835,20 @@ body main.almostHidden {
   flex-direction: column;
   justify-content: center;
 }
-#listOrdersAdm #orders-list-admin .orders .orderTablePart p, #listOrdersAdm #orders-list-admin .orders .orderTablePart span, #listOrdersAdm #orders-list-admin .orders .orderTablePart select {
+#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart span {
   margin-top: 0.5em;
+}
+#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderStatus {
+  outline: none;
+  border-radius: 10px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  margin: 0 auto;
+  margin-top: 0.5em;
+  width: 8em;
 }
 
 @keyframes blink {
@@ -1041,7 +1056,7 @@ body main.almostHidden {
   min-width: 15%;
   max-width: 15%;
 }
-#myOrders #my-orders-list .order .orderTablePart p, #myOrders #my-orders-list .order .orderTablePart span, #myOrders #my-orders-list .order .orderTablePart select {
+#myOrders #my-orders-list .order .orderTablePart p, #myOrders #my-orders-list .order .orderTablePart span {
   margin-top: 0.5em;
 }
 #myOrders #my-orders-list .order .orderTablePart .orderStatus {

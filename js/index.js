@@ -650,4 +650,21 @@ function splashControl (splash, actionButton, callback) {
             callback()
         }
     }
-}
+}   
+
+const $expandCustomerBtn = document.querySelectorAll('.expandCustomerBtn')
+$expandCustomerBtn.forEach(item => {
+    item.onclick = function () {
+        const customer = this.parentElement.parentElement
+        let isExpanded = customer.classList.contains('visible')
+
+        if (isExpanded == false) {
+            customer.classList.add('visible')
+            this.innerHTML = '<i class="fa-solid fa-minus"></i>'
+            return
+        }
+
+        customer.classList.remove('visible')
+        this.innerHTML = '<i class="fa-solid fa-circle-plus"></i>'
+    }
+})
