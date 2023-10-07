@@ -311,6 +311,26 @@ function buildProductsHTML () {
     })
 }
 
+function refreshCountdown () {
+    const $main = document.querySelector('#main')
+    const $count = document.querySelector('#count')
+    let secondsToRefresh = 60
+
+    setInterval(() => {
+        $count.innerText = secondsToRefresh
+        secondsToRefresh--
+
+        if ($main.classList.contains('almostHidden')) {
+            secondsToRefresh = 60
+            refreshCountdown()
+        }  
+        
+        if (!$main.classList.contains('almostHidden') && secondsToRefresh < 0) {
+            location.reload()
+        }
+    }, 1000)
+}
+
 function newOrder (btns) {
     const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
     
@@ -331,6 +351,8 @@ function newOrder (btns) {
 }
 
 function buildMyOrders () {
+    refreshCountdown()
+
     const {userID} = JSON.parse(sessionStorage.getItem('user'))
     const $myOrdersList = document.querySelector('#my-orders-list')
     let myOrdersHTML = ''
@@ -616,6 +638,8 @@ function listCustomersADM () {
 }
 
 function listOrdersADM () {
+    refreshCountdown()
+
     const $ordersListAdmin = document.querySelector('#orders-list-admin')
 
     fetchAPI('GET', customersURL, null, data => {
@@ -740,8 +764,6 @@ function listOrdersADM () {
 function changeOrderStatusADM () {
     const $orderStatus = document.querySelectorAll('.orderStatus')
 
-
-    
     $orderStatus.forEach(status => status.onchange = function () {
         const {user, order, date, time} = this.dataset
 

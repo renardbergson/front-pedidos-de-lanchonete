@@ -40,8 +40,13 @@
 }
 
 #myOrders {
+    #refreshCountdown {
+        @include refresh-countdown-style;
+    }
+
     #my-orders-list {
         @include list-style;
+        padding: 6em;
     
         .order {
             @include list-item-style;

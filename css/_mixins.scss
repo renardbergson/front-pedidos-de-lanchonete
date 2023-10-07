@@ -165,3 +165,26 @@
         z-index: 1;
     }
 }
+
+@mixin refresh-countdown-style {
+    background-color: var(--primary-background-color);
+    box-shadow: var(--main-box-shadow);
+    width: 11em;
+    padding: 0.4em;
+    text-align: center;
+    color: white;
+    border-radius: 1em;
+    font-size: 0.9em;
+    position: fixed;
+    top: 7em;
+    right: 1.5em;
+
+    #count {
+        display: inline-block;
+        width: 1.1em;
+    }
+
+    i {
+        margin-right: 0.5em;
+    }
+}

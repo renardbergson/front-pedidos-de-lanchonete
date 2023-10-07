@@ -732,12 +732,33 @@ body main.almostHidden {
   cursor: pointer;
 }
 
+#listOrdersAdm #refreshCountdown {
+  background-color: var(--primary-background-color);
+  box-shadow: var(--main-box-shadow);
+  width: 11em;
+  padding: 0.4em;
+  text-align: center;
+  color: white;
+  border-radius: 1em;
+  font-size: 0.9em;
+  position: fixed;
+  top: 7em;
+  right: 1.5em;
+}
+#listOrdersAdm #refreshCountdown #count {
+  display: inline-block;
+  width: 1.1em;
+}
+#listOrdersAdm #refreshCountdown i {
+  margin-right: 0.5em;
+}
 #listOrdersAdm #orders-list-admin {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
   padding: 3em;
+  padding: 6em;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders.visible > .order {
   height: 5em;
@@ -877,6 +898,9 @@ body main.almostHidden {
 #listOrdersAdm #orderStatusUpdateSuccessSplash.visible {
   opacity: 1;
   z-index: 1;
+}
+#listOrdersAdm #orderStatusUpdateSuccessSplash p {
+  width: 19em;
 }
 #listOrdersAdm #orderStatusUpdateSuccessSplash #gotItBtn {
   width: 100%;
@@ -1100,12 +1124,33 @@ body main.almostHidden {
   border-radius: 10px;
 }
 
+#myOrders #refreshCountdown {
+  background-color: var(--primary-background-color);
+  box-shadow: var(--main-box-shadow);
+  width: 11em;
+  padding: 0.4em;
+  text-align: center;
+  color: white;
+  border-radius: 1em;
+  font-size: 0.9em;
+  position: fixed;
+  top: 7em;
+  right: 1.5em;
+}
+#myOrders #refreshCountdown #count {
+  display: inline-block;
+  width: 1.1em;
+}
+#myOrders #refreshCountdown i {
+  margin-right: 0.5em;
+}
 #myOrders #my-orders-list {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
   padding: 3em;
+  padding: 6em;
 }
 #myOrders #my-orders-list .order {
   background-color: var(--primary-background-color);

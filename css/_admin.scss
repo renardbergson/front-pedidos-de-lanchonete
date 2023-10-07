@@ -178,8 +178,13 @@
 }
 
 #listOrdersAdm {
+    #refreshCountdown {
+        @include refresh-countdown-style;
+    }
+
     #orders-list-admin {
         @include list-style;
+        padding: 6em;
 
         .customerAndOrders {
             &.visible > .order {
@@ -261,6 +266,10 @@
 
     #orderStatusUpdateSuccessSplash {
         @include splash-style;
+
+        p {
+            width: 19em;
+        }
 
         #gotItBtn {
             @include main-btn-style;
