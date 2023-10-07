@@ -12,8 +12,8 @@
     <header id="header">
         <span id="logo">Bom Sabor</span>
 
-        <div id="headerMessage">
-            Bem-vindo, administrador!
+        <div id="headerMessage" class="hidden">
+            Bem-vindo, <span id="headerUserName"></span>!
             <i class="fa-solid fa-user-gear"></i>
         </div>
 
@@ -45,211 +45,14 @@
     </header>
     
     <main id="main">
-        <section id="orders-list-admin">
-            <div class="customerAndOrders">
-                <div class="customer">
-                    <button class="expandCustomerBtn">
-                        <i class="fa-solid fa-circle-plus"></i>
-                    </button>
-                    <div class="customerTablePart">
-                        <h4>Cliente</h4>
-                        <p class="customerName">Nome do Cliente</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>E-mail</h4>
-                        <p class="customerMail">exemplo@exemplo.com</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>Telefone</h4>
-                        <p class="customerPhone">(00) 0 0000-0000</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>Quantidade</h4>
-                        <span class="totalOrders">X pedidos</span>
-                    </div>
-                    <div class="customerTablePart">
-                        <div class="orderLegend">
-                            <div>
-                                <span class="material-symbols-outlined">pending</span>
-                                <span class="orderCount" id="pendindOrders">0</span>
-                            </div>
-                            
-                            <div>
-                                <span class="material-symbols-outlined">hourglass_top</span>
-                                <span class="orderCount" id="preparingOrders">0</span>
-                            </div>
-    
-                            <div>
-                                <span class="material-symbols-outlined">two_wheeler</span>
-                                <span class="orderCount" id="deliveringOrders">0</span>
-                            </div>
-    
-                            <div>
-                                <span class="material-symbols-outlined">person_check</span>
-                                <span class="orderCount" id="deliveredingOrders">0</span>
-                            </div>
-                            
-                            <div>
-                                <span class="material-symbols-outlined">cancel</span>
-                                <span class="orderCount" id="canceledOrders">0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="order">                
-                    <div class="orderTablePart">
-                        <h4>Cliente</h4>
-                        <p class="customerName">Nome do Cliente</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>E-mail</h4>
-                        <p class="customerMail">exemplo@exemplo.com</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Telefone</h4>
-                        <p class="customerPhone">(00) 0 0000-0000</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Quantidade</h4>
-                        <span class="totalOrders">X pedidos</span>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Status do pedido</h4>
-                        <select name="orderStatus" class="orderStatus">
-                            <option value="Pendente">Pendente</option>
-                            <option value="Em Preparo">Em Preparo</option>
-                            <option value="Saiu para entrega">Saiu para entrega</option>
-                            <option value="Entregue">Entregue</option>
-                            <option value="Cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="order">                
-                    <div class="orderTablePart">
-                        <h4>Cliente</h4>
-                        <p class="customerName">Nome do Cliente</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>E-mail</h4>
-                        <p class="customerMail">exemplo@exemplo.com</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Telefone</h4>
-                        <p class="customerPhone">(00) 0 0000-0000</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Quantidade</h4>
-                        <span class="totalOrders">X pedidos</span>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Status do pedido</h4>
-                        <select name="orderStatus" class="orderStatus">
-                            <option value="Pendente">Pendente</option>
-                            <option value="Em Preparo">Em Preparo</option>
-                            <option value="Saiu para entrega">Saiu para entrega</option>
-                            <option value="Entregue">Entregue</option>
-                            <option value="Cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="customerAndOrders">
-                <div class="customer">
-                    <button class="expandCustomerBtn">
-                        <i class="fa-solid fa-circle-plus"></i>
-                    </button>
-                    <div class="customerTablePart">
-                        <h4>Cliente</h4>
-                        <p class="customerName">Nome do Cliente</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>E-mail</h4>
-                        <p class="customerMail">exemplo@exemplo.com</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>Telefone</h4>
-                        <p class="customerPhone">(00) 0 0000-0000</p>
-                    </div>
-                    <div class="customerTablePart">
-                        <h4>Quantidade</h4>
-                        <span class="totalOrders">X pedidos</span>
-                    </div>
-                    <div class="customerTablePart">
-                        <div class="orderLegend">
-                            <div>
-                                <span class="material-symbols-outlined">pending</span>
-                                <span class="orderCount" id="pendindOrders">0</span>
-                            </div>
-                            
-                            <div>
-                                <span class="material-symbols-outlined">hourglass_top</span>
-                                <span class="orderCount" id="preparingOrders">0</span>
-                            </div>
-    
-                            <div>
-                                <span class="material-symbols-outlined">two_wheeler</span>
-                                <span class="orderCount" id="deliveringOrders">0</span>
-                            </div>
-    
-                            <div>
-                                <span class="material-symbols-outlined">person_check</span>
-                                <span class="orderCount" id="deliveredingOrders">0</span>
-                            </div>
-                            
-                            <div>
-                                <span class="material-symbols-outlined">cancel</span>
-                                <span class="orderCount" id="canceledOrders">0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="order">                
-                    <div class="orderTablePart">
-                        <h4>Cliente</h4>
-                        <p class="customerName">Nome do Cliente</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>E-mail</h4>
-                        <p class="customerMail">exemplo@exemplo.com</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Telefone</h4>
-                        <p class="customerPhone">(00) 0 0000-0000</p>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Quantidade</h4>
-                        <span class="totalOrders">X pedidos</span>
-                    </div>
-    
-                    <div class="orderTablePart">
-                        <h4>Status do pedido</h4>
-                        <select name="orderStatus" class="orderStatus">
-                            <option value="Pendente">Pendente</option>
-                            <option value="Em Preparo">Em Preparo</option>
-                            <option value="Saiu para entrega">Saiu para entrega</option>
-                            <option value="Entregue">Entregue</option>
-                            <option value="Cancelado">Cancelado</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section id="orders-list-admin"></section>
     </main>
+
+    <div id="orderStatusUpdateSuccessSplash">
+        <h3>Pronto! ✅</h3>
+        <p>O status do pedido foi atualizado.</p>
+        <button id="gotItBtn">Voltar</button>
+    </div>
 
     <footer id="footer">
         <p>

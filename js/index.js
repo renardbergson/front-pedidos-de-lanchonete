@@ -54,6 +54,12 @@ if ($listCustomersAdmin) {
     isLogged(redirect.bind(listCustomersADM))
 }
 
+// List Orders ADM
+const $listOrdersAdmin = document.querySelector('#listOrdersAdm')
+if ($listOrdersAdmin) {
+    isLogged(redirect.bind(listOrdersADM))  
+}
+
 // ============================== MAIN FUNCTIONS ==============================
 async function fetchAPI (method, url, item, callback) {
     if (method === 'GET') {
@@ -92,6 +98,22 @@ async function fetchAPI (method, url, item, callback) {
         callback ? callback(data) : null
     }
 }
+
+function splashControl (splash, actionButton, callback) {
+    const $main = document.querySelector('#main')
+
+    $main.classList.add('almostHidden')
+    splash.classList.add('visible')
+
+    actionButton.onclick = () => {
+        splash.classList.remove('visible')
+        $main.classList.remove('almostHidden')
+
+        if (callback) {
+            callback()
+        }
+    }
+}  
 
 function loginControl () {
     const $loginForm = document.querySelector('#loginForm')
@@ -264,7 +286,7 @@ function buildProductsHTML () {
                         <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
                     </div>
 
-                    <button class="getItemBtn" data-id=${product._id}>Peça Já!</button>
+                    <button class="getItemBtn" data-id=${product._id} data-name=${JSON.stringify(product.name)}>Peça Já!</button>
                 </div>
             `
             $products.innerHTML = productsHTML
@@ -295,8 +317,8 @@ function newOrder (btns) {
     btns.forEach(button => {
         button.onclick = function () {
             const {userID} = JSON.parse(sessionStorage.getItem('user'))
-            const orderID = this.dataset.id
-            const order = {userID, orderID}
+            const {id, name} = this.dataset
+            const order = {userID, id, name}
 
             fetchAPI('POST', `${customersURL}/newOrder`, order, data => {
                 if (data.message === 'success') {
@@ -593,6 +615,143 @@ function listCustomersADM () {
     })
 }
 
+function listOrdersADM () {
+    const $ordersListAdmin = document.querySelector('#orders-list-admin')
+
+    fetchAPI('GET', customersURL, null, data => {
+        data.forEach(customer => {
+            let legendHTML = ''
+            let ordersHTML = ''
+
+            // Building Legend
+            legendHTML = ` 
+                <div class="orderLegend">
+                    <div>
+                        <span class="material-symbols-outlined">pending</span>
+                        <span class="orderCount" id="pendindOrders">${orderStatusCounterADM(customer, 'Pendente')}</span>
+                    </div>
+                    
+                    <div>
+                        <span class="material-symbols-outlined">hourglass_top</span>
+                        <span class="orderCount" id="preparingOrders">${orderStatusCounterADM(customer, 'Em Preparo')}</span>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">two_wheeler</span>
+                        <span class="orderCount" id="deliveringOrders">${orderStatusCounterADM(customer, 'Saiu Para Entrega')}</span>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">person_check</span>
+                        <span class="orderCount" id="deliveredOrders">${orderStatusCounterADM(customer, 'Entregue')}</span>
+                    </div>
+                    
+                    <div>
+                        <span class="material-symbols-outlined">cancel</span>
+                        <span class="orderCount" id="canceledOrders">${orderStatusCounterADM(customer, 'Cancelado')}</span>
+                    </div>
+                </div>
+            `
+            
+            // Building Orders
+            customer.orders.forEach(order => {
+                ordersHTML += `
+                    <div class="order">                
+                        <div class="orderTablePart">
+                            <h4>ID</h4>
+                            <p class="orderID">${order.id}</p>
+                        </div>
+                
+                        <div class="orderTablePart">
+                            <h4>Pedido</h4>
+                            <p class="orderName">${order.name}</p>
+                        </div>
+                
+                        <div class="orderTablePart">
+                            <h4>Data</h4>
+                            <p class="orderDate">${order.orderDate}</p>
+                        </div>
+                
+                        <div class="orderTablePart">
+                            <h4>Hora</h4>
+                            <span class="orderTime">${order.orderTime}</span>
+                        </div>
+
+                        <div class="orderTablePart">
+                            <h4>Status do pedido</h4>
+                            <select name="orderStatus" class="orderStatus" data-user=${customer._id} data-order=${order.id} data-date=${order.orderDate} data-time=${order.orderTime}>
+                                <option ${order.status === 'Pendente' ? 'selected' : ''} value="Pendente">Pendente</option>
+                                <option ${order.status === 'Em Preparo' ? 'selected' : ''} value="Em Preparo">Em Preparo</option>
+                                <option ${order.status === 'Saiu Para Entrega' ? 'selected' : ''} value="Saiu Para Entrega">Saiu Para Entrega</option>
+                                <option ${order.status === 'Entregue' ? 'selected' : ''} value="Entregue">Entregue</option>
+                                <option ${order.status === 'Cancelado' ? 'selected' : ''} value="Cancelado">Cancelado</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            })
+
+            // Building CUSTOMER (Customer, Legend and Orders)
+            if (customer.orders.length != 0) {
+                $ordersListAdmin.innerHTML += `
+                    <div class="customerAndOrders">
+                        <div class="customer">
+                            <button class="expandCustomerBtn">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </button>
+                            <div class="customerTablePart">
+                                <h4>Cliente</h4>
+                                <p class="customerName">${customer.name}</p>
+                            </div>
+                            <div class="customerTablePart">
+                                <h4>E-mail</h4>
+                                <p class="customerMail">${customer.email}</p>
+                            </div>
+                            <div class="customerTablePart">
+                                <h4>Telefone</h4>
+                                <p class="customerPhone">${customer.phone}</p>
+                            </div>
+                            <div class="customerTablePart">
+                                <h4>Quantidade</h4>
+                                <span class="totalOrders">${customer.orders.length} pedidos</span>
+                            </div>
+                            
+                            <div class="customerTablePart">
+                                ${legendHTML}
+                            </div>
+                        </div>
+                        
+                        ${ordersHTML}
+                    </div>
+                `
+                changeOrderStatusADM()
+                expandOrdersADM()
+            }
+        })
+    })    
+}
+
+function changeOrderStatusADM () {
+    const $orderStatus = document.querySelectorAll('.orderStatus')
+
+
+    
+    $orderStatus.forEach(status => status.onchange = function () {
+        const {user, order, date, time} = this.dataset
+
+        const item = {user, order, date, time, status: this.value}
+
+        fetchAPI('PUT', `${customersURL}/updateOrder`, item, data => {
+            if (data.message === 'success') {
+                const $orderStatusUpdateSuccessSplash = document.querySelector('#orderStatusUpdateSuccessSplash')
+                const $gotItBtn = document.querySelector('#gotItBtn')
+
+                splashControl($orderStatusUpdateSuccessSplash, $gotItBtn)
+            }
+        })
+    })
+}
+
 function deleteCustomerADM (btns) {
     btns.forEach(btn => {
         btn.onclick = function () {
@@ -634,37 +793,29 @@ function deleteCustomerADM (btns) {
             }
         }
     })
+} 
+
+function orderStatusCounterADM (item, status) {
+    // item = a customer
+    return item.orders.filter(order => order.status === status).length
 }
 
-function splashControl (splash, actionButton, callback) {
-    const $main = document.querySelector('#main')
+function expandOrdersADM () {
+    const $expandCustomerBtn = document.querySelectorAll('.expandCustomerBtn')
 
-    $main.classList.add('almostHidden')
-    splash.classList.add('visible')
+    $expandCustomerBtn.forEach(item => {
+        item.onclick = function () {
+            const customer = this.parentElement.parentElement
+            let isExpanded = customer.classList.contains('visible')
 
-    actionButton.onclick = () => {
-        splash.classList.remove('visible')
-        $main.classList.remove('almostHidden')
+            if (isExpanded == false) {
+                customer.classList.add('visible')
+                this.innerHTML = '<i class="fa-solid fa-minus"></i>'
+                return
+            }
 
-        if (callback) {
-            callback()
+            customer.classList.remove('visible')
+            this.innerHTML = '<i class="fa-solid fa-circle-plus"></i>'
         }
-    }
-}   
-
-const $expandCustomerBtn = document.querySelectorAll('.expandCustomerBtn')
-$expandCustomerBtn.forEach(item => {
-    item.onclick = function () {
-        const customer = this.parentElement.parentElement
-        let isExpanded = customer.classList.contains('visible')
-
-        if (isExpanded == false) {
-            customer.classList.add('visible')
-            this.innerHTML = '<i class="fa-solid fa-minus"></i>'
-            return
-        }
-
-        customer.classList.remove('visible')
-        this.innerHTML = '<i class="fa-solid fa-circle-plus"></i>'
-    }
-})
+    })
+}

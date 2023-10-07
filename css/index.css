@@ -850,6 +850,46 @@ body main.almostHidden {
   margin-top: 0.5em;
   width: 8em;
 }
+#listOrdersAdm #orderStatusUpdateSuccessSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listOrdersAdm #orderStatusUpdateSuccessSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listOrdersAdm #orderStatusUpdateSuccessSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 @keyframes blink {
   50% {

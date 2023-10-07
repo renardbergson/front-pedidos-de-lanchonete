@@ -258,4 +258,12 @@
             }
         }
     }
+
+    #orderStatusUpdateSuccessSplash {
+        @include splash-style;
+
+        #gotItBtn {
+            @include main-btn-style;
+        }
+    }
 }
