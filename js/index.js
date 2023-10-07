@@ -728,7 +728,13 @@ function listOrdersADM () {
                 expandOrdersADM()
             }
         })
-    })    
+        
+        // No Order Yet 🙁
+        if ($ordersListAdmin.childElementCount === 0) {
+            const $noOrders = document.querySelector('#noOrders')
+            $noOrders.classList.add('visible')
+        }
+    })  
 }
 
 function changeOrderStatusADM () {

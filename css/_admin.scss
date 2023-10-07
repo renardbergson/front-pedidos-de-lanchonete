@@ -266,4 +266,22 @@
             @include main-btn-style;
         }
     }
+
+    #noOrders {
+        @include splash-style;
+        flex-direction: row;
+        width: 30em;
+        height: 6em;
+        border-radius: 10em;
+        letter-spacing: 1px;
+        font-size: 0.8em;
+
+        p {
+            width: 20em;
+        }
+
+        i {
+            font-size: 1.5em;
+        }
+    }
 }
