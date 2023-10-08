@@ -871,6 +871,16 @@ body main.almostHidden {
   margin-top: 0.5em;
   width: 8em;
 }
+#listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
+  background: none;
+  border: none;
+  margin-right: 0.5em;
+}
+#listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+  cursor: pointer;
+  color: white;
+  font-size: 1.5em;
+}
 #listOrdersAdm #orderStatusUpdateSuccessSplash {
   width: 25em;
   height: 15em;
@@ -903,6 +913,92 @@ body main.almostHidden {
   width: 19em;
 }
 #listOrdersAdm #orderStatusUpdateSuccessSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#listOrdersAdm #delOrderConfirmSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listOrdersAdm #delOrderConfirmSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listOrdersAdm #delOrderConfirmSplash .mainBtns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#listOrdersAdm #delOrderConfirmSplash .mainBtns #proceedBtn, #listOrdersAdm #delOrderConfirmSplash .mainBtns #cancelBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 10em;
+}
+#listOrdersAdm #delOrderSuccesSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#listOrdersAdm #delOrderSuccesSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#listOrdersAdm #delOrderSuccesSplash #goBackBtn {
   width: 100%;
   padding: 0.8em;
   border: none;

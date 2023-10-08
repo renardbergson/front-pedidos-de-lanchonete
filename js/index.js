@@ -637,6 +637,49 @@ function listCustomersADM () {
     })
 }
 
+function deleteCustomerADM (btns) {
+    btns.forEach(btn => {
+        btn.onclick = function () {
+            const previousCustomers = [
+                '64f780b10bcbf9e4c7ba4b0c',
+                '64f78b0b0bcbf9e4c7ba4b0d',
+                '64f78ced0bcbf9e4c7ba4b0e',
+                '64f78e300bcbf9e4c7ba4b10'
+            ]
+
+            if (previousCustomers.includes(this.dataset.id)) {
+                const $delCustomerErrorSplash = document.querySelector('#delCustomerErrorSplash')
+                const $gotItBtn = document.querySelector('#gotItBtn')
+
+                splashControl($delCustomerErrorSplash, $gotItBtn)
+                return
+            } 
+
+            const $delCustomerConfirmSplash = document.querySelector('#delCustomerConfirmSplash')
+            const $proceedBtn = document.querySelector('#proceedBtn')
+            const $cancelBtn = document.querySelector('#cancelBtn')
+            
+            // Cancel
+            splashControl($delCustomerConfirmSplash, $cancelBtn)
+            
+            // Proceed
+            $proceedBtn.onclick = () => {
+                fetchAPI('DELETE', customersURL, this.dataset.id, data => {
+                    if (data.message === 'customer succesfully removed') {
+                        const $delCustomerSuccesSplash = document.querySelector('#delCustomerSuccesSplash')
+                        const $goBackBtn = document.querySelector('#goBackBtn')
+
+                        $delCustomerConfirmSplash.classList.remove('visible')
+                        splashControl($delCustomerSuccesSplash, $goBackBtn, () => {
+                            setTimeout(() => location.reload(), 500)
+                        })
+                    }
+                })
+            }
+        }
+    })
+} 
+
 function listOrdersADM () {
     refreshCountdown()
 
@@ -711,6 +754,10 @@ function listOrdersADM () {
                                 <option ${order.status === 'Cancelado' ? 'selected' : ''} value="Cancelado">Cancelado</option>
                             </select>
                         </div>
+
+                        <button class="deleteOrderBtn" data-user=${customer._id} data-order=${order.id} data-date=${order.orderDate} data-time=${order.orderTime}>
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
                     </div>
                 `
             })
@@ -750,6 +797,7 @@ function listOrdersADM () {
                 `
                 changeOrderStatusADM()
                 expandOrdersADM()
+                deleteOrderADM()
             }
         })
         
@@ -759,6 +807,11 @@ function listOrdersADM () {
             $noOrders.classList.add('visible')
         }
     })  
+}
+
+function orderStatusCounterADM (item, status) {
+    // item = a customer
+    return item.orders.filter(order => order.status === status).length
 }
 
 function changeOrderStatusADM () {
@@ -780,52 +833,35 @@ function changeOrderStatusADM () {
     })
 }
 
-function deleteCustomerADM (btns) {
-    btns.forEach(btn => {
-        btn.onclick = function () {
-            const previousCustomers = [
-                '64f780b10bcbf9e4c7ba4b0c',
-                '64f78b0b0bcbf9e4c7ba4b0d',
-                '64f78ced0bcbf9e4c7ba4b0e',
-                '64f78e300bcbf9e4c7ba4b10'
-            ]
+function deleteOrderADM () {
+    const $deleteOrderBtns = document.querySelectorAll('.deleteOrderBtn')
+    
+    $deleteOrderBtns.forEach(button => {
+        button.onclick = function () {
+            const {user, order, date, time} = this.dataset
+            const item = {user, order, date, time}
 
-            if (previousCustomers.includes(this.dataset.id)) {
-                const $delCustomerErrorSplash = document.querySelector('#delCustomerErrorSplash')
-                const $gotItBtn = document.querySelector('#gotItBtn')
-
-                splashControl($delCustomerErrorSplash, $gotItBtn)
-                return
-            } 
-
-            const $delCustomerConfirmSplash = document.querySelector('#delCustomerConfirmSplash')
-            const $proceedBtn = document.querySelector('#proceedBtn')
+            const $delOrderConfirmSplash = document.querySelector('#delOrderConfirmSplash')
             const $cancelBtn = document.querySelector('#cancelBtn')
-            
-            // Cancel
-            splashControl($delCustomerConfirmSplash, $cancelBtn)
-            
-            // Proceed
+            const $proceedBtn = document.querySelector('#proceedBtn')
+
+            splashControl($delOrderConfirmSplash, $cancelBtn)
+
             $proceedBtn.onclick = () => {
-                fetchAPI('DELETE', customersURL, this.dataset.id, data => {
-                    if (data.message === 'customer succesfully removed') {
-                        const $delCustomerSuccesSplash = document.querySelector('#delCustomerSuccesSplash')
+                fetchAPI('POST', `${customersURL}/deleteOrder`, item, data => {
+                    if (data.message === 'success') {
+                        $delOrderConfirmSplash.classList.remove('visible')
+                        const $delOrderSuccesSplash = document.querySelector('#delOrderSuccesSplash')
                         const $goBackBtn = document.querySelector('#goBackBtn')
 
-                        $delCustomerConfirmSplash.classList.remove('visible')
-                        splashControl($delCustomerSuccesSplash, $goBackBtn, () => {
-                            setTimeout(() => location.reload(), 500)
+                        splashControl($delOrderSuccesSplash, $goBackBtn, () => {
+                            setTimeout(() => location.reload(), 600)
                         })
                     }
                 })
             }
         }
     })
-} 
-
-function orderStatusCounterADM (item, status) {
-    // item = a customer
-    return item.orders.filter(order => order.status === status).length
 }
 
 function expandOrdersADM () {
