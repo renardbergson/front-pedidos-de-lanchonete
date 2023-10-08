@@ -28,36 +28,48 @@ if ($signUp) {
 const $loggedUser = document.querySelector('#loggedUser')
 if ($loggedUser) {
     isLogged(redirect.bind(buildProductsHTML.bind('logged')))
+
+    verifyLoggedUser("=== 'Administrador'") // If it'is equal, go to Login
 }
 
 // My Orders
 const $myOrders = document.querySelector('#myOrders')
 if ($myOrders) {
     isLogged(redirect.bind(buildMyOrders))
+    
+    verifyLoggedUser("=== 'Administrador'") // If it'is equal, go to Login
 } 
 
 // List Products ADM
 const $listProductsAdmin = document.querySelector('#listProductsAdmin')
 if ($listProductsAdmin) {
     isLogged(redirect.bind(buildProductsADM))
+
+    verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
 }
 
 // Add New Product ADM
 const $addNewProductAdmin = document.querySelector('#addNewProductAdmin')
 if ($addNewProductAdmin) {
     isLogged(redirect.bind(addNewProductADM))
+
+    verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
 }
 
 // List Customers ADM
 const $listCustomersAdmin = document.querySelector('#listCustomersAdmin')
 if ($listCustomersAdmin) {
     isLogged(redirect.bind(listCustomersADM))
+
+    verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
 }
 
 // List Orders ADM
 const $listOrdersAdmin = document.querySelector('#listOrdersAdm')
 if ($listOrdersAdmin) {
-    isLogged(redirect.bind(listOrdersADM))  
+    isLogged(redirect.bind(listOrdersADM))
+
+    verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
 }
 
 // ============================== MAIN FUNCTIONS ==============================
@@ -228,6 +240,14 @@ function redirect (response, user) {
         welcomeUser(user)
         this()
     }
+}
+
+function verifyLoggedUser (condition) {
+    const {userFirstName} = JSON.parse(sessionStorage.getItem('user')) // it's beeing called above
+    
+    const verification = `userFirstName ${condition} ? window.location.href = 'login.html' : ''`
+
+    return eval(verification)
 }
 
 function searchAndSetUser(customer) {
