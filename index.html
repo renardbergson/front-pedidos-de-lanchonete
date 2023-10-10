@@ -23,10 +23,36 @@
     <main id="main">
         <section id="products"></section>
 
-        <div id="loadingSplash">
-            <h3>Ops! correu algum erro de comunicação com o servidor!</h3>
-            <p>Não foi possível carregar a base de dados e listar os produtos.</p>
-            <button id="retryBtn">Tente novamente!</button>
+        <div id="loadingSplashContainer">
+            <div class="slides">
+                <!-- Radio buttons -->
+                <input checked type="radio" name="slide" id="slide1">
+                <input type="radio" name="slide" id="slide2">
+
+                <!-- Slides -->
+                <div class="slide s1" style="background-color: darkred;">
+                    <h4>Seja bem-vindo!</h4>
+                    <h5>Carregando...</h5>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora harum eius rem, cupiditate reprehenderit, itaque assumenda animi suscipit reiciendis similique asperiores accusantium dolorum nulla sit tenetur iste eveniet voluptates. Fugit.</p>
+                </div>
+                
+                <div class="slide" style="background-color: black;">
+                    <h4>Seja bem-vindo!</h4>
+                    <h5>Carregando...</h5>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora harum eius rem, cupiditate reprehenderit, itaque assumenda animi suscipit reiciendis similique asperiores accusantium dolorum nulla sit tenetur iste eveniet voluptates. Fugit.</p>
+                </div>
+
+                <!-- Navigation Labels -->
+                <div class="navigation">
+                    <label for="slide1">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </label>
+
+                    <label for="slide2">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </label>
+                </div>
+            </div>
         </div>
     </main>
     

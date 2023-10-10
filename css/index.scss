@@ -152,16 +152,61 @@
     }
 }
 
-#loadingSplash {
-    @include splash-style;
-    opacity: 1;
-    z-index: -1;
-    display: none;
+#loadingSplashContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    width: 35em;
+    height: 20em;
+    overflow: hidden;
+    border-radius: 1em;
+    box-shadow: var(--main-box-shadow);
 
-    #retryBtn {
-        @include main-btn-style;
+    .slides {
+        display: flex;
+        width: 70em;
+        height: 100%;
+
+        input {
+            display: none;
+        }
+
+        #slide1:checked ~ .s1 {
+            margin-left: 0;
+        }
+
+        #slide2:checked ~ .s1 {
+            margin-left: -35em;
+        }
+
+        .slide {
+            width: 35em;
+            color: white;
+            transition: 500ms;
+            background-color: var(--primary-background-color);
+            text-align: center;
+            padding: 1em;
+        }
+        
+        .navigation {
+            position: absolute;
+            top: 45%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+    
+            label {
+                i {
+                    cursor: pointer;
+                    color: white;
+                    font-size: 2em;
+                }
+            }
+        }
     }
-} // INSERIR !!!
+}
 
 #unloggedSplash {
     @include splash-style;
