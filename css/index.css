@@ -50,6 +50,17 @@ body main.almostHidden {
   cursor: default;
   margin-top: 1em;
 }
+#loginForm #moreInfoBtn {
+  position: absolute;
+  top: 13.6em;
+  left: 4em;
+  background: none;
+  color: white;
+  border: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  z-index: 1;
+}
 #loginForm #adminField {
   display: none;
 }
@@ -114,6 +125,55 @@ body main.almostHidden {
   color: white;
   font-size: 0.8em;
   font-weight: bold;
+}
+
+#moreInfoSplash {
+  width: 25em;
+  height: 15em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+  width: 20em;
+  height: 8em;
+}
+#moreInfoSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#moreInfoSplash p {
+  font-size: 0.8em;
+}
+#moreInfoSplash #okBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.9em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  height: 2.7em;
+  width: 25%;
+  font-size: 0.7em;
 }
 
 #emptyFieldSplash {
@@ -1638,6 +1698,12 @@ body main.almostHidden {
   overflow: hidden;
   border-radius: 1em;
   box-shadow: var(--main-box-shadow);
+  opacity: 1;
+  z-index: 1;
+}
+#loadingSplashContainer.hidden {
+  opacity: 0;
+  z-index: -1;
 }
 #loadingSplashContainer .slides {
   display: flex;
@@ -1660,6 +1726,30 @@ body main.almostHidden {
   background-color: var(--primary-background-color);
   text-align: center;
   padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#loadingSplashContainer .slides .slide p {
+  font-size: 0.8em;
+  width: 28em;
+  margin: 0 auto;
+}
+#loadingSplashContainer .slides .slide p:last-of-type {
+  width: 30em;
+}
+#loadingSplashContainer .slides .slide #loadingGif {
+  width: 6em;
+  margin: 0 auto;
+  margin-top: -1em;
+}
+#loadingSplashContainer .slides .slide ul {
+  margin: 0 auto;
+  font-size: 0.8em;
+  max-width: 80%;
+}
+#loadingSplashContainer .slides .slide ul li:last-of-type {
+  margin-top: 1em;
 }
 #loadingSplashContainer .slides .navigation {
   position: absolute;
@@ -1672,6 +1762,9 @@ body main.almostHidden {
   cursor: pointer;
   color: white;
   font-size: 2em;
+}
+#loadingSplashContainer .slides .navigation label i.hidden {
+  visibility: hidden;
 }
 
 #unloggedSplash {

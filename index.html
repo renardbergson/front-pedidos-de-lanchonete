@@ -22,39 +22,53 @@
     
     <main id="main">
         <section id="products"></section>
+    </main>
 
-        <div id="loadingSplashContainer">
-            <div class="slides">
-                <!-- Radio buttons -->
-                <input checked type="radio" name="slide" id="slide1">
-                <input type="radio" name="slide" id="slide2">
+    <div id="loadingSplashContainer">
+        <div class="slides">
+            <!-- Radio buttons -->
+            <input checked type="radio" name="slide" id="slide1">
+            <input type="radio" name="slide" id="slide2">
 
-                <!-- Slides -->
-                <div class="slide s1" style="background-color: darkred;">
-                    <h4>Seja bem-vindo!</h4>
-                    <h5>Carregando...</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora harum eius rem, cupiditate reprehenderit, itaque assumenda animi suscipit reiciendis similique asperiores accusantium dolorum nulla sit tenetur iste eveniet voluptates. Fugit.</p>
-                </div>
-                
-                <div class="slide" style="background-color: black;">
-                    <h4>Seja bem-vindo!</h4>
-                    <h5>Carregando...</h5>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora harum eius rem, cupiditate reprehenderit, itaque assumenda animi suscipit reiciendis similique asperiores accusantium dolorum nulla sit tenetur iste eveniet voluptates. Fugit.</p>
-                </div>
+            <!-- Slides -->
+            <div class="slide s1">
+                <h3>Seja bem-vindo!</h3>
+                <h5>Por favor, aguarde...</h5>
+                <p>
+                    O servidor está hospedado em uma plataforma gratuita, por isso, a primeira requisição pode demorar alguns segundos.
+                </p>
+                <p>
+                    Se tudo correr bem, esta janela desaparecerá automaticamente.
+                </p>
+                <img src="./img/loadingGif.gif" alt="a loading gif" id="loadingGif">
+            </div>
+            
+            <div class="slide">
+                <h4>Experimente todas as possibilidades!</h4>
+                <h5>Nesta aplicação você pode:</h5>
+                <ul>
+                    <li>
+                        <b>Criar um usuário</b> e depois logar com seu usuário e senha.
+                        Um usuário pode ver o catálogo, fazer pedidos e acompanhar seus status.
+                    </li>
+                    <li>
+                        <b>Logar como Administrador</b>, inserindo "admin" nos campos de usuário e senha. O Administrador pode ver os usuários cadastrados e removê-los da base de dados, além de ver todos os pedidos, alterar seus status e excluí-los.
+                    </li>
+                </ul>
+            </div>
 
-                <!-- Navigation Labels -->
-                <div class="navigation">
-                    <label for="slide1">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </label>
+            <!-- Navigation Labels -->
+            <div class="navigation">
+                <label for="slide1">
+                    <i class="fa-solid fa-chevron-left fa-beat-fade hidden" id="arrow-left"></i>
+                </label>
 
-                    <label for="slide2">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </label>
-                </div>
+                <label for="slide2" id="label2">
+                    <i class="fa-solid fa-chevron-right fa-beat-fade" id="arrow-right"></i>
+                </label>
             </div>
         </div>
-    </main>
+    </div>
     
     <div id="unloggedSplash">
         <h3>Quase lá! 😛</h3>

@@ -111,6 +111,28 @@ async function fetchAPI (method, url, item, callback) {
     }
 }
 
+function initialLoadingSplashControl (command) {
+    const $loadingSplashContainer = document.querySelector('#loadingSplashContainer')
+    const $arrowLeft = document.querySelector('#arrow-left')
+    const $arrowRight = document.querySelector('#arrow-right')
+
+    if ($loadingSplashContainer) {
+        $arrowRight.onclick = () => {
+            $arrowRight.classList.add('hidden')
+            $arrowLeft.classList.remove('hidden')
+        }
+        
+        $arrowLeft.onclick = () => {
+            $arrowLeft.classList.add('hidden')
+            $arrowRight.classList.remove('hidden')
+        }
+    
+        if (command) {
+            $loadingSplashContainer.classList.add('hidden')
+        }
+    }
+}
+
 function splashControl (splash, actionButton, callback) {
     const $main = document.querySelector('#main')
 
@@ -131,6 +153,12 @@ function loginControl () {
     const $loginForm = document.querySelector('#loginForm')
     const $togglePassBtn = document.querySelector('#togglePassBtn')
     let state = false
+
+    // More Info Control
+    const $moreInfoBtn = document.querySelector('#moreInfoBtn')
+    const $moreInfoSplash = document.querySelector('#moreInfoSplash')
+    const $okBtn = document.querySelector('#okBtn')
+    $moreInfoBtn.onclick = () => splashControl($moreInfoSplash, $okBtn)
     
     // password visibility control
     $togglePassBtn.onclick = () => {
@@ -289,45 +317,53 @@ function welcomeUser (user) {
 }
 
 function buildProductsHTML () {
+    initialLoadingSplashControl()
+
     const $products = document.querySelector('#products')
     let productsHTML = ''
 
     fetchAPI('GET', productsURL, null, data => {
-        data.forEach(product => {
-            productsHTML += `
-                <div class="product">
-                    <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+        if (data) {
+            // Loading gif and Get Started Btn
+            initialLoadingSplashControl('go hide!')
 
-                    <div class="productDetails">
-                        <h4 class="productTitle">${product.name}</h4>
-
-                        <p class="productDescription">${product.description}</p>
-
-                        <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
+            // Data
+            data.forEach(product => {
+                productsHTML += `
+                    <div class="product">
+                        <img src="https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-comida-para-colorir-3.jpg" alt="foto de lanche" class="productPreview">
+    
+                        <div class="productDetails">
+                            <h4 class="productTitle">${product.name}</h4>
+    
+                            <p class="productDescription">${product.description}</p>
+    
+                            <p>Valor <span class="productPrice">${product.price.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</span> </p>
+                        </div>
+    
+                        <button class="getItemBtn" data-id=${product._id} data-name=${JSON.stringify(product.name)}>Peça Já!</button>
                     </div>
-
-                    <button class="getItemBtn" data-id=${product._id} data-name=${JSON.stringify(product.name)}>Peça Já!</button>
-                </div>
-            `
-            $products.innerHTML = productsHTML
-
-            const $getItemBtns = document.querySelectorAll('.getItemBtn')
-            const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
-
-            // UNLOGGED USER 🚫
-            $getItemBtns.forEach(btn => {
-                btn.onclick = () => {
-                    const $unloggedSplash = document.querySelector('#unloggedSplash')
-                    splashControl($unloggedSplash, $gotItBtn)
+                `
+                $products.innerHTML = productsHTML
+    
+                const $getItemBtns = document.querySelectorAll('.getItemBtn')
+                const $gotItBtn = document.querySelector('#gotItBtn') // gotIt btns
+    
+                // UNLOGGED USER 🚫
+                $getItemBtns.forEach(btn => {
+                    btn.onclick = () => {
+                        const $unloggedSplash = document.querySelector('#unloggedSplash')
+                        splashControl($unloggedSplash, $gotItBtn)
+                    }
+                    return
+                })
+    
+                // LOGGED USER ✅
+                if (this) {
+                    newOrder($getItemBtns)
                 }
-                return
             })
-
-            // LOGGED USER ✅
-            if (this) {
-                newOrder($getItemBtns)
-            }
-        })
+        }
     })
 }
 
@@ -788,7 +824,7 @@ function listOrdersADM () {
                     <div class="customerAndOrders">
                         <div class="customer">
                             <button class="expandCustomerBtn">
-                                <i class="fa-solid fa-circle-plus"></i>
+                                <i class="fa-solid fa-circle-plus fa-fade"></i>
                             </button>
                             <div class="customerTablePart">
                                 <h4>Cliente</h4>
@@ -899,7 +935,7 @@ function expandOrdersADM () {
             }
 
             customer.classList.remove('visible')
-            this.innerHTML = '<i class="fa-solid fa-circle-plus"></i>'
+            this.innerHTML = '<i class="fa-solid fa-circle-plus fa-fade"></i>'
         }
     })
 }
