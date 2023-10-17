@@ -1,27 +1,94 @@
+@import 'breakpoints.scss';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%; // HERE
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #c1c1c1;
-    height: 100vh;
     opacity: 0.8;
+    min-height: 100vh;
+    touch-action: manipulation;
+    display: flex; // HERE
+    flex-direction: column; // HERE
 
-    #header {
-        position: sticky;
-        top: 0;        
-        z-index: 1;
+    // Breakpoints
+    @include devices (ultra) {
+        font-size: 16px;
+    }
+    @include devices (laptop) {
+        font-size: 14px;
+    }
+    @include devices (tablet) {
+        font-size: 12px;
+    }
+    // =========================
+
+    header, footer {
+        flex: none; // HERE
     }
     
     main {
-        min-height: 80.2vh;
         transition: 500ms ease-in-out;
+        flex: auto; // HERE
+        display: grid;
+        place-items: center;
 
         &.almostHidden{
             opacity: 0.040;
+        }
+    }
+
+    footer {
+        color: white;
+        background-color: black;
+        text-align: center;
+        letter-spacing: 0.03em;
+        font-size: 0.7em;
+        padding: 1em 0; 
+        width: 100%;
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            margin-bottom: 0.4em;
+        }
+    
+        #socialMedia {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            margin-bottom: 0.4em;
+            width: 10.5em;
+    
+            a {
+                color: white;
+                text-decoration: none;
+    
+                &:hover {
+                    text-shadow: 0px 0px 1px white;
+                }
+            }
+        }
+    
+        #email {
+            a {
+                color: white;
+                text-decoration: none;
+    
+                &:hover {
+                    text-shadow: 0px 0px 1px white;
+                }
+            }
         }
     }
 }

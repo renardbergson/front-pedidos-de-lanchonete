@@ -4,30 +4,85 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: #c1c1c1;
-  height: 100vh;
   opacity: 0.8;
+  min-height: 100vh;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
 }
-body #header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+@media (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (max-width: 992px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 834px) {
+  body {
+    font-size: 12px;
+  }
+}
+body header, body footer {
+  flex: none;
 }
 body main {
-  min-height: 80.2vh;
   transition: 500ms ease-in-out;
+  flex: auto;
+  display: grid;
+  place-items: center;
 }
 body main.almostHidden {
   opacity: 0.04;
 }
+body footer {
+  color: white;
+  background-color: black;
+  text-align: center;
+  letter-spacing: 0.03em;
+  font-size: 0.7em;
+  padding: 1em 0;
+  width: 100%;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body footer p {
+  margin-bottom: 0.4em;
+}
+body footer #socialMedia {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-bottom: 0.4em;
+  width: 10.5em;
+}
+body footer #socialMedia a {
+  color: white;
+  text-decoration: none;
+}
+body footer #socialMedia a:hover {
+  text-shadow: 0px 0px 1px white;
+}
+body footer #email a {
+  color: white;
+  text-decoration: none;
+}
+body footer #email a:hover {
+  text-shadow: 0px 0px 1px white;
+}
 
 #loginForm {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border-radius: 10px;
   background-color: var(--primary-background-color);
   color: white;
@@ -50,29 +105,50 @@ body main.almostHidden {
   cursor: default;
   margin-top: 1em;
 }
-#loginForm #moreInfoBtn {
-  position: absolute;
-  top: 13.6em;
-  left: 4em;
-  background: none;
-  color: white;
-  border: none;
-  font-size: 0.9em;
-  cursor: pointer;
-  z-index: 1;
-}
-#loginForm #adminField {
-  display: none;
-}
-#loginForm #adminField, #loginForm #userField {
+#loginForm #userField {
   margin-bottom: 1em;
 }
-#loginForm #adminField, #loginForm #userField, #loginForm #passField {
+#loginForm #userField > label {
+  pointer-events: none;
+}
+#loginForm #userField > label::after {
+  content: "\f05a";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  margin-left: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: all;
+}
+#loginForm #passField > label {
+  pointer-events: none;
+}
+#loginForm #passField > label::after {
+  content: "\f06e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.4em;
+  color: black;
+  position: absolute;
+  top: 54%;
+  left: 90%;
+  color: #c1c1c1;
+  cursor: pointer;
+  pointer-events: all;
+  z-index: 2;
+}
+#loginForm #passField > label.changeAfterContent::after {
+  content: "\f070";
+  left: 89.6%;
+}
+#loginForm #userField, #loginForm #passField {
   text-align: start;
   font-size: 0.9em;
   position: relative;
 }
-#loginForm #adminField #adminID, #loginForm #adminField #userID, #loginForm #adminField #userPass, #loginForm #userField #adminID, #loginForm #userField #userID, #loginForm #userField #userPass, #loginForm #passField #adminID, #loginForm #passField #userID, #loginForm #passField #userPass {
+#loginForm #userField #userID, #loginForm #userField #userPass, #loginForm #passField #userID, #loginForm #passField #userPass {
   display: block;
   margin-top: 0.5em;
   outline: none;
@@ -81,26 +157,29 @@ body main.almostHidden {
   border: none;
   border-radius: 6px;
   font-family: "Poppins", sans-serif;
+  font-size: 1em;
   text-align: center;
   color: var(--primary-background-color);
   letter-spacing: 0.5px;
+  font-size: 1em;
 }
-#loginForm #adminField #adminID::-moz-placeholder, #loginForm #adminField #userID::-moz-placeholder, #loginForm #adminField #userPass::-moz-placeholder, #loginForm #userField #adminID::-moz-placeholder, #loginForm #userField #userID::-moz-placeholder, #loginForm #userField #userPass::-moz-placeholder, #loginForm #passField #adminID::-moz-placeholder, #loginForm #passField #userID::-moz-placeholder, #loginForm #passField #userPass::-moz-placeholder {
+#loginForm #userField #userID::-moz-placeholder, #loginForm #userField #userPass::-moz-placeholder, #loginForm #passField #userID::-moz-placeholder, #loginForm #passField #userPass::-moz-placeholder {
   font-size: 0.92em;
 }
-#loginForm #adminField #adminID::placeholder, #loginForm #adminField #userID::placeholder, #loginForm #adminField #userPass::placeholder, #loginForm #userField #adminID::placeholder, #loginForm #userField #userID::placeholder, #loginForm #userField #userPass::placeholder, #loginForm #passField #adminID::placeholder, #loginForm #passField #userID::placeholder, #loginForm #passField #userPass::placeholder {
+#loginForm #userField #userID::placeholder, #loginForm #userField #userPass::placeholder, #loginForm #passField #userID::placeholder, #loginForm #passField #userPass::placeholder {
   font-size: 0.92em;
 }
-#loginForm #adminField i, #loginForm #userField i, #loginForm #passField i {
+#loginForm #userField i, #loginForm #passField i {
   color: #c1c1c1;
   display: block;
   position: absolute;
-  top: 2.17em;
-  right: 0.5em;
+  top: 56%;
+  right: 2%;
   text-decoration: none;
   cursor: pointer;
+  font-size: 120%;
 }
-#loginForm #adminField i:last-of-type, #loginForm #userField i:last-of-type, #loginForm #passField i:last-of-type {
+#loginForm #userField i:last-of-type, #loginForm #passField i:last-of-type {
   display: none;
   margin-right: -1px;
   color: var(--primary-background-color);
@@ -113,7 +192,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -128,8 +207,8 @@ body main.almostHidden {
 }
 
 #moreInfoSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -153,12 +232,12 @@ body main.almostHidden {
   width: 20em;
   height: 8em;
 }
+#moreInfoSplash p {
+  font-size: 0.8em;
+}
 #moreInfoSplash.visible {
   opacity: 1;
   z-index: 1;
-}
-#moreInfoSplash p {
-  font-size: 0.8em;
 }
 #moreInfoSplash #okBtn {
   width: 100%;
@@ -167,7 +246,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -177,8 +256,8 @@ body main.almostHidden {
 }
 
 #emptyFieldSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -199,6 +278,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#emptyFieldSplash p {
+  font-size: 0.8em;
 }
 #emptyFieldSplash.visible {
   opacity: 1;
@@ -211,7 +293,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -220,8 +302,8 @@ body main.almostHidden {
 }
 
 #userNotFoundSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -243,6 +325,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#userNotFoundSplash p {
+  font-size: 0.8em;
+}
 #userNotFoundSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -254,12 +339,175 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
   width: 50%;
   border-radius: 10px;
+}
+
+#addNewProductAdmin #newProductForm {
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+  justify-content: space-evenly;
+  height: 32em;
+  top: 49%;
+}
+#addNewProductAdmin #newProductForm #logoImage {
+  width: 7em;
+  margin: 0 auto;
+}
+#addNewProductAdmin #newProductForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: default;
+  margin: 0;
+}
+#addNewProductAdmin #newProductForm .newProductField {
+  font-size: 0.9em;
+}
+#addNewProductAdmin #newProductForm .newProductField:first-of-type {
+  margin-top: -1em;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField::-moz-placeholder {
+  font-size: 0.92em;
+}
+#addNewProductAdmin #newProductForm .newProductField .newProductInputField::placeholder {
+  font-size: 0.92em;
+}
+#addNewProductAdmin #newProductForm .newProductField #pricePreview {
+  font-size: 0.9em;
+  position: absolute;
+  top: 24.1em;
+  right: 1.2em;
+  color: lime;
+}
+#addNewProductAdmin #newProductForm .newProductField #newProductDescription {
+  height: 5em;
+  resize: none;
+}
+#addNewProductAdmin #newProductForm #insertProductBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+#addNewProductAdmin #newProductErrorSplash {
+  width: 19em;
+  height: 11em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#addNewProductAdmin #newProductErrorSplash p {
+  font-size: 0.8em;
+}
+#addNewProductAdmin #newProductErrorSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#addNewProductAdmin #newProductErrorSplash #gotItBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#addNewProductAdmin #newProductSuccesSplash {
+  width: 19em;
+  height: 11em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#addNewProductAdmin #newProductSuccesSplash p {
+  font-size: 0.8em;
+}
+#addNewProductAdmin #newProductSuccesSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#addNewProductAdmin #newProductSuccesSplash #returnBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #listProductsAdmin #products-list-admin {
@@ -286,6 +534,21 @@ body main.almostHidden {
 #listProductsAdmin #products-list-admin .product:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
+@media (max-width: 992px) {
+  #listProductsAdmin #products-list-admin .product {
+    width: 60em;
+  }
+}
+@media (max-width: 834px) {
+  #listProductsAdmin #products-list-admin .product {
+    width: 52em;
+  }
+}
+@media (max-width: 428px) {
+  #listProductsAdmin #products-list-admin .product {
+    width: 40em;
+  }
+}
 #listProductsAdmin #products-list-admin .product .productPreview {
   width: 8%;
   border-radius: 6px;
@@ -304,6 +567,11 @@ body main.almostHidden {
 #listProductsAdmin #products-list-admin .product .productTablePart p, #listProductsAdmin #products-list-admin .product .productTablePart span {
   margin-top: 0.5em;
 }
+@media (max-width: 428px) {
+  #listProductsAdmin #products-list-admin .product .productTablePart {
+    overflow-x: auto;
+  }
+}
 #listProductsAdmin #products-list-admin .product .deleteItemBtn {
   width: 100%;
   padding: 0.8em;
@@ -311,18 +579,25 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
   width: 12%;
+  display: flex;
+  justify-content: space-evenly;
 }
 #listProductsAdmin #products-list-admin .product .deleteItemBtn i {
   margin-right: 0.5em;
 }
+@media (max-width: 992px) {
+  #listProductsAdmin #products-list-admin .product .deleteItemBtn {
+    margin-left: 2em;
+  }
+}
 #listProductsAdmin #delProductErrorSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -343,6 +618,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductErrorSplash p {
+  font-size: 0.8em;
 }
 #listProductsAdmin #delProductErrorSplash.visible {
   opacity: 1;
@@ -355,14 +633,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 #listProductsAdmin #delProductConfirmSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -383,6 +661,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductConfirmSplash p {
+  font-size: 0.8em;
 }
 #listProductsAdmin #delProductConfirmSplash.visible {
   opacity: 1;
@@ -400,15 +681,15 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  width: 10em;
+  width: 8em;
 }
 #listProductsAdmin #delProductSuccesSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -429,6 +710,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listProductsAdmin #delProductSuccesSplash p {
+  font-size: 0.8em;
 }
 #listProductsAdmin #delProductSuccesSplash.visible {
   opacity: 1;
@@ -441,168 +725,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#addNewProductAdmin #newProductForm {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background-color: var(--primary-background-color);
-  color: white;
-  padding: 1em;
-  height: 30em;
-  width: 20em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: var(--main-box-shadow);
-  justify-content: space-evenly;
-  height: 34em;
-  top: 49.5%;
-}
-#addNewProductAdmin #newProductForm #logoImage {
-  width: 7em;
-  margin: 0 auto;
-}
-#addNewProductAdmin #newProductForm h3 {
-  margin: 0.8em 0 0.5em 0;
-  text-align: center;
-  letter-spacing: 1px;
-  cursor: default;
-  margin: 0;
-}
-#addNewProductAdmin #newProductForm .newProductField {
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
-}
-#addNewProductAdmin #newProductForm .newProductField:first-of-type {
-  margin-top: -1em;
-}
-#addNewProductAdmin #newProductForm .newProductField .newProductInputField {
-  display: block;
-  margin-top: 0.5em;
-  outline: none;
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  border-radius: 6px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  color: var(--primary-background-color);
-  letter-spacing: 0.5px;
-}
-#addNewProductAdmin #newProductForm .newProductField .newProductInputField::-moz-placeholder {
-  font-size: 0.92em;
-}
-#addNewProductAdmin #newProductForm .newProductField .newProductInputField::placeholder {
-  font-size: 0.92em;
-}
-#addNewProductAdmin #newProductForm .newProductField #pricePreview {
-  font-size: 0.9em;
-  position: absolute;
-  top: 25em;
-  right: 1.2em;
-  color: lime;
-}
-#addNewProductAdmin #newProductForm .newProductField #newProductDescription {
-  height: 5em;
-  resize: none;
-}
-#addNewProductAdmin #newProductForm #insertProductBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 0.5em;
-}
-#addNewProductAdmin #newProductErrorSplash {
-  width: 25em;
-  height: 15em;
-  padding: 0 2em;
-  background-color: rgb(167, 0, 0);
-  border-radius: 10px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: var(--main-box-shadow);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  color: white;
-  z-index: 1;
-  cursor: default;
-  transform: 1000ms;
-  opacity: 0;
-  z-index: -1;
-  transition: 500ms ease-in-out;
-}
-#addNewProductAdmin #newProductErrorSplash.visible {
-  opacity: 1;
-  z-index: 1;
-}
-#addNewProductAdmin #newProductErrorSplash #gotItBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-#addNewProductAdmin #newProductSuccesSplash {
-  width: 25em;
-  height: 15em;
-  padding: 0 2em;
-  background-color: rgb(167, 0, 0);
-  border-radius: 10px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: var(--main-box-shadow);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  text-align: center;
-  color: white;
-  z-index: 1;
-  cursor: default;
-  transform: 1000ms;
-  opacity: 0;
-  z-index: -1;
-  transition: 500ms ease-in-out;
-}
-#addNewProductAdmin #newProductSuccesSplash.visible {
-  opacity: 1;
-  z-index: 1;
-}
-#addNewProductAdmin #newProductSuccesSplash #returnBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -628,10 +751,20 @@ body main.almostHidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 70em;
+  width: 60em;
 }
 #listCustomersAdmin #customers-list-admin .client:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
+}
+@media (max-width: 834px) {
+  #listCustomersAdmin #customers-list-admin .client {
+    width: 52em;
+  }
+}
+@media (max-width: 428px) {
+  #listCustomersAdmin #customers-list-admin .client {
+    width: 38em;
+  }
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart {
   font-size: 0.8em;
@@ -642,8 +775,8 @@ body main.almostHidden {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 15%;
-  max-width: 15%;
+  min-width: 22%;
+  max-width: 22%;
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span {
   margin-top: 0.5em;
@@ -655,19 +788,21 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
   width: 12%;
+  display: flex;
+  justify-content: space-evenly;
   margin-right: 0.5em;
 }
 #listCustomersAdmin #customers-list-admin .client .deleteCustomerBtn i {
   margin-right: 0.5em;
 }
 #listCustomersAdmin #delCustomerErrorSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -688,6 +823,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listCustomersAdmin #delCustomerErrorSplash p {
+  font-size: 0.8em;
 }
 #listCustomersAdmin #delCustomerErrorSplash.visible {
   opacity: 1;
@@ -700,14 +838,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 #listCustomersAdmin #delCustomerConfirmSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -728,6 +866,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listCustomersAdmin #delCustomerConfirmSplash p {
+  font-size: 0.8em;
 }
 #listCustomersAdmin #delCustomerConfirmSplash.visible {
   opacity: 1;
@@ -745,15 +886,15 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  width: 10em;
+  width: 8em;
 }
 #listCustomersAdmin #delCustomerSuccesSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -775,6 +916,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#listCustomersAdmin #delCustomerSuccesSplash p {
+  font-size: 0.8em;
+}
 #listCustomersAdmin #delCustomerSuccesSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -786,7 +930,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -803,7 +947,7 @@ body main.almostHidden {
   font-size: 0.9em;
   position: fixed;
   top: 7em;
-  right: 1.5em;
+  right: 17.8em;
 }
 #listOrdersAdm #refreshCountdown #count {
   display: inline-block;
@@ -812,6 +956,21 @@ body main.almostHidden {
 #listOrdersAdm #refreshCountdown i {
   margin-right: 0.5em;
 }
+@media (max-width: 1200px) {
+  #listOrdersAdm #refreshCountdown {
+    right: 6em;
+  }
+}
+@media (max-width: 834px) {
+  #listOrdersAdm #refreshCountdown {
+    right: 7.6em;
+  }
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #refreshCountdown {
+    right: 8.2em;
+  }
+}
 #listOrdersAdm #orders-list-admin {
   display: grid;
   grid-template-columns: auto;
@@ -819,6 +978,24 @@ body main.almostHidden {
   row-gap: 2em;
   padding: 3em;
   padding: 6em;
+}
+#listOrdersAdm #orders-list-admin .customerAndOrders {
+  width: 65em;
+}
+@media (max-width: 992px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders {
+    width: 60em;
+  }
+}
+@media (max-width: 834px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders {
+    width: 50em;
+  }
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders {
+    width: 35em;
+  }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders.visible > .order {
   height: 5em;
@@ -837,6 +1014,7 @@ body main.almostHidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
@@ -847,6 +1025,11 @@ body main.almostHidden {
   margin-left: 0.5em;
   width: 1.5em;
   cursor: pointer;
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
+    margin-left: 0;
+  }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn i {
   font-size: 1.5em;
@@ -866,15 +1049,25 @@ body main.almostHidden {
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart span {
   margin-top: 0.5em;
 }
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart {
+    max-width: none;
+    min-width: 15%;
+  }
+}
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-right: 0.5em;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div {
   position: relative;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span {
   margin-top: 0;
+}
+#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span:first-of-type {
+  font-size: 2em;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
   position: absolute;
@@ -894,6 +1087,7 @@ body main.almostHidden {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   position: relative;
   left: 0;
   background: rgba(0, 0, 0, 0.64);
@@ -915,6 +1109,9 @@ body main.almostHidden {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 15%;
+  max-width: 15%;
+  overflow-x: scroll;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart span {
   margin-top: 0.5em;
@@ -931,19 +1128,39 @@ body main.almostHidden {
   margin-top: 0.5em;
   width: 8em;
 }
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderStatus {
+    width: 7em;
+  }
+}
 #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
   background: none;
   border: none;
   margin-right: 0.5em;
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
+    margin-right: 0;
+  }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
   cursor: pointer;
   color: white;
   font-size: 1.5em;
 }
+@media (max-width: 834px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+    font-size: 1.2em;
+  }
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+    font-size: 1em;
+  }
+}
 #listOrdersAdm #orderStatusUpdateSuccessSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -965,12 +1182,12 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#listOrdersAdm #orderStatusUpdateSuccessSplash p {
+  font-size: 0.8em;
+}
 #listOrdersAdm #orderStatusUpdateSuccessSplash.visible {
   opacity: 1;
   z-index: 1;
-}
-#listOrdersAdm #orderStatusUpdateSuccessSplash p {
-  width: 19em;
 }
 #listOrdersAdm #orderStatusUpdateSuccessSplash #gotItBtn {
   width: 100%;
@@ -979,14 +1196,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 #listOrdersAdm #delOrderConfirmSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1007,6 +1224,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#listOrdersAdm #delOrderConfirmSplash p {
+  font-size: 0.8em;
 }
 #listOrdersAdm #delOrderConfirmSplash.visible {
   opacity: 1;
@@ -1024,15 +1244,15 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  width: 10em;
+  width: 8em;
 }
 #listOrdersAdm #delOrderSuccesSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1054,6 +1274,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#listOrdersAdm #delOrderSuccesSplash p {
+  font-size: 0.8em;
+}
 #listOrdersAdm #delOrderSuccesSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -1065,14 +1288,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 #listOrdersAdm #noOrders {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1100,12 +1323,16 @@ body main.almostHidden {
   letter-spacing: 1px;
   font-size: 0.8em;
 }
+#listOrdersAdm #noOrders p {
+  font-size: 0.8em;
+}
 #listOrdersAdm #noOrders.visible {
   opacity: 1;
   z-index: 1;
 }
 #listOrdersAdm #noOrders p {
   width: 20em;
+  font-size: 0.92em;
 }
 #listOrdersAdm #noOrders i {
   font-size: 1.5em;
@@ -1116,9 +1343,80 @@ body main.almostHidden {
     opacity: 0;
   }
 }
+#signUp #signUpForm {
+  border-radius: 10px;
+  background-color: var(--primary-background-color);
+  color: white;
+  padding: 1em;
+  height: 30em;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--main-box-shadow);
+  height: 37em;
+  margin: 3em auto;
+}
+#signUp #signUpForm #logoImage {
+  width: 7em;
+  margin: 0 auto;
+}
+#signUp #signUpForm h3 {
+  margin: 0.8em 0 0.5em 0;
+  text-align: center;
+  letter-spacing: 1px;
+  cursor: default;
+}
+#signUp #signUpForm .newUserField {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+}
+#signUp #signUpForm .newUserField .newUserInputField {
+  display: block;
+  margin-top: 0.5em;
+  outline: none;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  text-align: center;
+  color: var(--primary-background-color);
+  letter-spacing: 0.5px;
+}
+#signUp #signUpForm .newUserField .newUserInputField::-moz-placeholder {
+  font-size: 0.92em;
+}
+#signUp #signUpForm .newUserField .newUserInputField::placeholder {
+  font-size: 0.92em;
+}
+#signUp #signUpForm .newUserField:last-of-type input:last-of-type {
+  margin-top: 1.5em;
+}
+#signUp #signUpForm #signUpBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 1em 0;
+}
+#signUp #signUpForm #goToSignInBtn {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 0.8em;
+  font-weight: bold;
+}
 #signUp #signUpEmptyFieldSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1139,6 +1437,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#signUp #signUpEmptyFieldSplash p {
+  font-size: 0.8em;
 }
 #signUp #signUpEmptyFieldSplash.visible {
   opacity: 1;
@@ -1151,14 +1452,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 #signUp #signUpPasswordErrorSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1179,6 +1480,9 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#signUp #signUpPasswordErrorSplash p {
+  font-size: 0.8em;
 }
 #signUp #signUpPasswordErrorSplash.visible {
   opacity: 1;
@@ -1191,14 +1495,14 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
-#signUp #signUpSuccessfulSplash {
-  width: 25em;
-  height: 15em;
+#signUp #userAlreadyKnownSplash {
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1219,6 +1523,52 @@ body main.almostHidden {
   opacity: 0;
   z-index: -1;
   transition: 500ms ease-in-out;
+}
+#signUp #userAlreadyKnownSplash p {
+  font-size: 0.8em;
+}
+#signUp #userAlreadyKnownSplash.visible {
+  opacity: 1;
+  z-index: 1;
+}
+#signUp #userAlreadyKnownSplash #gotItBtn3 {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#signUp #signUpSuccessfulSplash {
+  width: 19em;
+  height: 11em;
+  padding: 0 2em;
+  background-color: rgb(167, 0, 0);
+  border-radius: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: var(--main-box-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  cursor: default;
+  transform: 1000ms;
+  opacity: 0;
+  z-index: -1;
+  transition: 500ms ease-in-out;
+}
+#signUp #signUpSuccessfulSplash p {
+  font-size: 0.8em;
 }
 #signUp #signUpSuccessfulSplash.visible {
   opacity: 1;
@@ -1231,15 +1581,15 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
 
 #loggedUser #posOrderSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1261,6 +1611,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#loggedUser #posOrderSplash p {
+  font-size: 0.8em;
+}
 #loggedUser #posOrderSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -1272,7 +1625,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -1291,7 +1644,7 @@ body main.almostHidden {
   font-size: 0.9em;
   position: fixed;
   top: 7em;
-  right: 1.5em;
+  right: 17.8em;
 }
 #myOrders #refreshCountdown #count {
   display: inline-block;
@@ -1325,6 +1678,21 @@ body main.almostHidden {
 #myOrders #my-orders-list .order:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
+@media (max-width: 992px) {
+  #myOrders #my-orders-list .order {
+    width: 62em;
+  }
+}
+@media (max-width: 834px) {
+  #myOrders #my-orders-list .order {
+    width: 55em;
+  }
+}
+@media (max-width: 428px) {
+  #myOrders #my-orders-list .order {
+    width: 42em;
+  }
+}
 #myOrders #my-orders-list .order .orderTablePart {
   font-size: 0.8em;
   cursor: default;
@@ -1357,7 +1725,7 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
@@ -1377,8 +1745,8 @@ body main.almostHidden {
   pointer-events: none;
 }
 #myOrders #noOrders {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1406,6 +1774,9 @@ body main.almostHidden {
   letter-spacing: 1px;
   font-size: 0.8em;
 }
+#myOrders #noOrders p {
+  font-size: 0.8em;
+}
 #myOrders #noOrders.visible {
   opacity: 1;
   z-index: 1;
@@ -1417,8 +1788,8 @@ body main.almostHidden {
   font-size: 1.5em;
 }
 #myOrders #cancelOrderSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1440,6 +1811,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#myOrders #cancelOrderSplash p {
+  font-size: 0.8em;
+}
 #myOrders #cancelOrderSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -1456,85 +1830,11 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  width: 10em;
-}
-
-#signUpForm {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  background-color: var(--primary-background-color);
-  color: white;
-  padding: 1em;
-  height: 30em;
-  width: 20em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: var(--main-box-shadow);
-  height: 35em;
-  top: 49.5%;
-}
-#signUpForm #logoImage {
-  width: 7em;
-  margin: 0 auto;
-}
-#signUpForm h3 {
-  margin: 0.8em 0 0.5em 0;
-  text-align: center;
-  letter-spacing: 1px;
-  cursor: default;
-}
-#signUpForm .newUserField {
-  margin-bottom: 0.5em;
-}
-#signUpForm .newUserField .newUserInputField {
-  display: block;
-  margin-top: 0.5em;
-  outline: none;
-  width: 100%;
-  padding: 0.5em;
-  border: none;
-  border-radius: 6px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  color: var(--primary-background-color);
-  letter-spacing: 0.5px;
-}
-#signUpForm .newUserField .newUserInputField::-moz-placeholder {
-  font-size: 0.92em;
-}
-#signUpForm .newUserField .newUserInputField::placeholder {
-  font-size: 0.92em;
-}
-#signUpForm .newUserField:last-of-type input:last-of-type {
-  margin-top: 1.5em;
-}
-#signUpForm #signUpBtn {
-  width: 100%;
-  padding: 0.8em;
-  border: none;
-  border-radius: 6px;
-  background-color: var(--secondary-background-color);
-  font-weight: bold;
-  font-size: 0.9em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  margin: 1em 0;
-}
-#signUpForm #goToSignInBtn {
-  text-decoration: none;
-  text-align: center;
-  color: white;
   font-size: 0.8em;
-  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  width: 8em;
 }
 
 :root {
@@ -1558,15 +1858,21 @@ body main.almostHidden {
   font-size: 2.3em;
   letter-spacing: -0.03em;
 }
+@media (max-width: 428px) {
+  #header #logo {
+    font-size: 2em;
+  }
+}
 #header #logo::after {
   display: inline-block;
   content: "";
   background-image: url("../img/logo-icon.webp");
-  height: 30px;
-  width: 47px;
+  height: 1.1em;
+  width: 1.6em;
   background-size: cover;
   background-repeat: no-repeat;
   margin-left: 0.2em;
+  transform: translateY(8px);
 }
 #header #headerMessage {
   font-style: italic;
@@ -1626,10 +1932,28 @@ body main.almostHidden {
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
-  -moz-column-gap: 7em;
-       column-gap: 7em;
+  -moz-column-gap: 10em;
+       column-gap: 10em;
   row-gap: 4em;
   padding: 3em;
+}
+@media (max-width: 992px) {
+  #products {
+    -moz-column-gap: 6em;
+         column-gap: 6em;
+  }
+}
+@media (max-width: 834px) {
+  #products {
+    grid-template-columns: auto auto;
+    -moz-column-gap: 12em;
+         column-gap: 12em;
+  }
+}
+@media (max-width: 428px) {
+  #products {
+    grid-template-columns: auto;
+  }
 }
 #products .product {
   background-color: var(--primary-background-color);
@@ -1638,7 +1962,8 @@ body main.almostHidden {
   border: 1px solid var(--border-and-shadow);
   border-radius: 10px;
   box-shadow: var(--main-box-shadow);
-  width: 16em;
+  width: 14em;
+  height: 21em;
   padding: 2em 1em;
   display: flex;
   flex-direction: column;
@@ -1654,7 +1979,7 @@ body main.almostHidden {
   cursor: default;
 }
 #products .product .productPreview {
-  width: 200px;
+  width: 9em;
   border-radius: 6px;
   box-shadow: 1px 1px 5px #353535;
 }
@@ -1662,7 +1987,7 @@ body main.almostHidden {
   margin: 1em 0 0.5em 0;
 }
 #products .product .productDetails .productTitle {
-  font-size: 1.2em;
+  font-size: 1.1em;
   letter-spacing: 0.5px;
 }
 #products .product .productDetails .productDescription {
@@ -1677,10 +2002,11 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
+  width: 90%;
 }
 #products .product .getItemBtn:hover {
   letter-spacing: 2px;
@@ -1693,8 +2019,8 @@ body main.almostHidden {
   left: 50%;
   transform: translate(-50%, -50%);
   position: fixed;
-  width: 35em;
-  height: 20em;
+  width: 30em;
+  height: 15em;
   overflow: hidden;
   border-radius: 1em;
   box-shadow: var(--main-box-shadow);
@@ -1707,7 +2033,7 @@ body main.almostHidden {
 }
 #loadingSplashContainer .slides {
   display: flex;
-  width: 70em;
+  width: 60em;
   height: 100%;
 }
 #loadingSplashContainer .slides input {
@@ -1717,10 +2043,10 @@ body main.almostHidden {
   margin-left: 0;
 }
 #loadingSplashContainer .slides #slide2:checked ~ .s1 {
-  margin-left: -35em;
+  margin-left: -30em;
 }
 #loadingSplashContainer .slides .slide {
-  width: 35em;
+  width: 30em;
   color: white;
   transition: 500ms;
   background-color: var(--primary-background-color);
@@ -1768,8 +2094,8 @@ body main.almostHidden {
 }
 
 #unloggedSplash {
-  width: 25em;
-  height: 15em;
+  width: 19em;
+  height: 11em;
   padding: 0 2em;
   background-color: rgb(167, 0, 0);
   border-radius: 10px;
@@ -1791,6 +2117,9 @@ body main.almostHidden {
   z-index: -1;
   transition: 500ms ease-in-out;
 }
+#unloggedSplash p {
+  font-size: 0.8em;
+}
 #unloggedSplash.visible {
   opacity: 1;
   z-index: 1;
@@ -1802,47 +2131,10 @@ body main.almostHidden {
   border-radius: 6px;
   background-color: var(--secondary-background-color);
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: white;
   text-decoration: none;
   cursor: pointer;
   width: 50%;
   border-radius: 10px;
-}
-
-#footer {
-  color: white;
-  background-color: black;
-  text-align: center;
-  letter-spacing: 0.03em;
-  font-size: 0.7em;
-  position: absolute;
-  padding: 1em 0;
-  bottom: auto;
-  width: 100%;
-  cursor: default;
-}
-#footer p {
-  margin-bottom: 0.4em;
-}
-#footer #socialMedia {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  margin-bottom: 0.4em;
-  width: 10.5em;
-}
-#footer #socialMedia a {
-  color: white;
-  text-decoration: none;
-}
-#footer #socialMedia a:hover {
-  text-shadow: 0px 0px 1px white;
-}
-#footer #email a {
-  color: white;
-  text-decoration: none;
-}
-#footer #email a:hover {
-  text-shadow: 0px 0px 1px white;
 }/*# sourceMappingURL=index.css.map */

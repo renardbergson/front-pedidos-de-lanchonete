@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="#" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
     <link rel="stylesheet" href="css/index.css">
     <title>Projeto Pedidos de Lanchonete</title>
 </head>
@@ -26,22 +27,18 @@
             <h3>Lanchonete Bom Sabor</h3>
             <br>
 
-            <button id="moreInfoBtn" type="button">
-                <i class="fa-solid fa-circle-info fa-fade"></i>
-            </button>
-
             <div id="userField">
-                <label for="userID">Login</label>
+                <label id="moreInfoBtn">Login</label>
                 <input id="userID" name="userID" type="text" placeholder="Insira o seu login" autocomplete="off" class="loginInputField">
             </div>
 
             <div id="passField">
-                <label for="userPass">Senha</label>
+                <label id="togglePassBtn">Senha</label>
                 <input id="userPass" name="userPass" type="password" placeholder="Insira a sua senha" class="loginInputField">
-                <a href="#" id="togglePassBtn">
+<!--                 <a id="togglePassBtn">
                     <i class="fa-solid fa-eye"></i>
                     <i class="fa-solid fa-eye-slash"></i>
-                </a>
+                </a> -->
             </div>
 
             <button type="submit" id="signInBtn">Entrar</button>

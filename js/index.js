@@ -155,13 +155,14 @@ function loginControl () {
     let state = false
 
     // More Info Control
-    const $moreInfoBtn = document.querySelector('#moreInfoBtn')
+    const $moreInfoBtn = document.querySelector('#moreInfoBtn') // ::after from Label
     const $moreInfoSplash = document.querySelector('#moreInfoSplash')
     const $okBtn = document.querySelector('#okBtn')
     $moreInfoBtn.onclick = () => splashControl($moreInfoSplash, $okBtn)
-    
+
     // password visibility control
-    $togglePassBtn.onclick = () => {
+    $togglePassBtn.onclick = e => {
+        e.target.classList.toggle('changeAfterContent')
         const password = $loginForm.userPass
 
         if (state === false) {
@@ -227,16 +228,32 @@ function signUp () {
 
         const customer = {name, email, phone, password}
 
-        fetchAPI('POST', customersURL, customer, (data) => {
-            if (data.message === 'customer succesfully sent') {
-                const $signUpSuccessfulSplash = document.querySelector('#signUpSuccessfulSplash')
-                const $gotToLoginBtn = document.querySelector('#gotToLoginBtn')
+        // 🔎 Database verification
+        fetchAPI('GET', customersURL, null, data => {
+            const verification = data.filter(customer => customer.email == email || customer.phone == phone)
 
-                $signUpForm.reset()
-                splashControl($signUpSuccessfulSplash, $gotToLoginBtn, () => {
-                    setTimeout(() => window.location.href = 'login.html', 500)
-                })
+            const $userAlreadyKnownSplash = document.querySelector('#userAlreadyKnownSplash')
+            const $gotItBtn3 = document.querySelector('#gotItBtn3')
+
+            // 🚫 User already registered !!
+            if (verification.length != 0) {
+                splashControl($userAlreadyKnownSplash, $gotItBtn3)
+                return
             }
+
+            // ✅ Subscribe user
+            fetchAPI('POST', customersURL, customer, (data) => {
+                if (data.message === 'customer succesfully sent') {
+                    const $signUpSuccessfulSplash = document.querySelector('#signUpSuccessfulSplash')
+                    const $gotToLoginBtn = document.querySelector('#gotToLoginBtn')
+
+                    $signUpForm.reset()
+                    splashControl($signUpSuccessfulSplash, $gotToLoginBtn, () => {
+                        setTimeout(() => window.location.href = 'login.html', 500)
+                    })
+                }
+            })
+                
         })
     }
 }
@@ -801,7 +818,7 @@ function listOrdersADM () {
                         </div>
 
                         <div class="orderTablePart">
-                            <h4>Status do pedido</h4>
+                            <h4>Status</h4>
                             <select name="orderStatus" class="orderStatus" data-user=${customer._id} data-order=${order.id} data-date=${order.orderDate} data-time=${order.orderTime}>
                                 <option ${order.status === 'Pendente' ? 'selected' : ''} value="Pendente">Pendente</option>
                                 <option ${order.status === 'Em Preparo' ? 'selected' : ''} value="Em Preparo">Em Preparo</option>

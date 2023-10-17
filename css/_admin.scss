@@ -1,66 +1,11 @@
 @import 'mixins.scss';
 
-#listProductsAdmin {
-    #products-list-admin {
-        @include list-style;
-    
-        .product {
-            @include list-item-style;
-    
-            .productPreview {
-                width: 8%;
-                border-radius: 6px;
-                box-shadow: 1px 1px 5px #353535;
-            }
-    
-            .productTablePart {
-                @include table-part-style;
-            }
-    
-            .deleteItemBtn {
-                @include delete-item-btn-style;
-            }
-        }
-    }
-
-    #delProductErrorSplash {
-        @include splash-style;
-    
-        #gotItBtn {
-            @include main-btn-style;
-        }
-    }
-
-    #delProductConfirmSplash {
-        @include splash-style;
-
-        .mainBtns {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-
-            #proceedBtn, #cancelBtn {
-                @include main-btn-style;
-                width: 10em;
-            }
-        }
-    }
-
-    #delProductSuccesSplash {
-        @include splash-style;
-
-        #goBackBtn {
-            @include main-btn-style;
-        }
-    }
-}
-
 #addNewProductAdmin {
     #newProductForm {
         @include form-style;
         justify-content: space-evenly;
-        height: 34em;
-        top: 49.5%;
+        height: 32em;
+        top: 49%;
     
         #logoImage {
             @include logo-style;
@@ -72,7 +17,6 @@
         }
     
         .newProductField {
-            margin-bottom: 0.5em;
             font-size: 0.9em;
     
             &:first-of-type {
@@ -90,7 +34,7 @@
             #pricePreview {
                 font-size: 0.9em;
                 position: absolute;
-                top: 25em;
+                top: 24.1em;
                 right: 1.2em;
                 color: lime;
             }
@@ -124,22 +68,114 @@
     }
 }
 
+#listProductsAdmin {
+    #products-list-admin {
+        @include list-style;
+    
+        .product {
+            @include list-item-style;
+
+            // Breakpoints
+            @include devices (laptop) {
+                width: 60em;
+            }
+            @include devices (tablet) {
+                width: 52em;
+            }
+            @include devices (phone) {
+                width: 40em;
+            }
+            //=====================================
+    
+            .productPreview {
+                width: 8%;
+                border-radius: 6px;
+                box-shadow: 1px 1px 5px #353535;
+            }
+    
+            .productTablePart {
+                @include table-part-style;
+
+                // Breakpoints
+                @include devices (phone) {
+                    overflow-x: auto;
+                }
+                //================================
+            }
+    
+            .deleteItemBtn {
+                @include delete-item-btn-style;
+                display: flex;
+                justify-content: space-evenly;
+
+                // Breakpoints
+                @include devices (laptop) {
+                    margin-left: 2em;
+                }
+                //================================
+            }
+        }
+    }
+
+    #delProductErrorSplash {
+        @include splash-style;
+    
+        #gotItBtn {
+            @include main-btn-style;
+        }
+    }
+
+    #delProductConfirmSplash {
+        @include splash-style;
+
+        .mainBtns {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            #proceedBtn, #cancelBtn {
+                @include main-btn-style;
+                width: 8em;
+            }
+        }
+    }
+
+    #delProductSuccesSplash {
+        @include splash-style;
+
+        #goBackBtn {
+            @include main-btn-style;
+        }
+    }
+}
+
 #listCustomersAdmin {
     #customers-list-admin {
         @include list-style;
     
         .client {
             @include list-item-style;
-            width: 70em;
+            width: 60em;
+
+            // Breakpoints
+            @include devices (tablet) {
+                width: 52em;
+            }
+            @include devices (phone) {
+                width: 38em;
+            }
+            //============================
     
             .clientTablePart {
                 @include table-part-style;
-                min-width: 15%;
-                max-width: 15%;
+                min-width: 22%;
+                max-width: 22%;
             }
     
             .deleteCustomerBtn {
                 @include delete-item-btn-style;
+                display: flex;
+                justify-content: space-evenly;
                 margin-right: 0.5em;
             }
         }
@@ -163,7 +199,7 @@
 
             #proceedBtn, #cancelBtn {
                 @include main-btn-style;
-                width: 10em;
+                width: 8em;
             }
         }
     }
@@ -180,6 +216,18 @@
 #listOrdersAdm {
     #refreshCountdown {
         @include refresh-countdown-style;
+
+        // Breakpoints
+        @include devices (ultra) {
+            right: 6em;
+        }
+        @include devices (tablet) {
+            right: 7.6em;
+        }
+        @include devices (phone) {
+            right: 8.2em;
+        }
+        //================
     }
 
     #orders-list-admin {
@@ -187,6 +235,20 @@
         padding: 6em;
 
         .customerAndOrders {
+            width: 65em;
+
+            // Breakpoints
+            @include devices (laptop) {
+                width: 60em;
+            }
+            @include devices (tablet) {
+                width: 50em;
+            }
+            @include devices (phone) {
+                width: 35em;
+            }
+            //==============================
+
             &.visible > .order {
                 height: 5em;
                 padding: 0.5em;
@@ -194,6 +256,7 @@
 
             .customer {
                 @include list-item-style;
+                width: 100%;
     
                 .expandCustomerBtn {
                     background: none;
@@ -201,6 +264,12 @@
                     margin-left: 0.5em;
                     width: 1.5em;
                     cursor: pointer;
+
+                    // Breakpoints
+                    @include devices (phone) {
+                        margin-left: 0;
+                    }
+                    //===================
     
                     i {
                         font-size: 1.5em;
@@ -211,16 +280,28 @@
                 .customerTablePart {
                     @include table-part-style;
                     max-width: 20%;
+
+                    // Breakpoints
+                    @include devices (phone) {
+                        max-width: none;
+                        min-width: 15%;
+                    }
+                    //================================
                     
                     .orderLegend {
                         display: flex;
-                        justify-content: space-evenly;
+                        justify-content: space-between;
+                        margin-right: 0.5em;
                         
                         div {
                             position: relative;
                             
                             span {
                                 margin-top: 0;
+                                
+                                &:first-of-type {
+                                    font-size: 2em;
+                                }
                             }
         
                             .orderCount {
@@ -235,6 +316,7 @@
     
             .order {
                 @include list-item-style;
+                width: 100%;
                 position: relative;
                 left: 0;
                 background: rgb(0 0 0 / 64%);
@@ -246,6 +328,12 @@
     
                 .orderTablePart {
                     @include table-part-style;
+
+                    // Breakpoints  
+                    min-width: 15%;
+                    max-width: 15%;
+                    overflow-x: scroll;
+                    //========================
                 }
     
                 .orderStatus {
@@ -259,6 +347,12 @@
                     margin: 0 auto;
                     margin-top: 0.5em;
                     width: 8em;
+
+                    // Breakpoints
+                    @include devices (phone) {
+                        width: 7em;
+                    }
+                    //========================
                 }
 
                 .deleteOrderBtn {
@@ -266,10 +360,25 @@
                     border: none;
                     margin-right: 0.5em;
 
+                    // Breakpoints
+                    @include devices (phone) {
+                        margin-right: 0;
+                    }
+                    //============================
+
                     i {
                         cursor: pointer;
                         color: white;
                         font-size: 1.5em;
+
+                        // Breakpoints
+                        @include devices (tablet) {
+                            font-size: 1.2em;
+                        }
+                        @include devices (phone) {
+                            font-size: 1em;
+                        }
+                        //========================
                     }
                 }
             }
@@ -278,10 +387,6 @@
 
     #orderStatusUpdateSuccessSplash {
         @include splash-style;
-
-        p {
-            width: 19em;
-        }
 
         #gotItBtn {
             @include main-btn-style;
@@ -298,7 +403,7 @@
 
             #proceedBtn, #cancelBtn {
                 @include main-btn-style;
-                width: 10em;
+                width: 8em;
             }
         }
     }
@@ -322,6 +427,7 @@
 
         p {
             width: 20em;
+            font-size: 0.92em;
         }
 
         i {

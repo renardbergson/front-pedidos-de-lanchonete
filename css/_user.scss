@@ -1,7 +1,53 @@
 @import 'mixins.scss';
 @import 'keyframes.scss';
+@import 'breakpoints.scss';
 
 #signUp {
+    #signUpForm {
+        @include form-style;
+        height: 37em;
+        margin: 3em auto;
+    
+        #logoImage {
+            @include logo-style;
+        }
+    
+        h3 {
+            @include title-style;
+        }
+    
+        .newUserField {
+            margin-bottom: 0.5em;
+            font-size: 0.9em;
+    
+            .newUserInputField {
+                @include input-field-style;
+    
+                &::placeholder {
+                    @include placeholder-style;
+                }
+            }
+    
+            &:last-of-type {
+                input {
+    
+                    &:last-of-type {
+                        margin-top: 1.5em;
+                    }
+                }
+            }
+        }
+    
+        #signUpBtn {
+            @include main-btn-style;
+            margin: 1em 0;
+        }
+    
+        #goToSignInBtn {
+            @include go-to-sign-in-sign-up-btn;
+        }
+    }
+
     #signUpEmptyFieldSplash {
         @include splash-style;
 
@@ -14,6 +60,14 @@
         @include splash-style;
 
         #gotItBtn2 {
+            @include main-btn-style;
+        }
+    }
+
+    #userAlreadyKnownSplash {
+        @include splash-style;
+
+        #gotItBtn3 {
             @include main-btn-style;
         }
     }
@@ -50,6 +104,18 @@
     
         .order {
             @include list-item-style;
+
+            // Breakpoints  
+            @include devices (laptop) {
+                width: 62em;
+            }
+            @include devices (tablet) {
+                width: 55em;
+            }
+            @include devices (phone) {
+                width: 42em;
+            }
+            // ============================
     
             .orderTablePart {
                 @include table-part-style;
@@ -119,7 +185,7 @@
 
             #proceedBtn, #abortBtn {
                 @include main-btn-style;
-                width: 10em;
+                width: 8em;
             }
         }
     }
