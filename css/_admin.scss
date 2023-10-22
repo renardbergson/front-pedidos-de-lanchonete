@@ -40,19 +40,18 @@
 
                 // Breakpoints 
                 @include devices (ultra) {
-                    top: 34em;
+                    top: 30.7em;
                     right: 35.2em;
                 }
                 @include devices (laptop) {
-                    top: 38em;
+                    top: 34.5em;
                     right: 32.7em;
                 }
                 @include devices (tablet) {
-                    top: 44em;
+                    top: 39.7em;
                     right: 31.8em;
                 }
                 @include devices (phone) {
-                    top: 44em;
                     right: 11em;
                 }
                 //==================
@@ -383,9 +382,11 @@
                     @include table-part-style;
 
                     // Breakpoints  
-                    min-width: 15%;
-                    max-width: 15%;
-                    overflow-x: scroll;
+                    @include devices (tablet) {
+                        min-width: 15%;
+                        max-width: 15%;
+                        overflow-x: scroll;
+                    }
                     //========================
                 }
     

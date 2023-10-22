@@ -1,6 +1,6 @@
 // =================================== URL's ==================================
-const productsURL = 'http://localhost:8080/products'
-const customersURL = 'http://localhost:8080/customers'
+const productsURL = 'https://pedidos-de-lanchonete.onrender.com/products'
+const customersURL = 'https://pedidos-de-lanchonete.onrender.com/customers'
 
 // =================================== BODY ===================================
 // Home

@@ -15,8 +15,8 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #c1c1c1;
     opacity: 0.8;
-    min-height: 100vh;
     touch-action: manipulation;
+    min-height: 100vh;
     display: flex; // HERE
     flex-direction: column; // HERE
 
@@ -45,7 +45,7 @@ body {
         color: white;
         padding: 0 0.7em;
         box-shadow: var(--main-box-shadow);
-        position: sticky;
+        position: fixed;
         top: 0;
         width: 100%;
         z-index: 1;
@@ -170,11 +170,11 @@ body {
 
     #hamburgerMenu {
         position: fixed;
-        right: -100%;
-        top: 4.2em;
+        right: -70%;
+        top: 0;
         height: 100vh;
         width: 23em;
-        padding: 2em;
+        padding: 7em 2em 8em 2em;
         text-align: right;
         background-color: var(--primary-background-color);
         display: flex;
@@ -211,7 +211,7 @@ body {
             @include main-btn-style;
             text-align: center;
             position: relative;
-            top: -5em;
+            //top: -5em;
         }
     }
 
