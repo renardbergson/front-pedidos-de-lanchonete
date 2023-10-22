@@ -5,94 +5,6 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 
-#header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--primary-background-color);
-    color: white;
-    padding: 0 0.7em;
-    box-shadow: var(--main-box-shadow);
-
-    #logo {
-        cursor: default;
-        font-weight: bold;
-        font-size: 2.3em;
-        letter-spacing: -0.03em;
-
-        // Breakpoints
-        @include devices (phone) {
-            font-size: 2em;
-        }
-        //=============================
-
-        &::after {
-            display: inline-block;
-            content: '';
-            background-image: url('../img/logo-icon.webp');
-            height: 1.1em;
-            width: 1.6em;
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin-left: 0.2em;
-            transform: translateY(8px);
-        }
-    }
-
-    #headerMessage {
-        @include header-message-style;
-
-        &.hidden {
-            display: none;
-        }
-    }
-
-    .menu {
-        list-style: none;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        z-index: 1;
-        
-        li {
-            display: block;
-
-            a {
-                color: white;
-                text-decoration: none;
-                display: block;
-                padding: 1.5em 0.7em;
-                
-                &:hover {
-                    background-color: var(--secondary-background-color);
-                }
-            }
-
-            &:hover {
-                > .subMenu {
-                    display: block;
-                }
-            }
-
-            #homeBtn {
-                @include portal-btn-style();
-            }
-        }
-
-        #logRouteBtn {
-            @include portal-btn-style();
-        }
-
-        .subMenu {
-            background-color: var(--primary-background-color);
-            display: none;
-            position: absolute;
-            top: 4.17em;
-        }
-    }
-}
-
 #products {
     color: #1a1a1a;
     display: grid;
@@ -100,7 +12,7 @@
     justify-content: center;
     column-gap: 10em;
     row-gap: 4em;
-    padding: 3em;
+    padding: 4em 0;
 
     // Breakpoints
     @include devices (laptop) {

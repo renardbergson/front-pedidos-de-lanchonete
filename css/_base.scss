@@ -1,4 +1,5 @@
 @import 'breakpoints.scss';
+@import 'mixins.scss';
 
 * {
     margin: 0;
@@ -34,6 +35,127 @@ body {
     header, footer {
         flex: none; // HERE
     }
+
+    #header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--primary-background-color);
+        height: 4.2em;
+        color: white;
+        padding: 0 0.7em;
+        box-shadow: var(--main-box-shadow);
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    
+        #logo {
+            cursor: default;
+            font-weight: bold;
+            font-size: 2.3em;
+            letter-spacing: -0.03em;
+    
+            // Breakpoints
+            @include devices (phone) {
+                font-size: 1.8em;
+            }
+            //=============================
+    
+            &::after {
+                display: inline-block;
+                content: '';
+                background-image: url('../img/logo-icon.webp');
+                height: 1.1em;
+                width: 1.6em;
+                background-size: cover;
+                background-repeat: no-repeat;
+                margin-left: 0.2em;
+                transform: translateY(4px);
+            }
+        }
+    
+        #headerMessage { // only for logged users
+            @include header-message-style;
+
+            // Breakpoints
+            @include devices (tablet) {
+                margin-left: -10em;
+            }
+            @include devices (phone) {
+                margin-left: 0;
+                font-size: 0.8em;
+            }
+            //==================
+    
+            &.hidden {
+                display: none;
+            }
+        }
+    
+        .menu { // traditional menu
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+
+            // Breakpoints
+            @include devices (tablet) {
+                display: none;
+            }
+            //============================
+            
+            li { // only for logged users
+                display: block;
+    
+                a {
+                    color: white;
+                    text-decoration: none;
+                    display: block;
+                    padding: 1.5em 0.7em;
+                    
+                    &:hover {
+                        background-color: var(--secondary-background-color);
+                    }
+                }
+    
+                &:hover {
+                    > .subMenu {
+                        display: block;
+                    }
+                }
+    
+                #homeBtn {
+                    @include portal-btn-style();
+                }
+            }
+    
+            #logRouteBtn {
+                @include portal-btn-style();
+            }
+    
+            .subMenu { // only for logged users
+                background-color: var(--primary-background-color);
+                display: none;
+                position: absolute;
+                top: 4.17em;
+            }
+        }
+
+        #hamburgerButton { // only for tablets and smartphones
+            font-size: 1.5em;
+            width: 0.85em;
+            display: none;
+
+            // Breakpoints
+            @include devices (tablet) {
+                display: block;
+            }
+            //===============
+        }
+    }
     
     main {
         transition: 500ms ease-in-out;
@@ -43,6 +165,53 @@ body {
 
         &.almostHidden{
             opacity: 0.040;
+        }
+    }
+
+    #hamburgerMenu {
+        position: fixed;
+        right: -100%;
+        top: 4.2em;
+        height: 100vh;
+        width: 23em;
+        padding: 2em;
+        text-align: right;
+        background-color: var(--primary-background-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0px 20px 10px #c1c1c1;
+        transition: 500ms cubic-bezier(1, 0.43, 0, 0.18);
+
+        // Breakpoints
+        @include devices (phone) {
+            width: 18em;
+        }
+        //==============
+
+        &.visible {
+            right: 0;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                padding: 1em 0;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+
+        #hamburgerLogOutBtn {
+            @include main-btn-style;
+            text-align: center;
+            position: relative;
+            top: -5em;
         }
     }
 

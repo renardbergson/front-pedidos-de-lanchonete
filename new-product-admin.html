@@ -9,7 +9,7 @@
     <title>Projeto Pedidos de Lanchonete</title>
 </head>
 <body id="addNewProductAdmin">
-    <header id="header">
+    <header id="header" style="position: static;"> <!-- MOBILE ONLY! -->
         <span id="logo">Bom Sabor</span>
 
         <div id="headerMessage" class="hidden">
@@ -42,6 +42,10 @@
                 </a>
             </li>
         </ul>
+
+        <div id="hamburgerButton">
+            <i class="fa-solid fa-bars"></i>
+        </div>
     </header>
     
     <main id="main">
@@ -69,6 +73,25 @@
             <button type="submit" id="insertProductBtn">Cadastrar Produto</button>
         </form>
     </main>
+
+    <div id="hamburgerMenu">
+        <ul>
+            <li>
+                <a href="new-product-admin.html">Cadastrar Produtos</a>
+            </li>
+            <li>
+                <a href="products-list-admin.html">Listar Produtos</a>
+            </li>
+            <li>
+                <a href="customers-list-admin.html">Listar Clientes</a>
+            </li>
+            <li>
+                <a href="orders-list-admin.html">Listar Pedidos</a>
+            </li>
+        </ul>
+        
+        <a id="hamburgerLogOutBtn" href="login.html">Sair</a>
+    </div>
 
     <div id="newProductErrorSplash">
         <h3>Ops! ❌</h3>

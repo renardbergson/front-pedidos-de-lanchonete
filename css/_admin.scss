@@ -34,9 +34,28 @@
             #pricePreview {
                 font-size: 0.9em;
                 position: absolute;
-                top: 24.1em;
-                right: 1.2em;
+                top: 31.5em;
+                right: 44.5em;
                 color: lime;
+
+                // Breakpoints 
+                @include devices (ultra) {
+                    top: 34em;
+                    right: 35.2em;
+                }
+                @include devices (laptop) {
+                    top: 38em;
+                    right: 32.7em;
+                }
+                @include devices (tablet) {
+                    top: 44em;
+                    right: 31.8em;
+                }
+                @include devices (phone) {
+                    top: 44em;
+                    right: 11em;
+                }
+                //==================
             }
     
             #newProductDescription {
@@ -83,7 +102,9 @@
                 width: 52em;
             }
             @include devices (phone) {
-                width: 40em;
+                width: 90%;
+                margin: 0 auto;
+                font-size: 0.8em;
             }
             //=====================================
     
@@ -99,6 +120,8 @@
                 // Breakpoints
                 @include devices (phone) {
                     overflow-x: auto;
+                    min-width: 15%;
+                    max-width: 25%;
                 }
                 //================================
             }
@@ -162,7 +185,9 @@
                 width: 52em;
             }
             @include devices (phone) {
-                width: 38em;
+                width: 37em;
+                margin: 0 auto;
+                font-size: 0.8em;
             }
             //============================
     
@@ -170,6 +195,7 @@
                 @include table-part-style;
                 min-width: 22%;
                 max-width: 22%;
+                overflow-x: scroll;
             }
     
             .deleteCustomerBtn {
@@ -216,23 +242,26 @@
 #listOrdersAdm {
     #refreshCountdown {
         @include refresh-countdown-style;
+        left: 14em;
 
         // Breakpoints
         @include devices (ultra) {
-            right: 6em;
+            left: 5.5em;
+        }
+        @include devices (laptop) {
+            left: 6em;
         }
         @include devices (tablet) {
-            right: 7.6em;
+            left: 11em;
         }
         @include devices (phone) {
-            right: 8.2em;
+            left: 2.5em;
         }
-        //================
+        //===============
     }
 
     #orders-list-admin {
         @include list-style;
-        padding: 6em;
 
         .customerAndOrders {
             width: 65em;
@@ -257,6 +286,15 @@
             .customer {
                 @include list-item-style;
                 width: 100%;
+                
+                // Breakpoints
+                @include devices (phone) {
+                    width: 90%;
+                    margin: 0 auto;
+                    font-size: 0.8em;
+                    height: 6em;
+                }
+                //=================
     
                 .expandCustomerBtn {
                     background: none;
@@ -283,8 +321,9 @@
 
                     // Breakpoints
                     @include devices (phone) {
-                        max-width: none;
+                        max-width: 20%;
                         min-width: 15%;
+                        overflow-x: scroll;
                     }
                     //================================
                     
@@ -292,6 +331,12 @@
                         display: flex;
                         justify-content: space-between;
                         margin-right: 0.5em;
+
+                        //Breakpoints
+                        @include devices (phone) {
+                            font-size: 0.8em;
+                        }
+                        //===================
                         
                         div {
                             position: relative;
@@ -325,6 +370,14 @@
                 padding: 0;
                 height: 0;
                 transition: 500ms;
+
+                // Breakpoints
+                @include devices (phone) {
+                    width: 90%;
+                    margin: 0 auto;
+                    font-size: 0.8em;
+                }
+                //=================
     
                 .orderTablePart {
                     @include table-part-style;
@@ -424,6 +477,12 @@
         border-radius: 10em;
         letter-spacing: 1px;
         font-size: 0.8em;
+
+        // Breakpoints
+        @include devices (phone) {
+            font-size: 0.7em;
+        }
+        //===================
 
         p {
             width: 20em;

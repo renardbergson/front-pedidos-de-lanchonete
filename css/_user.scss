@@ -96,11 +96,22 @@
 #myOrders {
     #refreshCountdown {
         @include refresh-countdown-style;
+
+        //Breakpoints
+        @include devices (laptop) {
+            left: 5em;
+        }
+        @include devices (tablet) {
+            left: 8em;
+        }
+        @include devices (phone) {
+            left: 2em;
+        }
+        //============
     }
 
     #my-orders-list {
         @include list-style;
-        padding: 6em;
     
         .order {
             @include list-item-style;
@@ -113,7 +124,9 @@
                 width: 55em;
             }
             @include devices (phone) {
-                width: 42em;
+                font-size: 0.8em;
+                width: 90%;
+                margin: 0 auto;
             }
             // ============================
     
@@ -121,6 +134,12 @@
                 @include table-part-style;
                 min-width: 15%;
                 max-width: 15%;
+
+                // Breakpoints
+                @include devices (phone) {
+                    max-width: 25%;
+                }
+                //==============
     
                 .orderStatus {
                     outline: none;
@@ -130,7 +149,6 @@
                     font-size: 0.8em;
                     font-family: 'Poppins', sans-serif;
                     font-weight: bold;
-    
                     animation: blink 1000ms infinite;
                 }
             }

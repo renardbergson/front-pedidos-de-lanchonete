@@ -35,6 +35,120 @@ body {
 body header, body footer {
   flex: none;
 }
+body #header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-background-color);
+  height: 4.2em;
+  color: white;
+  padding: 0 0.7em;
+  box-shadow: var(--main-box-shadow);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+body #header #logo {
+  cursor: default;
+  font-weight: bold;
+  font-size: 2.3em;
+  letter-spacing: -0.03em;
+}
+@media (max-width: 428px) {
+  body #header #logo {
+    font-size: 1.8em;
+  }
+}
+body #header #logo::after {
+  display: inline-block;
+  content: "";
+  background-image: url("../img/logo-icon.webp");
+  height: 1.1em;
+  width: 1.6em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 0.2em;
+  transform: translateY(4px);
+}
+body #header #headerMessage {
+  font-style: italic;
+  cursor: default;
+}
+body #header #headerMessage span {
+  font-weight: bold;
+}
+body #header #headerMessage i {
+  margin-left: 0.5em;
+}
+@media (max-width: 834px) {
+  body #header #headerMessage {
+    margin-left: -10em;
+  }
+}
+@media (max-width: 428px) {
+  body #header #headerMessage {
+    margin-left: 0;
+    font-size: 0.8em;
+  }
+}
+body #header #headerMessage.hidden {
+  display: none;
+}
+body #header .menu {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 834px) {
+  body #header .menu {
+    display: none;
+  }
+}
+body #header .menu li {
+  display: block;
+}
+body #header .menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 1.5em 0.7em;
+}
+body #header .menu li a:hover {
+  background-color: var(--secondary-background-color);
+}
+body #header .menu li:hover > .subMenu {
+  display: block;
+}
+body #header .menu li #homeBtn {
+  color: rgb(0, 255, 252);
+  font-size: 1em;
+  font-weight: bold;
+}
+body #header .menu #logRouteBtn {
+  color: rgb(0, 255, 252);
+  font-size: 1em;
+  font-weight: bold;
+}
+body #header .menu .subMenu {
+  background-color: var(--primary-background-color);
+  display: none;
+  position: absolute;
+  top: 4.17em;
+}
+body #header #hamburgerButton {
+  font-size: 1.5em;
+  width: 0.85em;
+  display: none;
+}
+@media (max-width: 834px) {
+  body #header #hamburgerButton {
+    display: block;
+  }
+}
 body main {
   transition: 500ms ease-in-out;
   flex: auto;
@@ -43,6 +157,55 @@ body main {
 }
 body main.almostHidden {
   opacity: 0.04;
+}
+body #hamburgerMenu {
+  position: fixed;
+  right: -100%;
+  top: 4.2em;
+  height: 100vh;
+  width: 23em;
+  padding: 2em;
+  text-align: right;
+  background-color: var(--primary-background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 20px 10px #c1c1c1;
+  transition: 500ms cubic-bezier(1, 0.43, 0, 0.18);
+}
+@media (max-width: 428px) {
+  body #hamburgerMenu {
+    width: 18em;
+  }
+}
+body #hamburgerMenu.visible {
+  right: 0;
+}
+body #hamburgerMenu ul {
+  list-style: none;
+}
+body #hamburgerMenu ul li {
+  padding: 1em 0;
+}
+body #hamburgerMenu ul li a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+body #hamburgerMenu #hamburgerLogOutBtn {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--secondary-background-color);
+  font-weight: bold;
+  font-size: 0.8em;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  top: -5em;
 }
 body footer {
   color: white;
@@ -402,9 +565,33 @@ body footer #email a:hover {
 #addNewProductAdmin #newProductForm .newProductField #pricePreview {
   font-size: 0.9em;
   position: absolute;
-  top: 24.1em;
-  right: 1.2em;
+  top: 31.5em;
+  right: 44.5em;
   color: lime;
+}
+@media (max-width: 1200px) {
+  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
+    top: 34em;
+    right: 35.2em;
+  }
+}
+@media (max-width: 992px) {
+  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
+    top: 38em;
+    right: 32.7em;
+  }
+}
+@media (max-width: 834px) {
+  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
+    top: 44em;
+    right: 31.8em;
+  }
+}
+@media (max-width: 428px) {
+  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
+    top: 44em;
+    right: 11em;
+  }
 }
 #addNewProductAdmin #newProductForm .newProductField #newProductDescription {
   height: 5em;
@@ -515,7 +702,7 @@ body footer #email a:hover {
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
-  padding: 3em;
+  padding: 4em 0;
 }
 #listProductsAdmin #products-list-admin .product {
   background-color: var(--primary-background-color);
@@ -546,7 +733,9 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #listProductsAdmin #products-list-admin .product {
-    width: 40em;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.8em;
   }
 }
 #listProductsAdmin #products-list-admin .product .productPreview {
@@ -570,6 +759,8 @@ body footer #email a:hover {
 @media (max-width: 428px) {
   #listProductsAdmin #products-list-admin .product .productTablePart {
     overflow-x: auto;
+    min-width: 15%;
+    max-width: 25%;
   }
 }
 #listProductsAdmin #products-list-admin .product .deleteItemBtn {
@@ -736,7 +927,7 @@ body footer #email a:hover {
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
-  padding: 3em;
+  padding: 4em 0;
 }
 #listCustomersAdmin #customers-list-admin .client {
   background-color: var(--primary-background-color);
@@ -763,7 +954,9 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #listCustomersAdmin #customers-list-admin .client {
-    width: 38em;
+    width: 37em;
+    margin: 0 auto;
+    font-size: 0.8em;
   }
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart {
@@ -777,6 +970,7 @@ body footer #email a:hover {
   justify-content: center;
   min-width: 22%;
   max-width: 22%;
+  overflow-x: scroll;
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span {
   margin-top: 0.5em;
@@ -939,15 +1133,18 @@ body footer #email a:hover {
 #listOrdersAdm #refreshCountdown {
   background-color: var(--primary-background-color);
   box-shadow: var(--main-box-shadow);
-  width: 11em;
   padding: 0.4em;
   text-align: center;
   color: white;
   border-radius: 1em;
   font-size: 0.9em;
-  position: fixed;
+  position: sticky;
   top: 7em;
-  right: 17.8em;
+  left: 5.5em;
+  z-index: 1;
+  width: -moz-fit-content;
+  width: fit-content;
+  left: 14em;
 }
 #listOrdersAdm #refreshCountdown #count {
   display: inline-block;
@@ -958,17 +1155,22 @@ body footer #email a:hover {
 }
 @media (max-width: 1200px) {
   #listOrdersAdm #refreshCountdown {
-    right: 6em;
+    left: 5.5em;
+  }
+}
+@media (max-width: 992px) {
+  #listOrdersAdm #refreshCountdown {
+    left: 6em;
   }
 }
 @media (max-width: 834px) {
   #listOrdersAdm #refreshCountdown {
-    right: 7.6em;
+    left: 11em;
   }
 }
 @media (max-width: 428px) {
   #listOrdersAdm #refreshCountdown {
-    right: 8.2em;
+    left: 2.5em;
   }
 }
 #listOrdersAdm #orders-list-admin {
@@ -976,8 +1178,7 @@ body footer #email a:hover {
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
-  padding: 3em;
-  padding: 6em;
+  padding: 4em 0;
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders {
   width: 65em;
@@ -1019,6 +1220,14 @@ body footer #email a:hover {
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .customer {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.8em;
+    height: 6em;
+  }
+}
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
   background: none;
   border: none;
@@ -1051,14 +1260,20 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart {
-    max-width: none;
+    max-width: 20%;
     min-width: 15%;
+    overflow-x: scroll;
   }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
   display: flex;
   justify-content: space-between;
   margin-right: 0.5em;
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
+    font-size: 0.8em;
+  }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div {
   position: relative;
@@ -1099,6 +1314,13 @@ body footer #email a:hover {
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .order:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .order {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 0.8em;
+  }
 }
 #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart {
   font-size: 0.8em;
@@ -1329,6 +1551,11 @@ body footer #email a:hover {
 #listOrdersAdm #noOrders.visible {
   opacity: 1;
   z-index: 1;
+}
+@media (max-width: 428px) {
+  #listOrdersAdm #noOrders {
+    font-size: 0.7em;
+  }
 }
 #listOrdersAdm #noOrders p {
   width: 20em;
@@ -1636,15 +1863,17 @@ body footer #email a:hover {
 #myOrders #refreshCountdown {
   background-color: var(--primary-background-color);
   box-shadow: var(--main-box-shadow);
-  width: 11em;
   padding: 0.4em;
   text-align: center;
   color: white;
   border-radius: 1em;
   font-size: 0.9em;
-  position: fixed;
+  position: sticky;
   top: 7em;
-  right: 17.8em;
+  left: 5.5em;
+  z-index: 1;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 #myOrders #refreshCountdown #count {
   display: inline-block;
@@ -1653,13 +1882,27 @@ body footer #email a:hover {
 #myOrders #refreshCountdown i {
   margin-right: 0.5em;
 }
+@media (max-width: 992px) {
+  #myOrders #refreshCountdown {
+    left: 5em;
+  }
+}
+@media (max-width: 834px) {
+  #myOrders #refreshCountdown {
+    left: 8em;
+  }
+}
+@media (max-width: 428px) {
+  #myOrders #refreshCountdown {
+    left: 2em;
+  }
+}
 #myOrders #my-orders-list {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
   row-gap: 2em;
-  padding: 3em;
-  padding: 6em;
+  padding: 4em 0;
 }
 #myOrders #my-orders-list .order {
   background-color: var(--primary-background-color);
@@ -1690,7 +1933,9 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #myOrders #my-orders-list .order {
-    width: 42em;
+    font-size: 0.8em;
+    width: 90%;
+    margin: 0 auto;
   }
 }
 #myOrders #my-orders-list .order .orderTablePart {
@@ -1707,6 +1952,11 @@ body footer #email a:hover {
 }
 #myOrders #my-orders-list .order .orderTablePart p, #myOrders #my-orders-list .order .orderTablePart span {
   margin-top: 0.5em;
+}
+@media (max-width: 428px) {
+  #myOrders #my-orders-list .order .orderTablePart {
+    max-width: 25%;
+  }
 }
 #myOrders #my-orders-list .order .orderTablePart .orderStatus {
   outline: none;
@@ -1843,90 +2093,6 @@ body footer #email a:hover {
   --main-box-shadow: 5px 5px 5px #898989;
 }
 
-#header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--primary-background-color);
-  color: white;
-  padding: 0 0.7em;
-  box-shadow: var(--main-box-shadow);
-}
-#header #logo {
-  cursor: default;
-  font-weight: bold;
-  font-size: 2.3em;
-  letter-spacing: -0.03em;
-}
-@media (max-width: 428px) {
-  #header #logo {
-    font-size: 2em;
-  }
-}
-#header #logo::after {
-  display: inline-block;
-  content: "";
-  background-image: url("../img/logo-icon.webp");
-  height: 1.1em;
-  width: 1.6em;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin-left: 0.2em;
-  transform: translateY(8px);
-}
-#header #headerMessage {
-  font-style: italic;
-  cursor: default;
-}
-#header #headerMessage span {
-  font-weight: bold;
-}
-#header #headerMessage i {
-  margin-left: 0.5em;
-}
-#header #headerMessage.hidden {
-  display: none;
-}
-#header .menu {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-#header .menu li {
-  display: block;
-}
-#header .menu li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  padding: 1.5em 0.7em;
-}
-#header .menu li a:hover {
-  background-color: var(--secondary-background-color);
-}
-#header .menu li:hover > .subMenu {
-  display: block;
-}
-#header .menu li #homeBtn {
-  color: rgb(0, 255, 252);
-  font-size: 1em;
-  font-weight: bold;
-}
-#header .menu #logRouteBtn {
-  color: rgb(0, 255, 252);
-  font-size: 1em;
-  font-weight: bold;
-}
-#header .menu .subMenu {
-  background-color: var(--primary-background-color);
-  display: none;
-  position: absolute;
-  top: 4.17em;
-}
-
 #products {
   color: #1a1a1a;
   display: grid;
@@ -1935,7 +2101,7 @@ body footer #email a:hover {
   -moz-column-gap: 10em;
        column-gap: 10em;
   row-gap: 4em;
-  padding: 3em;
+  padding: 4em 0;
 }
 @media (max-width: 992px) {
   #products {

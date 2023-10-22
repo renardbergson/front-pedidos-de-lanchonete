@@ -874,7 +874,7 @@ function listOrdersADM () {
             }
         })
         
-        // No Order Yet 🙁
+        // No Orders Yet 🙁
         if ($ordersListAdmin.childElementCount === 0) {
             const $noOrders = document.querySelector('#noOrders')
             $noOrders.classList.add('visible')
@@ -955,4 +955,18 @@ function expandOrdersADM () {
             this.innerHTML = '<i class="fa-solid fa-circle-plus fa-fade"></i>'
         }
     })
+}
+
+const $hamburgerButton = document.querySelector('#hamburgerButton')
+$hamburgerButton.onclick = () => {
+    const $hamburgerMenu = document.querySelector('#hamburgerMenu')
+    let isOpen = $hamburgerMenu.classList.contains('visible')
+
+    if (!isOpen) {
+        $hamburgerMenu.classList.add('visible')
+        $hamburgerButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+    } else {
+        $hamburgerMenu.classList.remove('visible')
+        $hamburgerButton.innerHTML = '<i class="fa-solid fa-bars"></i>'
+    }
 }

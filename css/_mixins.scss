@@ -87,7 +87,7 @@
     grid-template-columns: auto;
     justify-content: center;
     row-gap: 2em;
-    padding: 3em;
+    padding: 4em 0;
 }
 
 @mixin list-item-style {
@@ -170,15 +170,16 @@
 @mixin refresh-countdown-style {
     background-color: var(--primary-background-color);
     box-shadow: var(--main-box-shadow);
-    width: 11em;
     padding: 0.4em;
     text-align: center;
     color: white;
     border-radius: 1em;
     font-size: 0.9em;
-    position: fixed;
+    position: sticky;
     top: 7em;
-    right: 17.8em;
+    left: 5.5em;
+    z-index: 1;
+    width: fit-content;
 
     #count {
         display: inline-block;
