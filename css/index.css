@@ -1290,6 +1290,11 @@ body footer #email a:hover {
   top: 1.6em;
   right: -0.4em;
 }
+@media (max-width: 428px) {
+  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
+    top: 2em;
+  }
+}
 #listOrdersAdm #orders-list-admin .customerAndOrders .order {
   background-color: var(--primary-background-color);
   color: white;
@@ -1899,7 +1904,7 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #myOrders #refreshCountdown {
-    left: 2em;
+    left: 4.5em;
   }
 }
 #myOrders #my-orders-list {
@@ -1940,7 +1945,7 @@ body footer #email a:hover {
 @media (max-width: 428px) {
   #myOrders #my-orders-list .order {
     font-size: 0.8em;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 }
@@ -1961,7 +1966,7 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #myOrders #my-orders-list .order .orderTablePart {
-    max-width: 25%;
+    max-width: 24%;
   }
 }
 #myOrders #my-orders-list .order .orderTablePart .orderStatus {
@@ -1994,6 +1999,11 @@ body footer #email a:hover {
 }
 #myOrders #my-orders-list .order .cancelOrderBtn i {
   margin-right: 0.5em;
+}
+@media (max-width: 428px) {
+  #myOrders #my-orders-list .order .cancelOrderBtn i {
+    display: none;
+  }
 }
 #myOrders #my-orders-list .order .cancelOrderBtn.inactive {
   color: gray;

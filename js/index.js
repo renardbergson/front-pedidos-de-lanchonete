@@ -30,6 +30,8 @@ if ($loggedUser) {
     isLogged(redirect.bind(buildProductsHTML.bind('logged')))
 
     verifyLoggedUser("=== 'Administrador'") // If it'is equal, go to Login
+
+    hamburgerMenuControl()
 }
 
 // My Orders
@@ -38,6 +40,8 @@ if ($myOrders) {
     isLogged(redirect.bind(buildMyOrders))
     
     verifyLoggedUser("=== 'Administrador'") // If it'is equal, go to Login
+
+    hamburgerMenuControl()
 } 
 
 // List Products ADM
@@ -46,6 +50,8 @@ if ($listProductsAdmin) {
     isLogged(redirect.bind(buildProductsADM))
 
     verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
+
+    hamburgerMenuControl()
 }
 
 // Add New Product ADM
@@ -54,6 +60,8 @@ if ($addNewProductAdmin) {
     isLogged(redirect.bind(addNewProductADM))
 
     verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
+
+    hamburgerMenuControl()
 }
 
 // List Customers ADM
@@ -62,6 +70,8 @@ if ($listCustomersAdmin) {
     isLogged(redirect.bind(listCustomersADM))
 
     verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
+
+    hamburgerMenuControl()
 }
 
 // List Orders ADM
@@ -70,6 +80,8 @@ if ($listOrdersAdmin) {
     isLogged(redirect.bind(listOrdersADM))
 
     verifyLoggedUser("!= 'Administrador'") // If it'is different, go to Login
+
+    hamburgerMenuControl()
 }
 
 // ============================== MAIN FUNCTIONS ==============================
@@ -957,16 +969,19 @@ function expandOrdersADM () {
     })
 }
 
-const $hamburgerButton = document.querySelector('#hamburgerButton')
-$hamburgerButton.onclick = () => {
-    const $hamburgerMenu = document.querySelector('#hamburgerMenu')
-    let isOpen = $hamburgerMenu.classList.contains('visible')
+function hamburgerMenuControl () {
+    const $hamburgerButton = document.querySelector('#hamburgerButton')
+    
+    $hamburgerButton.onclick = () => {
+        const $hamburgerMenu = document.querySelector('#hamburgerMenu')
+        let isOpen = $hamburgerMenu.classList.contains('visible')
 
-    if (!isOpen) {
-        $hamburgerMenu.classList.add('visible')
-        $hamburgerButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
-    } else {
-        $hamburgerMenu.classList.remove('visible')
-        $hamburgerButton.innerHTML = '<i class="fa-solid fa-bars"></i>'
+        if (!isOpen) {
+            $hamburgerMenu.classList.add('visible')
+            $hamburgerButton.innerHTML = '<i class="fa-solid fa-xmark"></i>'
+        } else {
+            $hamburgerMenu.classList.remove('visible')
+            $hamburgerButton.innerHTML = '<i class="fa-solid fa-bars"></i>'
+        }
     }
 }

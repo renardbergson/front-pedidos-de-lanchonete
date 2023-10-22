@@ -352,6 +352,12 @@
                                 position: absolute;
                                 top: 1.6em;
                                 right: -0.4em;
+
+                                // Breakpoints
+                                @include devices (phone) {
+                                    top: 2em;
+                                }
+                                //============  
                             }
                         }
                     }
