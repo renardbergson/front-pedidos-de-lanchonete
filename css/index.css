@@ -524,7 +524,7 @@ body footer #email a:hover {
   box-shadow: var(--main-box-shadow);
   justify-content: space-evenly;
   height: 32em;
-  top: 49%;
+  position: relative;
 }
 #addNewProductAdmin #newProductForm #logoImage {
   width: 7em;
@@ -566,31 +566,13 @@ body footer #email a:hover {
 #addNewProductAdmin #newProductForm .newProductField #pricePreview {
   font-size: 0.9em;
   position: absolute;
-  top: 31.5em;
-  right: 44.5em;
+  top: 24em;
+  right: 1.5em;
   color: lime;
-}
-@media (max-width: 1200px) {
-  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
-    top: 30.7em;
-    right: 35.2em;
-  }
 }
 @media (max-width: 1024px) {
   #addNewProductAdmin #newProductForm .newProductField #pricePreview {
-    top: 34.5em;
-    right: 32.7em;
-  }
-}
-@media (max-width: 834px) {
-  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
-    top: 39.7em;
-    right: 31.8em;
-  }
-}
-@media (max-width: 428px) {
-  #addNewProductAdmin #newProductForm .newProductField #pricePreview {
-    right: 11em;
+    top: 24em;
   }
 }
 #addNewProductAdmin #newProductForm .newProductField #newProductDescription {
