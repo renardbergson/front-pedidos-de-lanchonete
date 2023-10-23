@@ -104,6 +104,7 @@
                 width: 90%;
                 margin: 0 auto;
                 font-size: 0.8em;
+                gap: 5px;
             }
             //=====================================
     
@@ -134,7 +135,18 @@
                 @include devices (laptop) {
                     margin-left: 2em;
                 }
+                @include devices (phone) {
+                    margin-left: 1em;
+                }
                 //================================
+
+                i {
+                    //Breakpoints
+                    @include devices (tablet) {
+                        display: none;
+                    }
+                    //=============
+                }
             }
         }
     }
@@ -187,6 +199,7 @@
                 width: 37em;
                 margin: 0 auto;
                 font-size: 0.8em;
+                gap: 5px;
             }
             //============================
     
@@ -202,6 +215,14 @@
                 display: flex;
                 justify-content: space-evenly;
                 margin-right: 0.5em;
+
+                i {
+                    // Breakpoints  
+                    @include devices (phone) {
+                        display: none;
+                    }
+                    //=============
+                }
             }
         }
     } 
@@ -241,17 +262,16 @@
 #listOrdersAdm {
     #refreshCountdown {
         @include refresh-countdown-style;
-        left: 14em;
 
         // Breakpoints
         @include devices (ultra) {
             left: 5.5em;
         }
         @include devices (laptop) {
-            left: 6em;
+            left: 7.5em;
         }
         @include devices (tablet) {
-            left: 11em;
+            left: 8em;
         }
         @include devices (phone) {
             left: 2.5em;
@@ -292,6 +312,7 @@
                     margin: 0 auto;
                     font-size: 0.8em;
                     height: 6em;
+                    gap: 5px;
                 }
                 //=================
     
@@ -334,6 +355,8 @@
                         //Breakpoints
                         @include devices (phone) {
                             font-size: 0.8em;
+                            gap: 2px;
+                            margin-right: 5em;
                         }
                         //===================
                         

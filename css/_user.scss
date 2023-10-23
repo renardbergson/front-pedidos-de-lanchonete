@@ -99,13 +99,13 @@
 
         //Breakpoints
         @include devices (laptop) {
-            left: 5em;
+            left: 6em;
         }
         @include devices (tablet) {
-            left: 8em;
+            left: 5em;
         }
         @include devices (phone) {
-            left: 4.5em;
+            left: 3.5em;
         }
         //============
     }
@@ -127,6 +127,7 @@
                 font-size: 0.8em;
                 width: 100%;
                 margin: 0 auto;
+                gap: 5px;
             }
             // ============================
     
@@ -161,6 +162,12 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                //Breakpoints
+                @include devices (phone) {
+                    font-size: 0.7em;
+                }
+                //============
     
                 i {
                     margin-right: 0.5em;
