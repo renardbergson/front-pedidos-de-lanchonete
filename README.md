@@ -26,25 +26,26 @@ conteúdo, também queria inserir um menu hambúrger, para permitir navegar entr
 
 ### Principais funcionalidades
   #### Usuário
-    •	Cadastrar-se <br>
-    •	Fazer login <br>
-    •	Efetuar pedidos <br>
-    •	Acompanhar o status de seus pedidos <br>
-    •	Cancelar pedidos
+•	Cadastrar-se <br>
+•	Fazer login <br>
+•	Efetuar pedidos <br>
+•	Acompanhar o status de seus pedidos <br>
+•	Cancelar pedidos
 
   #### Administrador
-    •	Logar <br>
-    •	Ver e excluir produtos <br>
-    •	Ver e excluir clientes <br>
-    •	Consultar e alterar status de pedidos <br>
-    •	Excluir pedidos individualmente
+•	Logar <br>
+•	Ver e excluir produtos <br>
+•	Ver e excluir clientes <br>
+•	Consultar e alterar status de pedidos <br>
+•	Excluir pedidos individualmente
   
 ### Tecnologias
   •	HTML <br>
   •	CSS  <br>
   •	SCSS  <br>
   •	JavaScript
-  •	Git
+  •	Font Awesome
+  •	Fontes e ícones do Google
 
 ### Back-End
   •	O repositório da API, pode ser acessado neste link: [Server - Pedidos de Lanchonete](https://github.com/renardbergson/server-pedidos-de-lanchonete) 
@@ -57,7 +58,18 @@ conteúdo, também queria inserir um menu hambúrger, para permitir navegar entr
   
 ### Screenshots
   •	Confira a seguir alguns screenshots <br> 
+  
+<img width="1380" alt="loading splash" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/34c112bd-08cb-4886-b4e0-67847fe437e1">
 
+<img width="1381" alt="index" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/176fc1d4-68bf-4fef-b873-5cf6ed32c83a">
+
+<img width="1380" alt="login" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/a36a7a67-ef9f-42bb-8a6a-5fca371106cd">
+
+<img width="1381" alt="my-orders" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/81ec0a13-5295-4d5d-aa6b-1fb92323f600">
+
+<img width="1380" alt="index-admin" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/d2d1d0f0-fc2d-4060-806b-aa77cbee2fad">
+
+<img width="1376" alt="orders-admin" src="https://github.com/renardbergson/front-pedidos-de-lanchonete/assets/97261795/96d4ff0a-7257-475c-933b-1760e6a2cbab">
 
 ### Autor
   •	Renard Bergson 🤓 <br>
