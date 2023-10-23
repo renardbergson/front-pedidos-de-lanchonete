@@ -29,16 +29,12 @@
 
             <div id="userField">
                 <label id="moreInfoBtn">Login</label>
-                <input id="userID" name="userID" type="text" placeholder="Insira o seu login" autocomplete="off" class="loginInputField">
+                <input id="userID" name="userID" type="text" placeholder="Insira o seu login" autocomplete="off" class="loginInputField" oninput="this.value = this.value.toLowerCase()">
             </div>
 
             <div id="passField">
                 <label id="togglePassBtn">Senha</label>
                 <input id="userPass" name="userPass" type="password" placeholder="Insira a sua senha" class="loginInputField">
-<!--                 <a id="togglePassBtn">
-                    <i class="fa-solid fa-eye"></i>
-                    <i class="fa-solid fa-eye-slash"></i>
-                </a> -->
             </div>
 
             <button type="submit" id="signInBtn">Entrar</button>
