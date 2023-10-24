@@ -38,6 +38,11 @@ conteúdo, também queria inserir um menu hambúrger, para permitir navegar entr
 •	Ver e excluir clientes <br>
 •	Consultar e alterar status de pedidos <br>
 •	Excluir pedidos individualmente
+
+### Pontos Extras (não cobrados)
+•  O Administrador pode <b>inserir</b> e <b>excluir</b> produtos <br>
+•  Diversas janelas de alerta, que informam sobre cada ação bem-sucedida ou não, em cada tela do sistema <br>
+•  Refresh automático nas telas para acompanhamento de pedidos, disponíveis para clientes e administrador <br>
   
 ### Tecnologias
   •	HTML <br>
