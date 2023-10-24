@@ -1,7 +1,7 @@
 # Front-End - Pedidos de Lanchonete
 
 ### Link de Acesso
-Clique neste [link](https://front-pedidos-de-lanchonete.vercel.app), para conferir o projeto descrito a seguir. <br> 
+Clique neste [link](https://front-pedidos-de-lanchonete.netlify.app), para conferir o projeto descrito a seguir. <br> 
 
 ### Descrição
 Este projeto é o resultado de um desafio back-end, proposto no curso "Formação Full Stack JavaScript", do professor Thiago Munhoz Medeiros. 
@@ -56,7 +56,7 @@ conteúdo, também queria inserir um menu hambúrger, para permitir navegar entr
   •	O repositório da API, pode ser acessado neste link: [Server - Pedidos de Lanchonete](https://github.com/renardbergson/server-pedidos-de-lanchonete) 
 
 ### Plataformas utilizadas
-  •	Vercel
+  •	Netlify
 
 ### Pré requisitos
   •	Um navegador em ambiente desktop ou mobile
