@@ -94,95 +94,95 @@
 }
 
 #myOrders {
-    #refreshCountdown {
-        @include refresh-countdown-style;
+    .wrapper {
+        width: fit-content;
+        margin: 0 auto;
 
-        //Breakpoints
-        @include devices (laptop) {
-            left: 6em;
-        }
-        @include devices (tablet) {
-            left: 5em;
-        }
+        // Breakpoints
         @include devices (phone) {
-            left: 3.5em;
+            width: 90%;
         }
         //============
-    }
 
-    #my-orders-list {
-        @include list-style;
+        #refreshCountdown {
+            @include refresh-countdown-style;
+        }
     
-        .order {
-            @include list-item-style;
-
-            // Breakpoints  
-            @include devices (laptop) {
-                width: 62em;
-            }
-            @include devices (tablet) {
-                width: 55em;
-            }
-            @include devices (phone) {
-                font-size: 0.8em;
-                width: 100%;
-                margin: 0 auto;
-                gap: 5px;
-            }
-            // ============================
+        #my-orders-list {
+            @include list-style;
+        
+            .order {
+                @include list-item-style;
     
-            .orderTablePart {
-                @include table-part-style;
-                min-width: 15%;
-                max-width: 15%;
-
-                // Breakpoints
-                @include devices (phone) {
-                    max-width: 24%;
+                // Breakpoints  
+                @include devices (laptop) {
+                    width: 62em;
                 }
-                //==============
-    
-                .orderStatus {
-                    outline: none;
-                    border-radius: 10px;
-                    padding: 0.3em;
-                    text-align: center;
+                @include devices (tablet) {
+                    width: 55em;
+                }
+                @include devices (phone) {
                     font-size: 0.8em;
-                    font-family: 'Poppins', sans-serif;
-                    font-weight: bold;
-                    animation: blink 1000ms infinite;
+                    width: 100%;
+                    margin: 0 auto;
+                    gap: 5px;
                 }
-            }
+                // ============================
+        
+                .orderTablePart {
+                    @include table-part-style;
+                    min-width: 15%;
+                    max-width: 15%;
     
-            .cancelOrderBtn {
-                @include main-btn-style;
-                width: 13%;
-                font-size: 0.75em;
-                height: 60%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                //Breakpoints
-                @include devices (phone) {
-                    font-size: 0.7em;
-                }
-                //============
-    
-                i {
-                    margin-right: 0.5em;
-
                     // Breakpoints
                     @include devices (phone) {
-                        display: none;
+                        max-width: 24%;
+                    }
+                    //==============
+        
+                    .orderStatus {
+                        outline: none;
+                        border-radius: 10px;
+                        padding: 0.3em;
+                        text-align: center;
+                        font-size: 0.8em;
+                        font-family: 'Poppins', sans-serif;
+                        font-weight: bold;
+                        animation: blink 1000ms infinite;
+                    }
+                }
+        
+                .cancelOrderBtn {
+                    @include main-btn-style;
+                    width: 13%;
+                    font-size: 0.75em;
+                    height: 60%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+    
+                    //Breakpoints
+                    @include devices (phone) {
+                        font-size: 0.7em;
+                        max-width: 10%;
                     }
                     //============
-                }
-
-                &.inactive {
-                    color: gray;
-                    cursor: default;
-                    pointer-events: none;
+        
+                    i {
+                        margin-right: 0.5em;
+    
+                        // Breakpoints
+                        @include devices (phone) {
+                            display: none;
+                        }
+                        //============
+                    }
+    
+                    &.inactive {
+                        color: gray;
+                        cursor: default;
+                        pointer-events: none;
+                    }
                 }
             }
         }

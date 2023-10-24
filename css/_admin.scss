@@ -91,7 +91,7 @@
             @include devices (phone) {
                 width: 90%;
                 margin: 0 auto;
-                font-size: 0.8em;
+                font-size: 0.9em;
                 gap: 5px;
             }
             //=====================================
@@ -125,6 +125,7 @@
                 }
                 @include devices (phone) {
                     margin-left: 1em;
+                    max-width: 10%;
                 }
                 //================================
 
@@ -184,10 +185,16 @@
                 width: 52em;
             }
             @include devices (phone) {
-                width: 37em;
+                width: 40em;
                 margin: 0 auto;
                 font-size: 0.8em;
                 gap: 5px;
+            }
+            @include devices (phoneM) {
+                width: 37em;
+            }
+            @include devices (phoneS) {
+                width: 35em;
             }
             //============================
     
@@ -248,208 +255,203 @@
 }
 
 #listOrdersAdm {
-    #refreshCountdown {
-        @include refresh-countdown-style;
+    .wrapper {
+        width: fit-content;
+        margin: 0 auto;
 
         // Breakpoints
-        @include devices (ultra) {
-            left: 5.5em;
-        }
-        @include devices (laptop) {
-            left: 7.5em;
-        }
-        @include devices (tablet) {
-            left: 8em;
-        }
         @include devices (phone) {
-            left: 2.5em;
+            width: 90%;
         }
-        //===============
-    }
+        //============
 
-    #orders-list-admin {
-        @include list-style;
-
-        .customerAndOrders {
-            width: 65em;
-
-            // Breakpoints
-            @include devices (laptop) {
-                width: 60em;
-            }
-            @include devices (tablet) {
-                width: 50em;
-            }
-            @include devices (phone) {
-                width: 35em;
-            }
-            //==============================
-
-            &.visible > .order {
-                height: 5em;
-                padding: 0.5em;
-            }
-
-            .customer {
-                @include list-item-style;
-                width: 100%;
-                
+        #refreshCountdown {
+            @include refresh-countdown-style;
+        }
+    
+        #orders-list-admin {
+            @include list-style;
+    
+            .customerAndOrders {
+                width: 65em;
+    
                 // Breakpoints
+                @include devices (laptop) {
+                    width: 60em;
+                }
+                @include devices (tablet) {
+                    width: 50em;
+                }
                 @include devices (phone) {
-                    width: 90%;
+                    width: 100%;
                     margin: 0 auto;
-                    font-size: 0.8em;
-                    height: 6em;
-                    gap: 5px;
                 }
-                //=================
+                //==============================
     
-                .expandCustomerBtn {
-                    background: none;
-                    border: none;
-                    margin-left: 0.5em;
-                    width: 1.5em;
-                    cursor: pointer;
-
-                    // Breakpoints
-                    @include devices (phone) {
-                        margin-left: 0;
-                    }
-                    //===================
-    
-                    i {
-                        font-size: 1.5em;
-                        color: white;
-                    }
+                &.visible > .order {
+                    height: 5em;
+                    padding: 0.5em;
                 }
-        
-                .customerTablePart {
-                    @include table-part-style;
-                    max-width: 20%;
-
-                    // Breakpoints
-                    @include devices (phone) {
-                        max-width: 20%;
-                        min-width: 15%;
-                        overflow-x: scroll;
-                    }
-                    //================================
+    
+                .customer {
+                    @include list-item-style;
+                    width: 100%;
                     
-                    .orderLegend {
-                        display: flex;
-                        justify-content: space-between;
-                        margin-right: 0.5em;
-
-                        //Breakpoints
+                    // Breakpoints
+                    @include devices (phone) {
+                        margin: 0 auto;
+                        font-size: 0.8em;
+                        height: 6em;
+                        gap: 5px;
+                    }
+                    //=================
+        
+                    .expandCustomerBtn {
+                        background: none;
+                        border: none;
+                        margin-left: 0.5em;
+                        width: 1.5em;
+                        font-size: 1em;
+                        cursor: pointer;
+    
+                        // Breakpoints
                         @include devices (phone) {
-                            font-size: 0.8em;
-                            gap: 2px;
-                            margin-right: 5em;
+                            margin-left: 0;
                         }
                         //===================
-                        
-                        div {
-                            position: relative;
-                            
-                            span {
-                                margin-top: 0;
-                                
-                                &:first-of-type {
-                                    font-size: 2em;
-                                }
-                            }
         
-                            .orderCount {
-                                position: absolute;
-                                top: 1.6em;
-                                right: -0.4em;
-
-                                // Breakpoints
-                                @include devices (phone) {
-                                    top: 2em;
+                        i {
+                            font-size: 1.5em;
+                            color: white;
+                        }
+                    }
+            
+                    .customerTablePart {
+                        @include table-part-style;
+                        max-width: 20%;
+    
+                        // Breakpoints
+                        @include devices (phone) {
+                            max-width: 20%;
+                            min-width: 15%;
+                            overflow-x: scroll;
+                        }
+                        //================================
+                        
+                        .orderLegend {
+                            display: flex;
+                            justify-content: space-between;
+                            margin-right: 0.5em;
+    
+                            //Breakpoints
+                            @include devices (phone) {
+                                font-size: 0.8em;
+                                gap: 2px;
+                            }
+                            //===================
+                            
+                            div {
+                                position: relative;
+                                
+                                span {
+                                    margin-top: 0;
+                                    
+                                    &:first-of-type {
+                                        font-size: 2em;
+                                    }
                                 }
-                                //============  
+            
+                                .orderCount {
+                                    position: absolute;
+                                    top: 1.6em;
+                                    right: -0.4em;
+    
+                                    // Breakpoints
+                                    @include devices (phone) {
+                                        top: 2em;
+                                    }
+                                    //============  
+                                }
                             }
                         }
                     }
                 }
-            }
+        
+                .order {
+                    @include list-item-style;
+                    width: 100%;
+                    position: relative;
+                    left: 0;
+                    background: rgb(0 0 0 / 64%);
+                    overflow: hidden;
+                    min-height: 0;
+                    padding: 0;
+                    height: 0;
+                    transition: 500ms;
     
-            .order {
-                @include list-item-style;
-                width: 100%;
-                position: relative;
-                left: 0;
-                background: rgb(0 0 0 / 64%);
-                overflow: hidden;
-                min-height: 0;
-                padding: 0;
-                height: 0;
-                transition: 500ms;
-
-                // Breakpoints
-                @include devices (phone) {
-                    width: 90%;
-                    margin: 0 auto;
-                    font-size: 0.8em;
-                }
-                //=================
-    
-                .orderTablePart {
-                    @include table-part-style;
-
-                    // Breakpoints  
-                    @include devices (tablet) {
-                        min-width: 15%;
-                        max-width: 15%;
-                        overflow-x: scroll;
-                    }
-                    //========================
-                }
-    
-                .orderStatus {
-                    outline: none;
-                    border-radius: 10px;
-                    text-align: center;
-                    font-family: 'Poppins', sans-serif;
-                    font-size: 0.9em;
-                    font-weight: bold;
-                    letter-spacing: 0.5px;
-                    margin: 0 auto;
-                    margin-top: 0.5em;
-                    width: 8em;
-
                     // Breakpoints
                     @include devices (phone) {
-                        width: 7em;
+                        margin: 0 auto;
+                        font-size: 0.8em;
                     }
-                    //========================
-                }
-
-                .deleteOrderBtn {
-                    background: none;
-                    border: none;
-                    margin-right: 0.5em;
-
-                    // Breakpoints
-                    @include devices (phone) {
-                        margin-right: 0;
-                    }
-                    //============================
-
-                    i {
-                        cursor: pointer;
-                        color: white;
-                        font-size: 1.5em;
-
-                        // Breakpoints
+                    //=================
+        
+                    .orderTablePart {
+                        @include table-part-style;
+    
+                        // Breakpoints  
                         @include devices (tablet) {
-                            font-size: 1.2em;
-                        }
-                        @include devices (phone) {
-                            font-size: 1em;
+                            min-width: 15%;
+                            max-width: 15%;
+                            overflow-x: scroll;
                         }
                         //========================
+                    }
+        
+                    .orderStatus {
+                        outline: none;
+                        border-radius: 10px;
+                        text-align: center;
+                        font-family: 'Poppins', sans-serif;
+                        font-size: 0.9em;
+                        font-weight: bold;
+                        letter-spacing: 0.5px;
+                        margin: 0 auto;
+                        margin-top: 0.5em;
+                        width: 8em;
+    
+                        // Breakpoints
+                        @include devices (phone) {
+                            width: 7em;
+                        }
+                        //========================
+                    }
+    
+                    .deleteOrderBtn {
+                        background: none;
+                        border: none;
+                        margin-right: 0.5em;
+    
+                        // Breakpoints
+                        @include devices (phone) {
+                            margin-right: 0;
+                        }
+                        //============================
+    
+                        i {
+                            cursor: pointer;
+                            color: white;
+                            font-size: 1.5em;
+    
+                            // Breakpoints
+                            @include devices (tablet) {
+                                font-size: 1.2em;
+                            }
+                            @include devices (phone) {
+                                font-size: 1em;
+                            }
+                            //========================
+                        }
                     }
                 }
             }

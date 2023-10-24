@@ -28,4 +28,16 @@
             @content
         }
     };
+
+    @if $breakpoint == phoneM {
+        @media (max-width: 375px) {
+            @content
+        }
+    };
+
+    @if $breakpoint == phoneS {
+        @media (max-width: 320px) {
+            @content
+        }
+    };
 }

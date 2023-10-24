@@ -32,6 +32,16 @@ body {
     font-size: 12px;
   }
 }
+@media (max-width: 428px) {
+  body {
+    font-size: 11px;
+  }
+}
+@media (max-width: 320px) {
+  body {
+    font-size: 10px;
+  }
+}
 body header, body footer {
   flex: none;
 }
@@ -89,7 +99,6 @@ body #header #headerMessage i {
 @media (max-width: 428px) {
   body #header #headerMessage {
     margin-left: 0;
-    font-size: 0.8em;
   }
 }
 body #header #headerMessage.hidden {
@@ -164,8 +173,9 @@ body #hamburgerMenu {
   top: 4.2em;
   height: 100%;
   width: 23em;
-  padding: 2em;
+  padding: 3em 2em 2em 2em;
   text-align: right;
+  font-size: 1em;
   background-color: var(--primary-background-color);
   display: flex;
   flex-direction: column;
@@ -175,7 +185,17 @@ body #hamburgerMenu {
 }
 @media (max-width: 428px) {
   body #hamburgerMenu {
-    width: 18em;
+    width: 19em;
+  }
+}
+@media (max-width: 375px) {
+  body #hamburgerMenu {
+    width: 17em;
+  }
+}
+@media (max-width: 320px) {
+  body #hamburgerMenu {
+    width: 16em;
   }
 }
 body #hamburgerMenu.visible {
@@ -718,7 +738,7 @@ body footer #email a:hover {
   #listProductsAdmin #products-list-admin .product {
     width: 90%;
     margin: 0 auto;
-    font-size: 0.8em;
+    font-size: 0.9em;
     gap: 5px;
   }
 }
@@ -773,6 +793,7 @@ body footer #email a:hover {
 @media (max-width: 428px) {
   #listProductsAdmin #products-list-admin .product .deleteItemBtn {
     margin-left: 1em;
+    max-width: 10%;
   }
 }
 @media (max-width: 834px) {
@@ -949,10 +970,20 @@ body footer #email a:hover {
 }
 @media (max-width: 428px) {
   #listCustomersAdmin #customers-list-admin .client {
-    width: 37em;
+    width: 40em;
     margin: 0 auto;
     font-size: 0.8em;
     gap: 5px;
+  }
+}
+@media (max-width: 375px) {
+  #listCustomersAdmin #customers-list-admin .client {
+    width: 37em;
+  }
+}
+@media (max-width: 320px) {
+  #listCustomersAdmin #customers-list-admin .client {
+    width: 35em;
   }
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart {
@@ -1131,7 +1162,17 @@ body footer #email a:hover {
   cursor: pointer;
 }
 
-#listOrdersAdm #refreshCountdown {
+#listOrdersAdm .wrapper {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+@media (max-width: 428px) {
+  #listOrdersAdm .wrapper {
+    width: 90%;
+  }
+}
+#listOrdersAdm .wrapper #refreshCountdown {
   background-color: var(--primary-background-color);
   box-shadow: var(--main-box-shadow);
   padding: 0.4em;
@@ -1141,39 +1182,18 @@ body footer #email a:hover {
   font-size: 0.9em;
   position: sticky;
   top: 7em;
-  left: 14em;
   z-index: 1;
   width: -moz-fit-content;
   width: fit-content;
 }
-#listOrdersAdm #refreshCountdown #count {
+#listOrdersAdm .wrapper #refreshCountdown #count {
   display: inline-block;
   width: 1.1em;
 }
-#listOrdersAdm #refreshCountdown i {
+#listOrdersAdm .wrapper #refreshCountdown i {
   margin-right: 0.5em;
 }
-@media (max-width: 1200px) {
-  #listOrdersAdm #refreshCountdown {
-    left: 5.5em;
-  }
-}
-@media (max-width: 1024px) {
-  #listOrdersAdm #refreshCountdown {
-    left: 7.5em;
-  }
-}
-@media (max-width: 834px) {
-  #listOrdersAdm #refreshCountdown {
-    left: 8em;
-  }
-}
-@media (max-width: 428px) {
-  #listOrdersAdm #refreshCountdown {
-    left: 2.5em;
-  }
-}
-#listOrdersAdm #orders-list-admin {
+#listOrdersAdm .wrapper #orders-list-admin {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
@@ -1181,29 +1201,30 @@ body footer #email a:hover {
   padding: 4em 0;
   margin-top: 4em;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders {
   width: 65em;
 }
 @media (max-width: 1024px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders {
     width: 60em;
   }
 }
 @media (max-width: 834px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders {
     width: 50em;
   }
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders {
-    width: 35em;
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders {
+    width: 100%;
+    margin: 0 auto;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders.visible > .order {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders.visible > .order {
   height: 5em;
   padding: 0.5em;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -1218,35 +1239,35 @@ body footer #email a:hover {
   align-items: center;
   width: 100%;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer:hover {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .customer {
-    width: 90%;
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer {
     margin: 0 auto;
     font-size: 0.8em;
     height: 6em;
     gap: 5px;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
   background: none;
   border: none;
   margin-left: 0.5em;
   width: 1.5em;
+  font-size: 1em;
   cursor: pointer;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .expandCustomerBtn {
     margin-left: 0;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .expandCustomerBtn i {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .expandCustomerBtn i {
   font-size: 1.5em;
   color: white;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -1257,48 +1278,47 @@ body footer #email a:hover {
   justify-content: center;
   max-width: 20%;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart span {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart p, #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart span {
   margin-top: 0.5em;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart {
     max-width: 20%;
     min-width: 15%;
     overflow-x: scroll;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
   display: flex;
   justify-content: space-between;
   margin-right: 0.5em;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend {
     font-size: 0.8em;
     gap: 2px;
-    margin-right: 5em;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div {
   position: relative;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span {
   margin-top: 0;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span:first-of-type {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div span:first-of-type {
   font-size: 2em;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
   position: absolute;
   top: 1.6em;
   right: -0.4em;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .customer .customerTablePart .orderLegend div .orderCount {
     top: 2em;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -1321,17 +1341,16 @@ body footer #email a:hover {
   height: 0;
   transition: 500ms;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order:hover {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order {
-    width: 90%;
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order {
     margin: 0 auto;
     font-size: 0.8em;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -1341,17 +1360,17 @@ body footer #email a:hover {
   flex-direction: column;
   justify-content: center;
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart p, #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart span {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderTablePart p, #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderTablePart span {
   margin-top: 0.5em;
 }
 @media (max-width: 834px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderTablePart {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderTablePart {
     min-width: 15%;
     max-width: 15%;
     overflow-x: scroll;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order .orderStatus {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderStatus {
   outline: none;
   border-radius: 10px;
   text-align: center;
@@ -1364,32 +1383,32 @@ body footer #email a:hover {
   width: 8em;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order .orderStatus {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .orderStatus {
     width: 7em;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
   background: none;
   border: none;
   margin-right: 0.5em;
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .deleteOrderBtn {
     margin-right: 0;
   }
 }
-#listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+#listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
   cursor: pointer;
   color: white;
   font-size: 1.5em;
 }
 @media (max-width: 834px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
     font-size: 1.2em;
   }
 }
 @media (max-width: 428px) {
-  #listOrdersAdm #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
+  #listOrdersAdm .wrapper #orders-list-admin .customerAndOrders .order .deleteOrderBtn i {
     font-size: 1em;
   }
 }
@@ -1873,7 +1892,17 @@ body footer #email a:hover {
   border-radius: 10px;
 }
 
-#myOrders #refreshCountdown {
+#myOrders .wrapper {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+@media (max-width: 428px) {
+  #myOrders .wrapper {
+    width: 90%;
+  }
+}
+#myOrders .wrapper #refreshCountdown {
   background-color: var(--primary-background-color);
   box-shadow: var(--main-box-shadow);
   padding: 0.4em;
@@ -1883,34 +1912,18 @@ body footer #email a:hover {
   font-size: 0.9em;
   position: sticky;
   top: 7em;
-  left: 14em;
   z-index: 1;
   width: -moz-fit-content;
   width: fit-content;
 }
-#myOrders #refreshCountdown #count {
+#myOrders .wrapper #refreshCountdown #count {
   display: inline-block;
   width: 1.1em;
 }
-#myOrders #refreshCountdown i {
+#myOrders .wrapper #refreshCountdown i {
   margin-right: 0.5em;
 }
-@media (max-width: 1024px) {
-  #myOrders #refreshCountdown {
-    left: 6em;
-  }
-}
-@media (max-width: 834px) {
-  #myOrders #refreshCountdown {
-    left: 5em;
-  }
-}
-@media (max-width: 428px) {
-  #myOrders #refreshCountdown {
-    left: 3.5em;
-  }
-}
-#myOrders #my-orders-list {
+#myOrders .wrapper #my-orders-list {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
@@ -1918,7 +1931,7 @@ body footer #email a:hover {
   padding: 4em 0;
   margin-top: 4em;
 }
-#myOrders #my-orders-list .order {
+#myOrders .wrapper #my-orders-list .order {
   background-color: var(--primary-background-color);
   color: white;
   text-align: center;
@@ -1932,28 +1945,28 @@ body footer #email a:hover {
   justify-content: space-between;
   align-items: center;
 }
-#myOrders #my-orders-list .order:hover {
+#myOrders .wrapper #my-orders-list .order:hover {
   box-shadow: 2px 2px 10px rgb(255, 255, 255);
 }
 @media (max-width: 1024px) {
-  #myOrders #my-orders-list .order {
+  #myOrders .wrapper #my-orders-list .order {
     width: 62em;
   }
 }
 @media (max-width: 834px) {
-  #myOrders #my-orders-list .order {
+  #myOrders .wrapper #my-orders-list .order {
     width: 55em;
   }
 }
 @media (max-width: 428px) {
-  #myOrders #my-orders-list .order {
+  #myOrders .wrapper #my-orders-list .order {
     font-size: 0.8em;
     width: 100%;
     margin: 0 auto;
     gap: 5px;
   }
 }
-#myOrders #my-orders-list .order .orderTablePart {
+#myOrders .wrapper #my-orders-list .order .orderTablePart {
   font-size: 0.8em;
   cursor: default;
   height: 100%;
@@ -1965,15 +1978,15 @@ body footer #email a:hover {
   min-width: 15%;
   max-width: 15%;
 }
-#myOrders #my-orders-list .order .orderTablePart p, #myOrders #my-orders-list .order .orderTablePart span {
+#myOrders .wrapper #my-orders-list .order .orderTablePart p, #myOrders .wrapper #my-orders-list .order .orderTablePart span {
   margin-top: 0.5em;
 }
 @media (max-width: 428px) {
-  #myOrders #my-orders-list .order .orderTablePart {
+  #myOrders .wrapper #my-orders-list .order .orderTablePart {
     max-width: 24%;
   }
 }
-#myOrders #my-orders-list .order .orderTablePart .orderStatus {
+#myOrders .wrapper #my-orders-list .order .orderTablePart .orderStatus {
   outline: none;
   border-radius: 10px;
   padding: 0.3em;
@@ -1983,7 +1996,7 @@ body footer #email a:hover {
   font-weight: bold;
   animation: blink 1000ms infinite;
 }
-#myOrders #my-orders-list .order .cancelOrderBtn {
+#myOrders .wrapper #my-orders-list .order .cancelOrderBtn {
   width: 100%;
   padding: 0.8em;
   border: none;
@@ -2002,19 +2015,20 @@ body footer #email a:hover {
   align-items: center;
 }
 @media (max-width: 428px) {
-  #myOrders #my-orders-list .order .cancelOrderBtn {
+  #myOrders .wrapper #my-orders-list .order .cancelOrderBtn {
     font-size: 0.7em;
+    max-width: 10%;
   }
 }
-#myOrders #my-orders-list .order .cancelOrderBtn i {
+#myOrders .wrapper #my-orders-list .order .cancelOrderBtn i {
   margin-right: 0.5em;
 }
 @media (max-width: 428px) {
-  #myOrders #my-orders-list .order .cancelOrderBtn i {
+  #myOrders .wrapper #my-orders-list .order .cancelOrderBtn i {
     display: none;
   }
 }
-#myOrders #my-orders-list .order .cancelOrderBtn.inactive {
+#myOrders .wrapper #my-orders-list .order .cancelOrderBtn.inactive {
   color: gray;
   cursor: default;
   pointer-events: none;

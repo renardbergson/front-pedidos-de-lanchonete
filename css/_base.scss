@@ -30,6 +30,12 @@ body {
     @include devices (tablet) {
         font-size: 12px;
     }
+    @include devices (phone) {
+        font-size: 11px;
+    }
+    @include devices (phoneS) {
+        font-size: 10px;
+    }
     // =========================
 
     header, footer {
@@ -84,7 +90,6 @@ body {
             }
             @include devices (phone) {
                 margin-left: 0;
-                font-size: 0.8em;
             }
             //==================
     
@@ -174,8 +179,9 @@ body {
         top: 4.2em;
         height: 100%;
         width: 23em;
-        padding: 2em;
+        padding: 3em 2em 2em 2em;
         text-align: right;
+        font-size: 1em;
         background-color: var(--primary-background-color);
         display: flex;
         flex-direction: column;
@@ -185,9 +191,15 @@ body {
 
         // Breakpoints
         @include devices (phone) {
-            width: 18em;
+            width: 19em;
         }
-        //==============
+        @include devices (phoneM) {
+            width: 17em;
+        }
+        @include devices (phoneS) {
+            width: 16em;
+        }
+        //============
 
         &.visible {
             right: 0;
