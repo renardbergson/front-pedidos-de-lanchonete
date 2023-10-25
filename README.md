@@ -48,8 +48,8 @@ conteúdo, também queria inserir um menu hambúrger, para permitir navegar entr
   •	HTML <br>
   •	CSS  <br>
   •	SCSS  <br>
-  •	JavaScript
-  •	Font Awesome
+  •	JavaScript <br>
+  •	Font Awesome <br>
   •	Fontes e ícones do Google
 
 ### Back-End
