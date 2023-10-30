@@ -124,11 +124,14 @@ async function fetchAPI (method, url, item, callback) {
 }
 
 function initialLoadingSplashControl (command) {
+    const $logRouteBtn = document.querySelector('#logRouteBtn')
     const $loadingSplashContainer = document.querySelector('#loadingSplashContainer')
     const $arrowLeft = document.querySelector('#arrow-left')
     const $arrowRight = document.querySelector('#arrow-right')
 
     if ($loadingSplashContainer) {
+        $logRouteBtn.classList.add('hidden')
+
         $arrowRight.onclick = () => {
             $arrowRight.classList.add('hidden')
             $arrowLeft.classList.remove('hidden')
@@ -141,6 +144,7 @@ function initialLoadingSplashControl (command) {
     
         if (command) {
             $loadingSplashContainer.classList.add('hidden')
+            $logRouteBtn.classList.remove('hidden')
         }
     }
 }

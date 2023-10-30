@@ -142,6 +142,9 @@ body #header .menu #logRouteBtn {
   font-size: 1em;
   font-weight: bold;
 }
+body #header .menu #logRouteBtn.hidden {
+  display: none;
+}
 body #header .menu .subMenu {
   background-color: var(--primary-background-color);
   display: none;
@@ -997,7 +1000,7 @@ body footer #email a:hover {
   justify-content: center;
   min-width: 22%;
   max-width: 22%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 #listCustomersAdmin #customers-list-admin .client .clientTablePart p, #listCustomersAdmin #customers-list-admin .client .clientTablePart span {
   margin-top: 0.5em;

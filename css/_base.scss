@@ -139,6 +139,10 @@ body {
     
             #logRouteBtn {
                 @include portal-btn-style();
+
+                &.hidden {
+                    display: none;
+                }
             }
     
             .subMenu { // only for logged users
