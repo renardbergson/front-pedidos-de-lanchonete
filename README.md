@@ -11,6 +11,8 @@ de lanchonete fictícia. Aqui é possível criar um usuário, fazer login com as
 Também é possível logar como Administrador para ver os usuários cadastrados e removê-los, além de ver seus pedidos, atualizar seus status e 
 também excluí-los individualmente.
 
+IMPORTANTE: Não apresenta um sistema de login avançado, o desafio deste projeto era torná-lo funcional com JavaScript puro.
+
 ### Objetivos
 Para um usuário simples, meu objetivo era criar um painel que apresentasse uma tela de login e outra de cadastro, além de uma tela inicial, 
 que deveria ter comportamentos diferentes, ao fazer um pedido, caso já tivesse sido realizado o login ou não. Além disso, ter uma tela para
